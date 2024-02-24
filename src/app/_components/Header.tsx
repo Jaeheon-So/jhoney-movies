@@ -1,10 +1,25 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import styles from "./header.module.scss";
 import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
 import DropDown from "./DropDown";
+import HeaderSearchForm from "./HeaderSearchForm";
 
 const Header = () => {
+  const [showSearchBar, setShowSearchBar] = useState(false);
+  const [searchParam, setSearchParam] = useState("");
+
+  const onClickSearch = () => {
+    setShowSearchBar(!showSearchBar);
+  };
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchParam(e.target.value);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.content}>
@@ -40,12 +55,15 @@ const Header = () => {
             <li>
               <Link href="/login">Login</Link>
             </li>
-            <li>
-              <FaSearch />
+            <li onClick={onClickSearch}>
+              {showSearchBar ? <IoClose /> : <FaSearch />}
             </li>
           </ul>
         </div>
       </div>
+      {showSearchBar && (
+        <HeaderSearchForm searchParam={searchParam} onChange={onChange} />
+      )}
     </header>
   );
 };
