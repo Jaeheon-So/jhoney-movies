@@ -2,15 +2,17 @@
 
 import React, { useState } from "react";
 import styles from "./headerSearchForm.module.scss";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { IoMdSearch } from "react-icons/io";
 
-type Props = {
-  searchParam: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
-
-const HeaderSearchForm = ({ searchParam, onChange }: Props) => {
+const HeaderSearchForm = () => {
   const router = useRouter();
+  const params = useSearchParams();
+  const [searchParam, setSearchParam] = useState(params.get("q") as string);
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchParam(e.target.value);
+  };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,8 +21,17 @@ const HeaderSearchForm = ({ searchParam, onChange }: Props) => {
 
   return (
     <div className={styles.container}>
-      <form onSubmit={onSubmit}>
-        <input value={searchParam} onChange={onChange} />
+      <form onSubmit={onSubmit} className={styles.formEl}>
+        <div className={styles.svgWrapper}>
+          <IoMdSearch />
+        </div>
+        <input
+          value={searchParam}
+          onChange={onChange}
+          className={styles.inputEl}
+          placeholder="Search for Movies, Series & more"
+          autoFocus
+        />
       </form>
     </div>
   );

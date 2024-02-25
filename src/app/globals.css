@@ -102,6 +102,7 @@ body {
 
 main {
   height: 2000px;
+  margin-top: 64px;
 }
 
 a {

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./header.module.scss";
 import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
@@ -10,18 +10,30 @@ import HeaderSearchForm from "./HeaderSearchForm";
 
 const Header = () => {
   const [showSearchBar, setShowSearchBar] = useState(false);
-  const [searchParam, setSearchParam] = useState("");
+  const [showHeader, setShowHeader] = useState(true);
+
+  const handleScroll = () => {
+    if (window.scrollY >= 80) {
+      setShowHeader(false);
+    } else {
+      setShowHeader(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll); //clean up
+    };
+  }, []);
 
   const onClickSearch = () => {
     setShowSearchBar(!showSearchBar);
   };
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchParam(e.target.value);
-  };
-
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${!showHeader && styles.up}`}>
       <div className={styles.content}>
         <div className={styles.left}>
           <div className={styles.logo}>
@@ -61,18 +73,9 @@ const Header = () => {
           </ul>
         </div>
       </div>
-      {showSearchBar && (
-        <HeaderSearchForm searchParam={searchParam} onChange={onChange} />
-      )}
+      {showSearchBar && <HeaderSearchForm />}
     </header>
   );
 };
 
 export default Header;
-{
-  /* <li>
-              <Link href="/">
-                <span>//</span> Movie Search
-              </Link>
-            </li> */
-}

@@ -1,5 +1,36 @@
 .container {
   position: absolute;
-  bottom: -20px;
-  left: 100px;
+  bottom: -40px;
+  left: 0px;
+  width: 100%;
+  background-color: #fff;
+  padding: 0 20px;
+
+  .formEl {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .svgWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    .inputEl {
+      width: 100%;
+      font-size: 18px;
+      color: rgb(131, 128, 128);
+      padding: 10px 0px;
+      outline: none;
+      min-width: 215px;
+      border: none;
+    }
+  }
 }

@@ -2,16 +2,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  max-width: 1250px;
+  padding: 0 20px;
   background: #fff;
   z-index: 1;
   height: 64px;
+  transition: top 0.2s linear;
+
+  &.up {
+    top: -64px;
+  }
 
   a {
     padding: 20px 20px;
     border-radius: 8px;
     transition: 0.5s;
+    white-space: nowrap;
     word-break: keep-all;
     span {
       color: #40a9ff;
@@ -38,7 +49,7 @@
     border-radius: 8px;
     overflow: hidden;
     background-color: #fff;
-
+    z-index: 3;
     ul {
       display: block;
     }
