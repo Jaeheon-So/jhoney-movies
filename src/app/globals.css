@@ -94,7 +94,7 @@ body {
     )
     rgb(var(--background-start-rgb)); */
   max-width: 1250px;
-  padding: 0 20px;
+  /* padding: 0 20px; */
   margin: 0 auto;
   overflow-x: hidden;
   background: #fff;

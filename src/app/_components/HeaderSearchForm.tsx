@@ -36,7 +36,6 @@ const HeaderSearchForm = () => {
             autoFocus
           />
         </form>
-        <div className={styles.line}></div>
       </div>
     </>
   );

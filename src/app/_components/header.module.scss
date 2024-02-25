@@ -6,9 +6,9 @@
   top: 0;
   left: 0;
   right: 0;
-  margin: 0 auto;
-  max-width: 1250px;
-  padding: 0 20px;
+  // margin: 0 auto;
+  // max-width: 1250px;
+  // padding: 0 20px;
   background: #fff;
   z-index: 1;
   height: 64px;
@@ -77,6 +77,9 @@
     font-size: 18px;
     color: #424242;
     font-weight: 600;
+    padding: 0 20px;
+    max-width: 1290px;
+    margin: 0 auto;
 
     .left {
       display: flex;
