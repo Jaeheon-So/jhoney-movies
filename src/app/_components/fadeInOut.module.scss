@@ -1,0 +1,76 @@
+.container::-webkit-scrollbar {
+  height: 10px;
+  background-color: transparent;
+}
+.container::-webkit-scrollbar-thumb {
+  background-color: #dbdbdb;
+  border-radius: 10px;
+}
+.container::-webkit-scrollbar-track {
+  display: none;
+}
+
+.sk::-webkit-scrollbar {
+  display: none;
+  height: 10px;
+  background-color: transparent;
+}
+.sk::-webkit-scrollbar-thumb {
+  display: none;
+  background-color: #dbdbdb;
+  border-radius: 10px;
+}
+.sk::-webkit-scrollbar-track {
+  display: none;
+}
+
+.section {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: scroll;
+  padding: 20px 10px 45px;
+
+  .card {
+    display: block;
+  }
+
+  &.sk {
+    .card {
+      display: none;
+    }
+  }
+}
+
+.fadein {
+  animation: fadeinloading 2s;
+  animation-fill-mode: forwards;
+}
+
+.fadeout {
+  animation: fadeoutloading 0.8s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeinloading {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeoutloading {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

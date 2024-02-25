@@ -1,4 +1,5 @@
 import HomeSearchForm from "./_components/HomeSearchForm";
+import TrendSection from "./_components/TrendSection";
 import styles from "./page.module.scss";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
           <HomeSearchForm />
         </div>
       </section>
+      <TrendSection />
     </>
   );
 }

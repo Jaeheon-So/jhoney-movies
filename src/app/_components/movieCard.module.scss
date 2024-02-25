@@ -1,0 +1,43 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  transition: 0.5s;
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  .imgWrapper {
+    width: 150px;
+    height: 225px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+    }
+  }
+
+  .content {
+    padding: 20px 12px 0;
+    width: 100%;
+
+    .title {
+      font-weight: 700;
+      color: #424242;
+      word-break: break-all;
+      white-space: pre-wrap;
+      margin-bottom: 6px;
+      //   overflow: hidden;
+      //   text-overflow: ellipsis;
+    }
+
+    .date {
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+}
