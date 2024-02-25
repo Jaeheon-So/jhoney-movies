@@ -36,7 +36,7 @@ const TrendSection = () => {
               }`}
               onClick={() => setDateType("week")}
             >
-              <h3>This Week</h3>
+              <h3>Week</h3>
             </div>
             <div
               className={`${styles.move} ${
