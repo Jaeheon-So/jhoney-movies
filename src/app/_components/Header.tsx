@@ -1,39 +1,24 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./header.module.scss";
 import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import DropDown from "./DropDown";
 import HeaderSearchForm from "./HeaderSearchForm";
+import useScrollDirection from "../_hooks/useScrollDircetion";
 
 const Header = () => {
   const [showSearchBar, setShowSearchBar] = useState(false);
-  const [showHeader, setShowHeader] = useState(true);
-
-  const handleScroll = () => {
-    if (window.scrollY >= 80) {
-      setShowHeader(false);
-    } else {
-      setShowHeader(true);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll); //clean up
-    };
-  }, []);
+  const { isUp } = useScrollDirection();
 
   const onClickSearch = () => {
     setShowSearchBar(!showSearchBar);
   };
 
   return (
-    <header className={`${styles.header} ${!showHeader && styles.up}`}>
+    <header className={`${styles.header} ${isUp && styles.up}`}>
       <div className={styles.content}>
         <div className={styles.left}>
           <div className={styles.logo}>

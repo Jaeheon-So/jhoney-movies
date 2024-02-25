@@ -8,7 +8,9 @@ import { IoMdSearch } from "react-icons/io";
 const HeaderSearchForm = () => {
   const router = useRouter();
   const params = useSearchParams();
-  const [searchParam, setSearchParam] = useState(params.get("q") as string);
+  const [searchParam, setSearchParam] = useState(
+    (params.get("q") as string) || ""
+  );
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchParam(e.target.value);
