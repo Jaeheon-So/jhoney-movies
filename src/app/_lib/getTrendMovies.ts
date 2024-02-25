@@ -3,11 +3,12 @@ import { QueryFunction } from "@tanstack/react-query";
 
 export const getTrendMovies: QueryFunction<
   IMovieResponse,
-  [_1: string, _2: string]
+  [_1: string, _2: string, dateType: string]
 > = async ({ queryKey }) => {
   // await new Promise((resolve) => setTimeout(resolve, 20000000));
+  const [_1, _2, dateType] = queryKey;
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/trending/movie/day?language=ko-KR`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/trending/movie/${dateType}?language=ko-KR`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
