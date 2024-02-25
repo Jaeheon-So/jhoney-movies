@@ -22,20 +22,23 @@ const HeaderSearchForm = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <form onSubmit={onSubmit} className={styles.formEl}>
-        <div className={styles.svgWrapper}>
-          <IoMdSearch />
-        </div>
-        <input
-          value={searchParam}
-          onChange={onChange}
-          className={styles.inputEl}
-          placeholder="Search for Movies, Series & more"
-          autoFocus
-        />
-      </form>
-    </div>
+    <>
+      <div className={styles.container}>
+        <form onSubmit={onSubmit} className={styles.formEl}>
+          <div className={styles.svgWrapper}>
+            <IoMdSearch />
+          </div>
+          <input
+            value={searchParam}
+            onChange={onChange}
+            className={styles.inputEl}
+            placeholder="Search for a movie, tv, person..."
+            autoFocus
+          />
+        </form>
+        <div className={styles.line}></div>
+      </div>
+    </>
   );
 };
 

@@ -1,0 +1,29 @@
+.section1 {
+  width: 100%;
+  background-color: #016d9b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // color: #424242;
+  color: #fff;
+
+  .titleWrapper {
+    padding: 60px 30px;
+    width: 100%;
+
+    .title {
+      margin-bottom: 40px;
+      .t1 {
+        font-size: 3em;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 10px;
+      }
+      .t2 {
+        font-size: 2em;
+        font-weight: 600;
+        margin: 0;
+      }
+    }
+  }
+}

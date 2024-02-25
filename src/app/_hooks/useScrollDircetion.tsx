@@ -27,7 +27,7 @@ const useScrollDirection = () => {
     } = window;
 
     const deltaY = scrollY - pageY;
-    const isUp = scrollY !== 0 && deltaY >= 0;
+    const isUp = scrollY !== 0 && deltaY >= 0 && scrollY > 64;
     const isBottom = scrollHeight - scrollY - clientHeight === 0;
 
     setIsUp(isUp);

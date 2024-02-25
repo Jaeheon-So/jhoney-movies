@@ -25,7 +25,7 @@
     white-space: nowrap;
     word-break: keep-all;
     span {
-      color: #40a9ff;
+      color: #2eb9d3;
     }
     &:hover {
       background-color: #f5f2f2;
@@ -44,8 +44,8 @@
     position: absolute;
     top: 40px;
     left: 0;
-    box-shadow: 0 0 3px 3px rgb(64, 169, 255, 0.6);
-    border-color: #000;
+    box-shadow: 0 0 2px 2px rgb(46, 185, 211, 0.6);
+    border: 1px solid rgb(217, 217, 217);
     border-radius: 8px;
     overflow: hidden;
     background-color: #fff;
@@ -83,6 +83,7 @@
       gap: 10px;
       .logo {
         font-size: 25px;
+        overflow: hidden;
         a {
           padding-left: 0;
 
@@ -118,7 +119,7 @@
         svg {
           width: 25px;
           height: 25px;
-          color: #40a9ff;
+          color: #2eb9d3;
         }
       }
     }
