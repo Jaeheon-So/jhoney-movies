@@ -25,6 +25,9 @@ const HomeSearchForm = () => {
           onChange={onChange}
           placeholder="Search for a movie, tv, person..."
         />
+        <button type="submit" className={styles.btnSearch}>
+          Go
+        </button>
       </form>
     </div>
   );
