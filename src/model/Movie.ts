@@ -1,4 +1,4 @@
-export interface IMovieInfo {
+export interface MovieInfo {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -9,37 +9,54 @@ export interface IMovieInfo {
   overview: string;
   popularity: number;
   poster_path: string;
-  media_type: string;
   release_date: string;
   video: boolean;
   vote_average: number;
   vote_count: number;
 }
 
-export interface IMovieDetail {
+export interface TrendMovieInfo extends MovieInfo {
+  media_type: string;
+}
+
+export interface PopularMovieInfo extends MovieInfo {}
+
+export interface TrendMovieResponse {
+  page: number;
+  results: TrendMovieInfo[];
+  total_pages: number;
+  total_results: number;
+}
+
+export interface PopularMovieResponse {
+  page: number;
+  results: PopularMovieInfo[];
+  total_pages: number;
+  total_results: number;
+}
+
+export interface TvInfo {
   adult: boolean;
   backdrop_path: string;
-  genres: { id: number; name: string }[];
+  genre_ids: number[];
   id: number;
-  imdb_id: string;
-  originam_title: string;
+  origin_country: string[];
+  original_language: string;
+  original_name: string;
   overview: string;
   popularity: number;
   poster_path: string;
-  production_countries: { iso_3166_1: string; name: string }[];
-  release_date: string;
-  revenue: number;
-  runtime: number;
-  status: string;
-  tagline: string;
-  title: string;
+  first_air_date: string;
+  name: string;
   vote_average: number;
   vote_count: number;
 }
 
-export interface IMovieResponse {
+export interface PopularTvInfo extends TvInfo {}
+
+export interface PopularTvResponse {
   page: number;
-  results: IMovieInfo[];
+  results: PopularTvInfo[];
   total_pages: number;
   total_results: number;
 }

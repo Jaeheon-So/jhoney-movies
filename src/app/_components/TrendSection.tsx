@@ -6,6 +6,7 @@ import FadeInOut from "./FadeInOut";
 import { useQuery } from "@tanstack/react-query";
 import { getTrendMovies } from "../_lib/getTrendMovies";
 import MovieCard from "./MovieCard";
+import { TrendMovieInfo } from "@/model/Movie";
 
 const TrendSection = () => {
   const [dateType, setDateType] = useState<"day" | "week">("day");
@@ -47,8 +48,8 @@ const TrendSection = () => {
         </div>
       </div>
       <FadeInOut isLoading={isLoading}>
-        {data?.results.map((movie: any, index: number) => (
-          <MovieCard key={index} movie={movie} />
+        {data?.results.map((movie: TrendMovieInfo, index: number) => (
+          <MovieCard key={index} movie={movie} type={"trend"} />
         ))}
       </FadeInOut>
     </section>

@@ -1,20 +1,19 @@
-import { TrendMovieResponse } from "@/model/Movie";
+import { PopularMovieResponse } from "@/model/Movie";
 import { QueryFunction } from "@tanstack/react-query";
 
-export const getTrendMovies: QueryFunction<
-  TrendMovieResponse,
-  [_1: string, _2: string, dateType: string]
+export const getPopularMovies: QueryFunction<
+  PopularMovieResponse,
+  [_1: string, _2: string, _3: string]
 > = async ({ queryKey }) => {
   // await new Promise((resolve) => setTimeout(resolve, 20000000));
-  const [_1, _2, dateType] = queryKey;
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/trending/movie/${dateType}?language=ko-KR`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/movie/popular?language=ko-KR`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
       },
       next: {
-        tags: ["movies", "trends"],
+        tags: ["movies", "popular", "movie"],
       },
       // cache: "no-store",
     }

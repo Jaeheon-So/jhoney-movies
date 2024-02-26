@@ -1,0 +1,64 @@
+.section {
+  width: 100%;
+  margin-top: 30px;
+  color: #424242;
+  padding: 0 20px;
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 10px;
+
+    .selectWrapper {
+      overflow: hidden;
+      background-color: rgb(233, 237, 240);
+      border-radius: 100px;
+
+      .select {
+        display: flex;
+        overflow: hidden;
+        position: relative;
+
+        .choice {
+          width: 50%;
+          border-radius: 100px;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          white-space: nowrap;
+          z-index: 2;
+
+          h3 {
+            font-size: 16px;
+            padding: 8px 30px;
+          }
+
+          &.active {
+            color: #fff;
+          }
+        }
+
+        .move {
+          background-color: #1cceb5;
+          position: absolute;
+          top: 0;
+          width: 50%;
+          height: 35.5px;
+          transition: 0.5s;
+          border-radius: 100px;
+          z-index: 1;
+
+          &.right {
+            transform: translateX(100%);
+          }
+
+          &.left {
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+}

@@ -3,43 +3,103 @@
 import React from "react";
 import { POSTER_BASE_URL } from "../_constants/constants";
 import styles from "./movieCard.module.scss";
-import { IMovieInfo } from "@/model/movie";
 import Link from "next/link";
 import Image from "next/image";
 import styles2 from "./fadeInOut.module.scss";
 import { FormatMDY } from "../_utils/dayFormat";
 import dynamic from "next/dynamic";
+import { PopularMovieInfo, PopularTvInfo, TrendMovieInfo } from "@/model/Movie";
 
 const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
   ssr: false,
 });
 type Props = {
-  movie: IMovieInfo;
+  movie: TrendMovieInfo | PopularMovieInfo | PopularTvInfo;
+  type: "trend" | "popularM" | "popularT";
 };
 
-const MovieCard = ({ movie }: Props) => {
-  return (
-    <Link
-      href={`/${movie.media_type}/${movie.id}`}
-      className={`${styles.card} ${styles2.card}`}
-    >
-      <div className={styles.imgWrapper}>
-        {/* <img src={POSTER_BASE_URL + movie.poster_path} /> */}
-        <Image
-          src={POSTER_BASE_URL + movie.poster_path}
-          width={150}
-          height={225}
-          alt="poster"
-          loading="lazy"
-        />
-        <RateCanvas movie={movie} />
-      </div>
-      <div className={styles.content}>
-        <div className={styles.title}>{movie.title}</div>
-        <div className={styles.date}>{FormatMDY(movie.release_date)}</div>
-      </div>
-    </Link>
-  );
+const MovieCard = ({ movie, type }: Props) => {
+  if (type === "trend") {
+    const newMovie = movie as TrendMovieInfo;
+    return (
+      <Link
+        href={`/${newMovie.media_type}/${movie.id}`}
+        className={`${styles.card} ${styles2.card}`}
+      >
+        <div className={styles.imgWrapper}>
+          {/* <img src={POSTER_BASE_URL + movie.poster_path} /> */}
+          <Image
+            src={POSTER_BASE_URL + movie.poster_path}
+            width={150}
+            height={225}
+            alt="poster"
+            loading="lazy"
+          />
+          <RateCanvas movie={movie} />
+        </div>
+        <div className={styles.content}>
+          <div className={styles.title}>{newMovie.title}</div>
+          <div className={styles.date}>{FormatMDY(newMovie.release_date)}</div>
+        </div>
+      </Link>
+    );
+  }
+
+  if (type === "popularM") {
+    const newMovie = movie as PopularMovieInfo;
+    return (
+      <Link
+        href={`/movie/${movie.id}`}
+        className={`${styles.card} ${styles2.card}`}
+      >
+        <div className={styles.imgWrapper}>
+          {/* <img src={POSTER_BASE_URL + movie.poster_path} /> */}
+          <Image
+            src={POSTER_BASE_URL + movie.poster_path}
+            width={150}
+            height={225}
+            alt="poster"
+            loading="lazy"
+          />
+          <RateCanvas movie={movie} />
+        </div>
+        <div className={styles.content}>
+          <div className={styles.title}>{newMovie.title}</div>
+          <div className={styles.date}>{FormatMDY(newMovie.release_date)}</div>
+        </div>
+      </Link>
+    );
+  }
+
+  if (type === "popularT") {
+    const newMovie = movie as PopularTvInfo;
+    return (
+      <Link
+        href={`/tv/${movie.id}`}
+        className={`${styles.card} ${styles2.card}`}
+      >
+        <div className={styles.imgWrapper}>
+          {/* <img src={POSTER_BASE_URL + movie.poster_path} /> */}
+          <Image
+            src={POSTER_BASE_URL + movie.poster_path}
+            width={150}
+            height={225}
+            alt="poster"
+            loading="lazy"
+          />
+          <RateCanvas movie={movie} />
+        </div>
+        <div className={styles.content}>
+          <div className={styles.title}>{newMovie.name}</div>
+          <div className={styles.date}>
+            {FormatMDY(newMovie.first_air_date)}
+          </div>
+        </div>
+      </Link>
+    );
+  }
+
+  return null;
 };
 
 export default MovieCard;
