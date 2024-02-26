@@ -4,6 +4,7 @@
   align-items: center;
   width: 150px;
   transition: 0.5s;
+  // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   &:hover {
     transform: scale(1.05);
@@ -24,10 +25,10 @@
   .content {
     padding: 35px 12px 0;
     width: 100%;
+    // color: #fff;
 
     .title {
       font-weight: 700;
-      color: #424242;
       word-break: break-all;
       white-space: pre-wrap;
       margin-bottom: 6px;
@@ -39,7 +40,6 @@
       font-size: 16px;
       margin: 0;
       padding: 0;
-      color: rgba(0, 0, 0, 0.6);
     }
   }
 }

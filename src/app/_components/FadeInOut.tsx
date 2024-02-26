@@ -8,9 +8,10 @@ import Loading from "./Loading";
 type Props = {
   children: ReactNode;
   isLoading: boolean;
+  isTrailer?: boolean;
 };
 
-const FadeInOut = ({ children, isLoading }: Props) => {
+const FadeInOut = ({ children, isLoading, isTrailer }: Props) => {
   const { ref, inView } = useInView({
     threshold: 0,
     delay: 50,
@@ -43,7 +44,7 @@ const FadeInOut = ({ children, isLoading }: Props) => {
           showSK && styles.sk
         } ${checkClassName}`}
       >
-        {showSK && <Loading />}
+        {showSK && <Loading isTrailer={isTrailer || false} />}
         {children}
       </div>
     </div>
