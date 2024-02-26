@@ -12,6 +12,7 @@
   .imgWrapper {
     width: 150px;
     height: 225px;
+    position: relative;
 
     img {
       width: 100%;
@@ -21,7 +22,7 @@
   }
 
   .content {
-    padding: 20px 12px 0;
+    padding: 35px 12px 0;
     width: 100%;
 
     .title {

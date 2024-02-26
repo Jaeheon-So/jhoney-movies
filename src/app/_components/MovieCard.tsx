@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { POSTER_BASE_URL } from "../_constants/constants";
 import styles from "./movieCard.module.scss";
@@ -6,7 +8,11 @@ import Link from "next/link";
 import Image from "next/image";
 import styles2 from "./fadeInOut.module.scss";
 import { FormatMDY } from "../_utils/dayFormat";
+import dynamic from "next/dynamic";
 
+const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
+  ssr: false,
+});
 type Props = {
   movie: IMovieInfo;
 };
@@ -26,6 +32,7 @@ const MovieCard = ({ movie }: Props) => {
           alt="poster"
           loading="lazy"
         />
+        <RateCanvas movie={movie} />
       </div>
       <div className={styles.content}>
         <div className={styles.title}>{movie.title}</div>
