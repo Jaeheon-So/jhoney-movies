@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./videoModal.module.scss";
 import { IoClose } from "react-icons/io5";
 import { useRouter } from "next/navigation";
@@ -12,6 +12,7 @@ type Props = {
 const VideoModal = ({ searchParams }: Props) => {
   const router = useRouter();
   const modalRef = useRef<HTMLDivElement>(null);
+  const [fadeStatus, setFadeStatus] = useState("in");
 
   const modalOutSideClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (modalRef.current === e.target) {
@@ -20,15 +21,22 @@ const VideoModal = ({ searchParams }: Props) => {
   };
 
   const onClickClose = () => {
-    router.back();
+    setFadeStatus("out");
+    setTimeout(() => router.back(), 500);
   };
 
   return (
-    <div className={styles.overlay} ref={modalRef} onClick={modalOutSideClick}>
+    <div
+      className={`${styles.overlay} ${
+        fadeStatus === "in" ? styles.fadein : styles.fadeout
+      }`}
+      ref={modalRef}
+      onClick={modalOutSideClick}
+    >
       <div className={styles.container}>
         <div className={styles.blackSection}>
-          <div className={styles.closeWrapper} onClick={onClickClose}>
-            <IoClose />
+          <div className={styles.closeWrapper}>
+            <IoClose onClick={onClickClose} />
           </div>
         </div>
         <div className={styles.videoWrapper}>
