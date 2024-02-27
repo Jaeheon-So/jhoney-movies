@@ -33,7 +33,7 @@ const VideoModal = ({ searchParams }: Props) => {
         </div>
         <div className={styles.videoWrapper}>
           <iframe
-            src={`https://www.youtube.com/embed/${searchParams.k}?controls=0&loop=1&mute=1&playlist=${searchParams.k}`}
+            src={`https://www.youtube.com/embed/${searchParams.k}?controls=1&loop=1&mute=0&playlist=${searchParams.k}`}
             frameBorder="0"
             allow="autoplay; fullscreen"
           ></iframe>
