@@ -1,18 +1,18 @@
 import React from "react";
 import styles from "./trailerCard.module.scss";
-import { PopularMovieInfo, PopularMovieTrailerResponse } from "@/model/Movie";
+import { MovieInfo, MovieTrailerResponse, TvInfo } from "@/model/Movie";
 import Link from "next/link";
 import Image from "next/image";
 import { POSTER_BASE_URL_w710_H_400 } from "../_constants/constants";
 import { FaPlay } from "react-icons/fa";
 
 type Props = {
-  movie: PopularMovieInfo;
-  trailer: PopularMovieTrailerResponse;
+  movie: MovieInfo | TvInfo;
+  trailer: MovieTrailerResponse;
 };
 
 const TrailerCard = ({ movie, trailer }: Props) => {
-  if (trailer?.results?.length === 0) return null;
+  // if (trailer?.results?.length === 0) return null;
 
   const index =
     trailer?.results?.findIndex((t) => t.type === "Trailer") >= 0
@@ -39,7 +39,9 @@ const TrailerCard = ({ movie, trailer }: Props) => {
           </div>
         </div>
         <div className={styles.content}>
-          <div className={styles.title}>{movie.title}</div>
+          <div className={styles.title}>
+            {"title" in movie ? movie.title : movie.name}
+          </div>
           <div className={styles.trailerName}>
             {trailer?.results[index]?.name || ""}
           </div>

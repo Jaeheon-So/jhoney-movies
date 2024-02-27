@@ -9,6 +9,7 @@
     padding-top: 30px;
     height: 395px;
     background-color: rgb(13, 98, 87);
+    overflow: hidden;
 
     .title {
       display: flex;
@@ -27,7 +28,7 @@
           position: relative;
 
           .choice {
-            width: 50%;
+            width: 25%;
             border-radius: 100px;
             cursor: pointer;
             display: flex;
@@ -51,18 +52,26 @@
             background-color: #000;
             position: absolute;
             top: 0;
-            width: 50%;
+            width: 25%;
             height: 35.5px;
             transition: 0.5s;
             border-radius: 100px;
             z-index: 1;
 
             &.right {
-              transform: translateX(100%);
+              left: 75%;
             }
 
             &.left {
               left: 0;
+            }
+
+            &.left25 {
+              left: 25%;
+            }
+
+            &.left50 {
+              left: 50%;
             }
           }
         }

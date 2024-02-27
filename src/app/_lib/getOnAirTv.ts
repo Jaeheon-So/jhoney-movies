@@ -1,13 +1,19 @@
-export const getMovieTrailers = async (id: number) => {
+import { OnAirTvResponse } from "@/model/Movie";
+import { QueryFunction } from "@tanstack/react-query";
+
+export const getOnAirTv: QueryFunction<
+  OnAirTvResponse,
+  [_1: string, _2: string, _3: string]
+> = async ({ queryKey }) => {
   // await new Promise((resolve) => setTimeout(resolve, 20000000));
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/movie/${id}/videos?language=ko-KR`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/tv/on_the_air?language=ko-KR`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
       },
       next: {
-        tags: ["movies", "trailer", "movie", id.toString()],
+        tags: ["movies", "onAir", "tv"],
       },
       // cache: "no-store",
     }

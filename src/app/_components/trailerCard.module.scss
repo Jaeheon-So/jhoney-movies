@@ -62,8 +62,12 @@
     .trailerName {
       font-weight: 300;
       font-size: 16px;
-      word-break: keep-all;
-      white-space: pre-wrap;
+      // word-break: keep-all;
+      // white-space: pre-wrap;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      word-break: break-all;
     }
   }
 }

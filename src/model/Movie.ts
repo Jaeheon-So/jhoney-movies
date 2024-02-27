@@ -20,6 +20,8 @@ export interface TrendMovieInfo extends MovieInfo {
 }
 
 export interface PopularMovieInfo extends MovieInfo {}
+export interface UpComingMovieInfo extends MovieInfo {}
+export interface NowPlayingMovieInfo extends MovieInfo {}
 
 export interface TrendMovieResponse {
   page: number;
@@ -31,6 +33,28 @@ export interface TrendMovieResponse {
 export interface PopularMovieResponse {
   page: number;
   results: PopularMovieInfo[];
+  total_pages: number;
+  total_results: number;
+}
+
+export interface UpComingMovieResponse {
+  dates: {
+    maximum: string;
+    minimum: string;
+  };
+  page: number;
+  results: UpComingMovieInfo[];
+  total_pages: number;
+  total_results: number;
+}
+
+export interface NowPlayingMovieResponse {
+  dates: {
+    maximum: string;
+    minimum: string;
+  };
+  page: number;
+  results: NowPlayingMovieInfo[];
   total_pages: number;
   total_results: number;
 }
@@ -53,6 +77,7 @@ export interface TvInfo {
 }
 
 export interface PopularTvInfo extends TvInfo {}
+export interface OnAirTvInfo extends TvInfo {}
 
 export interface PopularTvResponse {
   page: number;
@@ -61,7 +86,14 @@ export interface PopularTvResponse {
   total_results: number;
 }
 
-export interface VideoInfo {
+export interface OnAirTvResponse {
+  page: number;
+  results: OnAirTvInfo[];
+  total_pages: number;
+  total_results: number;
+}
+
+export interface MovieVideoInfo {
   id: string;
   iso_639_1: string;
   iso_3166_1: string;
@@ -74,7 +106,25 @@ export interface VideoInfo {
   type: string;
 }
 
-export interface PopularMovieTrailerResponse {
+export interface TvVideoInfo {
+  id: string;
+  iso_639_1: string;
+  iso_3166_1: string;
+  key: string;
+  name: string;
+  official: boolean;
+  published_at: string;
+  site: string;
+  size: number;
+  type: string;
+}
+
+export interface MovieTrailerResponse {
   id: number;
-  results: VideoInfo[];
+  results: MovieVideoInfo[];
+}
+
+export interface TvTrailerResponse {
+  id: number;
+  results: TvVideoInfo[];
 }
