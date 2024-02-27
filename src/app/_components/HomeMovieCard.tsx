@@ -2,7 +2,7 @@
 
 import React from "react";
 import { POSTER_BASE_URL } from "../_constants/constants";
-import styles from "./movieCard.module.scss";
+import styles from "./homeMovieCard.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import styles2 from "./fadeInOut.module.scss";
@@ -18,7 +18,7 @@ type Props = {
   type: "trend" | "popularM" | "popularT";
 };
 
-const MovieCard = ({ movie, type }: Props) => {
+const HomeMovieCard = ({ movie, type }: Props) => {
   if (type === "trend") {
     const newMovie = movie as TrendMovieInfo;
     return (
@@ -102,4 +102,4 @@ const MovieCard = ({ movie, type }: Props) => {
   return null;
 };
 
-export default MovieCard;
+export default HomeMovieCard;

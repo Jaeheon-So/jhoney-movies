@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import styles from "./popularSection.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import FadeInOut from "./FadeInOut";
-import MovieCard from "./MovieCard";
+import HomeMovieCard from "./HomeMovieCard";
 import { getPopularMovies } from "../_lib/getPopularMovies";
 import { getPopularTv } from "../_lib/getPopularTv";
 import { PopularMovieInfo, PopularTvInfo } from "@/model/Movie";
@@ -60,13 +60,13 @@ const PopluarSection = () => {
       {mediaType === "movie" ? (
         <FadeInOut isLoading={isLoadingMovie}>
           {movieData?.results.map((movie: PopularMovieInfo, index: number) => (
-            <MovieCard key={index} movie={movie} type={"popularM"} />
+            <HomeMovieCard key={index} movie={movie} type={"popularM"} />
           ))}
         </FadeInOut>
       ) : (
         <FadeInOut isLoading={isLoadingTv}>
           {tvData?.results.map((movie: PopularTvInfo, index: number) => (
-            <MovieCard key={index} movie={movie} type={"popularT"} />
+            <HomeMovieCard key={index} movie={movie} type={"popularT"} />
           ))}
         </FadeInOut>
       )}

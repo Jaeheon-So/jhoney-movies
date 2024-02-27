@@ -5,7 +5,7 @@ import styles from "./trendSection.module.scss";
 import FadeInOut from "./FadeInOut";
 import { useQuery } from "@tanstack/react-query";
 import { getTrendMovies } from "../_lib/getTrendMovies";
-import MovieCard from "./MovieCard";
+import HomeMovieCard from "./HomeMovieCard";
 import { TrendMovieInfo } from "@/model/Movie";
 
 const TrendSection = () => {
@@ -49,7 +49,7 @@ const TrendSection = () => {
       </div>
       <FadeInOut isLoading={isLoading}>
         {data?.results.map((movie: TrendMovieInfo, index: number) => (
-          <MovieCard key={index} movie={movie} type={"trend"} />
+          <HomeMovieCard key={index} movie={movie} type={"trend"} />
         ))}
       </FadeInOut>
     </section>
