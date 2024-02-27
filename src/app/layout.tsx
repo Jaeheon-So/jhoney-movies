@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import RQProvider from "./_components/RQProvider";
 import Header from "./_components/Header";
+import Footer from "./_components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,10 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <RQProvider>
-          <Header />
-          <main>{children}</main>
-        </RQProvider>
+        <div className="wrapper">
+          <RQProvider>
+            <Header />
+            <main>{children}</main>
+          </RQProvider>
+        </div>
+        <Footer />
       </body>
     </html>
   );
