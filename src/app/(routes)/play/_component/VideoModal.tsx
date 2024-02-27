@@ -16,7 +16,7 @@ const VideoModal = ({ searchParams }: Props) => {
 
   const modalOutSideClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (modalRef.current === e.target) {
-      router.back();
+      onClickClose();
     }
   };
 
