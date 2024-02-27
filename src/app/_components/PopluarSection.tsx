@@ -14,16 +14,16 @@ const PopluarSection = () => {
   const { data: movieData, isLoading: isLoadingMovie } = useQuery({
     queryKey: ["movies", "popular", "movie"],
     queryFn: getPopularMovies,
-    staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
-    gcTime: 300 * 1000,
+    staleTime: 60 * 1000 * 5,
+    gcTime: 60 * 1000 * 5,
     enabled: mediaType === "movie",
   });
 
   const { data: tvData, isLoading: isLoadingTv } = useQuery({
     queryKey: ["movies", "popular", "tv"],
     queryFn: getPopularTv,
-    staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
-    gcTime: 300 * 1000,
+    staleTime: 60 * 1000 * 5,
+    gcTime: 60 * 1000 * 5,
     enabled: mediaType === "tv",
   });
 

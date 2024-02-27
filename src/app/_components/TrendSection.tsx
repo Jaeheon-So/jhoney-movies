@@ -13,8 +13,8 @@ const TrendSection = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["movies", "trend", dateType],
     queryFn: getTrendMovies,
-    staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
-    gcTime: 300 * 1000,
+    staleTime: 60 * 1000 * 5,
+    gcTime: 60 * 1000 * 5,
   });
 
   return (
