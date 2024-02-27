@@ -38,7 +38,7 @@ const FadeInOut = ({ children, isLoading, isTrailer }: Props) => {
 
   return (
     <div className={styles.section}>
-      <div ref={ref}></div>
+      <div className={styles.inView} ref={ref}></div>
       <div
         className={`${styles.container} ${
           showSK && styles.sk
