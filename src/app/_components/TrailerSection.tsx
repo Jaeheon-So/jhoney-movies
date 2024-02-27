@@ -47,7 +47,7 @@ const TrailerSection = () => {
     <section className={styles.section}>
       <div className={styles.wrapper}>
         <div className={styles.title}>
-          <h2>Latest Trailers</h2>
+          <h2>Trailers</h2>
           <div className={styles.selectWrapper}>
             <div className={styles.select}>
               <div
@@ -75,7 +75,7 @@ const TrailerSection = () => {
           </div>
         </div>
         <FadeInOut
-          isLoading={isLoading && !trailerData.pending}
+          isLoading={isLoading || trailerData.pending}
           isTrailer={true}
         >
           {movieData?.results.map((movie: PopularMovieInfo, index: number) => (

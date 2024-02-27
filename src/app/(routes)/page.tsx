@@ -1,7 +1,7 @@
-import HomeSearchForm from "./_components/HomeSearchForm";
-import PopluarSection from "./_components/PopluarSection";
-import TrailerSection from "./_components/TrailerSection";
-import TrendSection from "./_components/TrendSection";
+import HomeSearchForm from "../_components/HomeSearchForm";
+import PopluarSection from "../_components/PopluarSection";
+import TrailerSection from "../_components/TrailerSection";
+import TrendSection from "../_components/TrendSection";
 import styles from "./page.module.scss";
 
 export default function Home() {
