@@ -9,11 +9,10 @@ import { FaPlay } from "react-icons/fa";
 type Props = {
   movie: MovieInfo | TvInfo;
   trailer: MovieTrailerResponse;
+  onChangeImage: (image: string) => void;
 };
 
-const TrailerCard = ({ movie, trailer }: Props) => {
-  // if (trailer?.results?.length === 0) return null;
-
+const TrailerCard = ({ movie, trailer, onChangeImage }: Props) => {
   const index =
     trailer?.results?.findIndex((t) => t.type === "Trailer") >= 0
       ? trailer?.results?.findIndex((t) => t.type === "Trailer")
@@ -25,6 +24,7 @@ const TrailerCard = ({ movie, trailer }: Props) => {
         href={`/play?k=${trailer?.results[index]?.key}`}
         className={styles.card}
         scroll={false}
+        onMouseEnter={() => onChangeImage(movie.backdrop_path)}
       >
         <div className={styles.imgWrapper}>
           <Image

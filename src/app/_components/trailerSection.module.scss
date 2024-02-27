@@ -1,15 +1,21 @@
 .section {
   width: 100%;
   color: #fff;
-  //   padding: 0 20px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all 0.5s;
 
   .wrapper {
     width: 100%;
-    // padding: 0 20px;
     padding-top: 30px;
     height: 395px;
-    background-color: rgb(13, 98, 87);
     overflow: hidden;
+    background: linear-gradient(
+      45deg,
+      rgba(4, 245, 229, 0.75) 0%,
+      rgba(3, 37, 65, 0.75) 100%
+    );
 
     .title {
       display: flex;
@@ -19,8 +25,9 @@
 
       .selectWrapper {
         overflow: hidden;
-        background-color: rgb(233, 237, 240);
         border-radius: 100px;
+        background: transparent;
+        border: 2px solid #000;
 
         .select {
           display: flex;
@@ -36,7 +43,7 @@
             align-items: center;
             white-space: nowrap;
             z-index: 2;
-            color: #424242;
+            color: #000;
 
             h3 {
               font-size: 16px;
@@ -49,7 +56,7 @@
           }
 
           .move {
-            background-color: #000;
+            background-color: #000000;
             position: absolute;
             top: 0;
             width: 25%;

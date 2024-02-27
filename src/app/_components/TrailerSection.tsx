@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./trailerSection.module.scss";
 import { useQueries, useQuery } from "@tanstack/react-query";
 import FadeInOut from "./FadeInOut";
@@ -17,6 +17,7 @@ import { getUpComingMovie } from "../_lib/getUpcomingMovie";
 import { getNowPlayingMovie } from "../_lib/getNowPlayingMovie";
 import { getOnAirTv } from "../_lib/getOnAirTv";
 import { getTvTrailers } from "../_lib/getTvTrailers";
+import { POSTER_BASE_URL_w1920_H_427 } from "../_constants/constants";
 
 const TrailerSection = () => {
   const [type, setType] = useState<
@@ -146,8 +147,28 @@ const TrailerSection = () => {
     }
   };
 
+  const [backImage, setBackImage] = useState(
+    checkData(type)?.results[0].backdrop_path
+  );
+  const onChangeImage = (image: string) => {
+    setBackImage(image);
+  };
+
+  useEffect(() => {
+    setBackImage(
+      checkData(type)?.results?.find(
+        (_, index) => trailerData.data[index]?.results?.length > 0
+      )?.backdrop_path
+    );
+  }, [trailerData.data]);
+
   return (
-    <section className={styles.section}>
+    <section
+      className={styles.section}
+      style={{
+        backgroundImage: `url(${POSTER_BASE_URL_w1920_H_427 + backImage})`,
+      }}
+    >
       <div className={styles.wrapper}>
         <div className={styles.title}>
           <h2>Trailers</h2>
@@ -197,6 +218,7 @@ const TrailerSection = () => {
                   key={index}
                   movie={movie}
                   trailer={trailerData.data[index]}
+                  onChangeImage={onChangeImage}
                 />
               ) : null
           )}
