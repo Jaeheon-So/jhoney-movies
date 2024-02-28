@@ -2,38 +2,14 @@
 
 import React, { useState } from "react";
 import styles from "./genreFliter.module.scss";
-import {
-  FaCaretDown,
-  FaCaretUp,
-  FaChevronDown,
-  FaChevronRight,
-} from "react-icons/fa";
+import { FaChevronDown, FaChevronRight } from "react-icons/fa";
+import { useMovieFilterStore } from "@/app/_store/movieFilter";
 
 const GenreFilter = () => {
   const [isFilterOpen, setisFilterOpen] = useState(true);
-  const [genreOption, setGenreOption] = useState<{ [key: number]: boolean }>({
-    28: false,
-    12: false,
-    16: false,
-    35: false,
-    80: false,
-    99: false,
-    18: false,
-    10751: false,
-    14: false,
-    36: false,
-    27: false,
-    10402: false,
-    9648: false,
-    10749: false,
-    878: false,
-    10770: false,
-    53: false,
-    10752: false,
-    37: false,
-  });
+  const { genreOption, setGenreOption } = useMovieFilterStore();
 
-  const genres = [
+  const genres: [number, string][] = [
     [28, "액션"],
     [12, "모험"],
     [16, "애니메이션"],
@@ -64,7 +40,7 @@ const GenreFilter = () => {
     e: React.MouseEvent<HTMLDivElement>
   ) => {
     e.stopPropagation();
-    setGenreOption((prev) => ({ ...prev, [option]: !prev[option] }));
+    setGenreOption(option);
   };
 
   return (
@@ -87,7 +63,7 @@ const GenreFilter = () => {
                 <div
                   key={index}
                   className={`${styles.option} ${
-                    genreOption[Number(genre[0])] && styles.active
+                    genreOption[genre[0]] && styles.active
                   }`}
                   onClick={(e) => onChangeGenreOption(Number(genre[0]), e)}
                 >

@@ -1,16 +1,29 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaChevronRight, FaChevronDown } from "react-icons/fa";
 import styles from "./sortFilter.module.scss";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa6";
+import { SortOptionType, useMovieFilterStore } from "@/app/_store/movieFilter";
+import { usePathname } from "next/navigation";
 
 const SortFilter = () => {
-  const [isFilterOpen, setisFilterOpen] = useState(false);
+  const [isFilterOpen, setisFilterOpen] = useState(true);
   const [isSelectOpen, setisSelectOpen] = useState(false);
-  const [sortOption, setSortOption] = useState("popularity.desc");
+  const { sortOption, setSortOption } = useMovieFilterStore();
+  const pathname = usePathname();
 
-  const options = [
+  //   useEffect(() => {
+  //     const pathArray = pathname.split("/");
+  //     console.log(pathArray);
+  //     if (pathArray?.length === 2) {
+  //       setSortOption("popularity.desc");
+  //     } else if (pathArray?.includes("top-rated")) {
+  //       setSortOption("vote_average.desc");
+  //     }
+  //   }, [pathname]);
+
+  const options: [string, SortOptionType][] = [
     ["유명한 순", "popularity.desc"],
     ["평점 순", "vote_average.desc"],
     ["최신 순", "primary_release_date.desc"],
@@ -34,7 +47,7 @@ const SortFilter = () => {
   };
 
   const onChangeSortOption = (
-    option: string,
+    option: SortOptionType,
     e: React.MouseEvent<HTMLDivElement>
   ) => {
     e.stopPropagation();
