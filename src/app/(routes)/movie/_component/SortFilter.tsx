@@ -47,7 +47,7 @@ const SortFilter = () => {
     <div className={styles.sectionWrapper}>
       <div className={styles.section}>
         <div className={styles.filterTitle} onClick={onFilterChange}>
-          <div>Sort</div>
+          <div>정렬</div>
           <div className={styles.svgWrapper}>
             {isFilterOpen ? <FaChevronDown /> : <FaChevronRight />}
           </div>

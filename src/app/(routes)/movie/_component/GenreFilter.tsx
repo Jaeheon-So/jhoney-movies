@@ -25,7 +25,7 @@ const GenreFilter = () => {
     <div className={styles.sectionWrapper}>
       <div className={styles.section}>
         <div className={styles.filterTitle} onClick={onFilterChange}>
-          <div>Genres</div>
+          <div>장르</div>
           <div className={styles.svgWrapper}>
             {isFilterOpen ? <FaChevronDown /> : <FaChevronRight />}
           </div>

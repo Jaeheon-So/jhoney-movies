@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import styles from "./layout.module.scss";
 import Filters from "./_component/Filters";
+import Title from "./_component/Title";
 
 type Props = {
   children: ReactNode;
@@ -9,7 +10,7 @@ type Props = {
 const MovieLayOut = ({ children }: Props) => {
   return (
     <div className={styles.container}>
-      <div className={styles.title}>Popular Movies</div>
+      <Title />
       <div className={styles.bottom}>
         <Filters />
         <div className={styles.content}>{children}</div>

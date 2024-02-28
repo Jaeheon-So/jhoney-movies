@@ -57,7 +57,7 @@ const BtnApplyFilter = () => {
       className={`${styles.btnWrapper} ${!checkDisabled() && styles.active}`}
       onClick={onApplyFilter}
     >
-      <button disabled={checkDisabled()}>Search</button>
+      <button disabled={checkDisabled()}>적용</button>
     </div>
   );
 };
