@@ -2,11 +2,12 @@
 
 import React from "react";
 import styles from "./btnApply.module.scss";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useMovieFilterStore } from "@/app/_store/movieFilter";
 
 const BtnApplyFilter = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const { sortOption, genreOption } = useMovieFilterStore();
 
   const onApplyFilter = () => {
@@ -22,7 +23,7 @@ const BtnApplyFilter = () => {
     newSearchParams.set("sort", sortOption);
     newSearchParams.set("genre", genreQuery.slice(0, -1));
 
-    router.push(`/movie?${newSearchParams.toString()}`);
+    router.push(`${pathname}?${newSearchParams.toString()}`);
   };
 
   return (

@@ -10,10 +10,12 @@ const DropDown = ({ type }: Props) => {
   return (
     <ul className={styles.dropdownul}>
       <li>
-        <Link href={`/${type}`}>Popular</Link>
+        <Link href={`/${type}?sort=popularity.desc`}>Popular</Link>
       </li>
       <li>
-        <Link href={`/${type}/top-rated`}>Top Rated</Link>
+        <Link href={`/${type}/top-rated?sort=vote_average.desc`}>
+          Top Rated
+        </Link>
       </li>
     </ul>
   );

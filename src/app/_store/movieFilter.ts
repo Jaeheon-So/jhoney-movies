@@ -14,7 +14,7 @@ export interface MovieFilterState {
       | "vote_average.desc"
       | "primary_release_date.desc"
   ) => void;
-  setGenreOption: (option: number) => void;
+  setGenreOption: (option: number, value?: boolean) => void;
   resetGenre: () => void;
 }
 
@@ -78,13 +78,22 @@ export const useMovieFilterStore = create<MovieFilterState>((set, get) => ({
   setSortOption: (option) => {
     set({ sortOption: option });
   },
-  setGenreOption: (option) => {
-    set({
-      genreOption: {
-        ...get().genreOption,
-        [option]: !get().genreOption[option],
-      },
-    });
+  setGenreOption: (option, value) => {
+    if (value === undefined) {
+      set({
+        genreOption: {
+          ...get().genreOption,
+          [option]: !get().genreOption[option],
+        },
+      });
+    } else {
+      set({
+        genreOption: {
+          ...get().genreOption,
+          [option]: value,
+        },
+      });
+    }
   },
   resetGenre: () => {
     set({

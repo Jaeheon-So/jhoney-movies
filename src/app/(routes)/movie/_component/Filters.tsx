@@ -5,20 +5,30 @@ import styles from "./filter.module.scss";
 import SortFilter from "./SortFilter";
 import GenreFilter from "./GenreFilter";
 import BtnApplyFilter from "./BtnApplyFilter";
-import { useSelectedLayoutSegments } from "next/navigation";
-import { useMovieFilterStore } from "@/app/_store/movieFilter";
+import { useSearchParams, useSelectedLayoutSegments } from "next/navigation";
+import { SortOptionType, useMovieFilterStore } from "@/app/_store/movieFilter";
 
 const Filters = () => {
   const pathArray = useSelectedLayoutSegments();
-  const { setSortOption, resetGenre } = useMovieFilterStore();
+  const { genreOption, setSortOption, setGenreOption, resetGenre } =
+    useMovieFilterStore();
+  const searchParams = useSearchParams();
 
-  // useEffect(() => {
-  //   if (pathArray.length === 0) {
-  //     setSortOption("popularity.desc");
-  //   } else if (pathArray.includes("top-rated")) {
-  //     setSortOption("vote_average.desc");
-  //   }
-  // }, [pathArray]);
+  useEffect(() => {
+    const arr = searchParams.get("genre")?.split(".");
+
+    Object.keys(genreOption).forEach((key) => {
+      if (arr?.includes(key)) {
+        setGenreOption(Number(key), true);
+      } else {
+        setGenreOption(Number(key), false);
+      }
+    });
+
+    setSortOption(
+      (searchParams.get("sort") as SortOptionType) || "popularity.desc"
+    );
+  }, [searchParams]);
 
   if (pathArray.length > 0 && !pathArray.includes("top-rated")) return null;
 

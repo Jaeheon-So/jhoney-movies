@@ -28,7 +28,7 @@ const Header = () => {
           </div>
           <ul className={styles.leftul}>
             <li>
-              <Link href="/movie">Movies</Link>
+              <Link href="/movie?sort=popularity.desc">Movies</Link>
               <div className={styles.dropdown}>
                 <DropDown type="movie" />
               </div>
