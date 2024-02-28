@@ -28,7 +28,11 @@ const TrailerCard = ({ movie, trailer, onChangeImage }: Props) => {
       >
         <div className={styles.imgWrapper}>
           <Image
-            src={POSTER_BASE_URL_w710_H_400 + movie.backdrop_path}
+            src={
+              movie.backdrop_path === null
+                ? "no-image.svg"
+                : POSTER_BASE_URL_w710_H_400 + movie.backdrop_path
+            }
             width={300}
             height={170}
             alt="poster"

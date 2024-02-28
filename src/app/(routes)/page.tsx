@@ -10,7 +10,7 @@ export default function Home() {
       <section className={styles.section1}>
         <div className={styles.titleWrapper}>
           <div className={styles.title}>
-            <div className={styles.t1}>Welcome.</div>
+            <div className={styles.t1}>Welcome to JHONEYDB.</div>
             <div className={styles.t2}>
               Millions of movies, TV shows and people to discover. Explore now.
             </div>

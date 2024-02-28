@@ -7,7 +7,7 @@ export const getPopularTv: QueryFunction<
 > = async ({ queryKey }) => {
   // await new Promise((resolve) => setTimeout(resolve, 20000000));
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/tv/popular?language=ko-KR`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/discover/tv?include_adult=false&language=ko-KR&page=1&sort_by=popularity.desc&with_origin_country=KR`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,

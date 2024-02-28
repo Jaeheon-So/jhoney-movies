@@ -9,6 +9,7 @@ import styles2 from "./fadeInOut.module.scss";
 import { FormatMDY } from "../_utils/dayFormat";
 import dynamic from "next/dynamic";
 import { PopularMovieInfo, PopularTvInfo, TrendMovieInfo } from "@/model/Movie";
+// import defaultProfile from "/no_image.svg";
 
 const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
   ssr: false,
@@ -27,9 +28,12 @@ const HomeMovieCard = ({ movie, type }: Props) => {
         className={`${styles.card} ${styles2.card}`}
       >
         <div className={styles.imgWrapper}>
-          {/* <img src={POSTER_BASE_URL + movie.poster_path} /> */}
           <Image
-            src={POSTER_BASE_URL + movie.poster_path}
+            src={
+              movie.poster_path === "null"
+                ? "no-image.svg"
+                : POSTER_BASE_URL + movie.poster_path
+            }
             width={150}
             height={225}
             alt="poster"
@@ -55,7 +59,11 @@ const HomeMovieCard = ({ movie, type }: Props) => {
         <div className={styles.imgWrapper}>
           {/* <img src={POSTER_BASE_URL + movie.poster_path} /> */}
           <Image
-            src={POSTER_BASE_URL + movie.poster_path}
+            src={
+              movie.poster_path === null
+                ? "no-image.svg"
+                : POSTER_BASE_URL + movie.poster_path
+            }
             width={150}
             height={225}
             alt="poster"
@@ -81,7 +89,11 @@ const HomeMovieCard = ({ movie, type }: Props) => {
         <div className={styles.imgWrapper}>
           {/* <img src={POSTER_BASE_URL + movie.poster_path} /> */}
           <Image
-            src={POSTER_BASE_URL + movie.poster_path}
+            src={
+              movie.poster_path === null
+                ? "no-image.svg"
+                : POSTER_BASE_URL + movie.poster_path
+            }
             width={150}
             height={225}
             alt="poster"
