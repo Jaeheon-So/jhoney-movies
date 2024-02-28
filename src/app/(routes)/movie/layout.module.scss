@@ -2,6 +2,7 @@
   width: 100%;
   padding: 20px;
   border: 1px solid red;
+  // min-height: 640px;
 
   .title {
     font-size: 25px;
@@ -13,6 +14,7 @@
   .bottom {
     display: flex;
     gap: 30px;
+    min-height: 546px;
 
     .filterWrapper {
       width: 22%;

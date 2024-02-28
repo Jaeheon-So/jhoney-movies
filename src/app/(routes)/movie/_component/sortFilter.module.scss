@@ -4,10 +4,10 @@
   border-radius: 8px;
   border: 1px solid #eceaea;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
 
   .section {
     .filterTitle {
+      cursor: pointer;
       padding: 14px 16px;
       color: #424242;
       font-weight: 500;
@@ -45,6 +45,7 @@
         font-size: 14px;
 
         .select {
+          cursor: pointer;
           //   border: 1px solid red;
           padding: 10px 12px;
           background-color: #e4e7eb;
