@@ -2,12 +2,13 @@
 
 import React from "react";
 import styles from "./btnApply.module.scss";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useMovieFilterStore } from "@/app/_store/movieFilter";
 
 const BtnApplyFilter = () => {
   const router = useRouter();
   const pathname = usePathname();
+  const searchParam = useSearchParams();
   const { sortOption, genreOption } = useMovieFilterStore();
 
   const onApplyFilter = () => {
@@ -26,12 +27,37 @@ const BtnApplyFilter = () => {
     router.push(`${pathname}?${newSearchParams.toString()}`);
   };
 
+  const checkDisabled = () => {
+    if (searchParam.get("sort") !== sortOption) return false;
+
+    const arr = Object.keys(genreOption).filter(
+      (key) => genreOption[Number(key)] === true
+    );
+
+    if (!searchParam.get("genre")) {
+      if (arr.length > 0) {
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      if (
+        JSON.stringify(arr.sort()) !==
+        JSON.stringify(searchParam.get("genre")?.split(".").sort())
+      ) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  };
+
   return (
     <div
-      className={`${styles.btnWrapper} ${styles.active}`}
+      className={`${styles.btnWrapper} ${!checkDisabled() && styles.active}`}
       onClick={onApplyFilter}
     >
-      <button>Search</button>
+      <button disabled={checkDisabled()}>Search</button>
     </div>
   );
 };

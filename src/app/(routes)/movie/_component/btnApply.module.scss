@@ -6,6 +6,7 @@
     button {
       color: #fff;
       background-color: #1cceb5;
+      cursor: pointer;
     }
   }
 
@@ -14,11 +15,11 @@
     font-size: 16px;
     font-weight: 500;
     color: #424242;
-    cursor: pointer;
+    cursor: default;
     width: 100%;
     padding: 10px 15px;
     border: none;
     outline: none;
-    background-color: #fff;
+    background-color: #eceaea;
   }
 }
