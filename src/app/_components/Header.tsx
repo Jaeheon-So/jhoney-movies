@@ -58,7 +58,7 @@ const Header = () => {
           </ul>
         </div>
       </div>
-      {showSearchBar && <HeaderSearchForm />}
+      {<HeaderSearchForm showSearchBar={showSearchBar} />}
     </header>
   );
 };

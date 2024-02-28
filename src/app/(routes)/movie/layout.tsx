@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import styles from "./layout.module.scss";
 
 type Props = {
   children: ReactNode;
@@ -6,8 +7,8 @@ type Props = {
 
 const MovieLayOut = ({ children }: Props) => {
   return (
-    <div>
-      MovieLayout
+    <div className={styles.container}>
+      <div className={styles.title}>Popular Movies</div>
       {children}
     </div>
   );

@@ -5,7 +5,11 @@ import styles from "./headerSearchForm.module.scss";
 import { useRouter, useSearchParams } from "next/navigation";
 import { IoMdSearch } from "react-icons/io";
 
-const HeaderSearchForm = () => {
+type Props = {
+  showSearchBar: boolean;
+};
+
+const HeaderSearchForm = ({ showSearchBar }: Props) => {
   const router = useRouter();
   const params = useSearchParams();
   const [searchParam, setSearchParam] = useState(
@@ -23,7 +27,7 @@ const HeaderSearchForm = () => {
 
   return (
     <>
-      <div className={styles.container}>
+      <div className={`${styles.container} ${showSearchBar && styles.show}`}>
         <form onSubmit={onSubmit} className={styles.formEl}>
           <div className={styles.svgWrapper}>
             <IoMdSearch />
