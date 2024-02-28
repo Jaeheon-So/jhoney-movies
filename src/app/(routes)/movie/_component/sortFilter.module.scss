@@ -1,0 +1,114 @@
+.sectionWrapper {
+  // border: 1px solid purple;
+  //   overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid #eceaea;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+
+  .section {
+    .filterTitle {
+      padding: 14px 16px;
+      color: #424242;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .svgWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+
+    .selectContainer {
+      transition: height 0.5s;
+      height: 0px;
+      overflow: hidden;
+
+      &.show {
+        height: 66.5px;
+
+        &.show2 {
+          height: 190px;
+        }
+      }
+
+      .selectWrapper {
+        padding: 14px 16px;
+        border-top: 1px solid #eceaea;
+        font-size: 14px;
+
+        .select {
+          //   border: 1px solid red;
+          padding: 10px 12px;
+          background-color: #e4e7eb;
+          border-radius: 5px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          transition: 0.5s;
+          position: relative;
+
+          &:hover {
+            background-color: #ced3db;
+          }
+
+          .svgWrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            svg {
+              width: 15px;
+              height: 15px;
+            }
+          }
+          .relative {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            bottom: -5px;
+            background-color: #fff;
+
+            .optionWrapper {
+              border-radius: 8px;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+              display: flex;
+              flex-direction: column;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              background-color: #fff;
+              .option {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px 12px;
+                border-radius: 8px;
+
+                &.active {
+                  background-color: #1cceb5;
+                  color: #fff;
+                }
+
+                &:hover {
+                  background-color: #f4f5f6;
+
+                  &.active {
+                    background-color: #1cceb5;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

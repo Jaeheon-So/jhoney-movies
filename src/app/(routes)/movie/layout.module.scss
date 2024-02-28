@@ -7,5 +7,24 @@
     font-size: 25px;
     color: #424242;
     font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .bottom {
+    display: flex;
+    gap: 30px;
+
+    .filterWrapper {
+      width: 22%;
+      //   border: 1px solid blue;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .content {
+      width: 78%;
+      border: 1px solid green;
+    }
   }
 }
