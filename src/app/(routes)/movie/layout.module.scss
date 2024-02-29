@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   padding: 20px;
-  border: 1px solid red;
+  // border: 1px solid red;
   // min-height: 640px;
 
   .title {
@@ -15,6 +15,7 @@
     display: flex;
     gap: 30px;
     min-height: 546px;
+    position: relative;
 
     .content {
       // width: 78%;
