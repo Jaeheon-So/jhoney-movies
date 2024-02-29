@@ -20,6 +20,7 @@ export interface TrendMovieInfo extends MovieInfo {
 }
 
 export interface PopularMovieInfo extends MovieInfo {}
+export interface TopRatedMovieInfo extends MovieInfo {}
 export interface UpComingMovieInfo extends MovieInfo {}
 export interface NowPlayingMovieInfo extends MovieInfo {}
 
@@ -33,6 +34,13 @@ export interface TrendMovieResponse {
 export interface PopularMovieResponse {
   page: number;
   results: PopularMovieInfo[];
+  total_pages: number;
+  total_results: number;
+}
+
+export interface TopRatedMovieResponse {
+  page: number;
+  results: TopRatedMovieInfo[];
   total_pages: number;
   total_results: number;
 }

@@ -1,20 +1,20 @@
 "use client";
 
 import useInfiniteScroll from "@/app/_hooks/useInfiniteScroll";
-import { getDiscoverPMovie } from "@/app/_lib/getDiscoverPMovie";
 import React, { Fragment } from "react";
-import DiscoverMovieCard from "./DiscoverMovieCard";
 import { PopularMovieInfo } from "@/model/Movie";
-import styles from "./discoverPMovie.module.scss";
+import styles from "./discoverTMovie.module.scss";
+import DiscoverMovieCard from "../../_component/DiscoverMovieCard";
+import { getDiscoverTMovie } from "@/app/_lib/getDiscoverTMovie";
 
 type Props = {
   searchParams: { sort_by?: string; with_genres?: string };
 };
 
-const DiscoverPMovie = ({ searchParams }: Props) => {
+const DiscoverTMovie = ({ searchParams }: Props) => {
   const { ref, data, isFetching, isLoading } = useInfiniteScroll(
-    ["movies", "popular", "movies", searchParams],
-    getDiscoverPMovie
+    ["movies", "top-rated", "movies", searchParams],
+    getDiscoverTMovie
   );
 
   return (
@@ -35,4 +35,4 @@ const DiscoverPMovie = ({ searchParams }: Props) => {
   );
 };
 
-export default DiscoverPMovie;
+export default DiscoverTMovie;
