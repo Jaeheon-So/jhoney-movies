@@ -6,6 +6,7 @@ import React, { Fragment } from "react";
 import DiscoverMovieCard from "./DiscoverMovieCard";
 import { PopularMovieInfo } from "@/model/Movie";
 import styles from "./discoverPMovie.module.scss";
+import LoadingCircle from "@/app/_components/LoadingCircle";
 
 type Props = {
   searchParams: { sort_by?: string; with_genres?: string };
@@ -29,7 +30,7 @@ const DiscoverPMovie = ({ searchParams }: Props) => {
         ))}
       </div>
       <div ref={ref} className={styles.loading}>
-        {isFetching || isLoading ? <div>Loading...</div> : null}
+        {isFetching || isLoading ? <LoadingCircle /> : null}
       </div>
     </>
   );

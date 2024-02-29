@@ -6,6 +6,7 @@ import { PopularMovieInfo } from "@/model/Movie";
 import styles from "./discoverTMovie.module.scss";
 import DiscoverMovieCard from "../../_component/DiscoverMovieCard";
 import { getDiscoverTMovie } from "@/app/_lib/getDiscoverTMovie";
+import LoadingCircle from "@/app/_components/LoadingCircle";
 
 type Props = {
   searchParams: { sort_by?: string; with_genres?: string };
@@ -29,7 +30,7 @@ const DiscoverTMovie = ({ searchParams }: Props) => {
         ))}
       </div>
       <div ref={ref} className={styles.loading}>
-        {isFetching || isLoading ? <div>Loading...</div> : null}
+        {isFetching || isLoading ? <LoadingCircle /> : null}
       </div>
     </>
   );
