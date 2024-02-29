@@ -22,6 +22,9 @@ export const getDiscoverPMovie: QueryFunction<
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
       },
+      next: {
+        tags: ["movies", "popular", "movie", urlSearchParams.toString()],
+      },
     }
   );
 
