@@ -34,7 +34,7 @@ const Header = () => {
               </div>
             </li>
             <li>
-              <Link href="/tv">TV Shows</Link>
+              <Link href="/tv?sort_by=popularity.desc">TV Shows</Link>
               <div className={styles.dropdown}>
                 <DropDown type="tv" />
               </div>

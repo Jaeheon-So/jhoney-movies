@@ -4,22 +4,22 @@ import React, { useState } from "react";
 import { FaChevronRight, FaChevronDown } from "react-icons/fa";
 import styles from "./sortFilter.module.scss";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa6";
-import { SortOptionType, useMovieFilterStore } from "@/app/_store/movieFilter";
+import { SortOptionType, useTvFilterStore } from "@/app/_store/tvFilter";
 
 const SortFilter = () => {
   const [isFilterOpen, setisFilterOpen] = useState(true);
   const [isSelectOpen, setisSelectOpen] = useState(false);
-  const { sortOption, setSortOption } = useMovieFilterStore();
+  const { sortOption, setSortOption } = useTvFilterStore();
 
   const options: [string, SortOptionType][] = [
     ["유명한 순", "popularity.desc"],
     ["평점 순", "vote_average.desc"],
-    ["최신 순", "primary_release_date.desc"],
+    ["최신 순", "first_air_date.desc"],
   ];
   const optionObj: { [key: string]: string } = {
     "popularity.desc": "유명한 순",
     "vote_average.desc": "평점 순",
-    "primary_release_date.desc": "최신 순",
+    "first_air_date.desc": "최신 순",
   };
 
   const onFilterChange = (e: React.MouseEvent<HTMLDivElement>) => {

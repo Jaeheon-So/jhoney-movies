@@ -1,0 +1,44 @@
+"use client";
+
+import React, { useEffect } from "react";
+import styles from "./filter.module.scss";
+import SortFilter from "./SortFilter";
+import GenreFilter from "./GenreFilter";
+import BtnApplyFilter from "./BtnApplyFilter";
+import { useSearchParams, useSelectedLayoutSegments } from "next/navigation";
+import { SortOptionType, useTvFilterStore } from "@/app/_store/tvFilter";
+
+const Filters = () => {
+  const pathArray = useSelectedLayoutSegments();
+  const { genreOption, setSortOption, setGenreOption, resetGenre } =
+    useTvFilterStore();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const arr = searchParams.get("with_genres")?.split(".");
+
+    Object.keys(genreOption).forEach((key) => {
+      if (arr?.includes(key)) {
+        setGenreOption(Number(key), true);
+      } else {
+        setGenreOption(Number(key), false);
+      }
+    });
+
+    setSortOption(
+      (searchParams.get("sort_by") as SortOptionType) || "popularity.desc"
+    );
+  }, [searchParams]);
+
+  if (pathArray.length > 0 && !pathArray.includes("top-rated")) return null;
+
+  return (
+    <div className={styles.filterWrapper}>
+      <SortFilter />
+      <GenreFilter />
+      <BtnApplyFilter />
+    </div>
+  );
+};
+
+export default Filters;
