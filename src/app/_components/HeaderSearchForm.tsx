@@ -36,7 +36,7 @@ const HeaderSearchForm = ({ showSearchBar }: Props) => {
             value={searchParam}
             onChange={onChange}
             className={styles.inputEl}
-            placeholder="Search for a movie, tv, person..."
+            placeholder="영화, TV, 인물 검색..."
             autoFocus
           />
         </form>

@@ -29,7 +29,7 @@ const TrendSection = () => {
               }`}
               onClick={() => setDateType("day")}
             >
-              <h3>Today</h3>
+              <h3>오늘</h3>
             </div>
             <div
               className={`${styles.choice} ${
@@ -37,7 +37,7 @@ const TrendSection = () => {
               }`}
               onClick={() => setDateType("week")}
             >
-              <h3>Week</h3>
+              <h3>이번주</h3>
             </div>
             <div
               className={`${styles.move} ${

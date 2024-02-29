@@ -47,10 +47,10 @@ const Header = () => {
         <div className={styles.right}>
           <ul className={styles.rightul}>
             <li>
-              <Link href="/signup">Signup</Link>
+              <Link href="/signup">회원가입</Link>
             </li>
             <li>
-              <Link href="/login">Login</Link>
+              <Link href="/login">로그인</Link>
             </li>
             <li onClick={onClickSearch}>
               {showSearchBar ? <IoClose /> : <FaSearch />}

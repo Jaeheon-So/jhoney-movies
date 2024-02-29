@@ -48,6 +48,12 @@
             h3 {
               font-size: 16px;
               padding: 8px 30px;
+
+              @media all and (max-width: 575px) {
+                //브라우저 창 width가 768px보다 작아지는 순간부터 적용
+                font-size: 12px;
+                padding: 8px 15px;
+              }
             }
 
             &.active {
@@ -60,7 +66,7 @@
             position: absolute;
             top: 0;
             width: 25%;
-            height: 35.5px;
+            height: 100%;
             transition: 0.5s;
             border-radius: 100px;
             z-index: 1;

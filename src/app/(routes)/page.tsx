@@ -28,9 +28,9 @@ export default async function Home() {
       <section className={styles.section1}>
         <div className={styles.titleWrapper}>
           <div className={styles.title}>
-            <div className={styles.t1}>Welcome to JHONEYDB.</div>
+            <div className={styles.t1}>JHONEYDB에 오신 걸 환영합니다.</div>
             <div className={styles.t2}>
-              Millions of movies, TV shows and people to discover. Explore now.
+              수백만 개의 영화, TV 프로그램, 인물들을 지금 만나보세요.
             </div>
           </div>
           <HomeSearchForm />

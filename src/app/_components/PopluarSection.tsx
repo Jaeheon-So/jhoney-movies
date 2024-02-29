@@ -39,7 +39,7 @@ const PopluarSection = () => {
               }`}
               onClick={() => setMediaType("movie")}
             >
-              <h3>Movies</h3>
+              <h3>영화</h3>
             </div>
             <div
               className={`${styles.choice} ${

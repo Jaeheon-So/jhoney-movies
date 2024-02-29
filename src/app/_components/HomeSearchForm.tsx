@@ -23,10 +23,10 @@ const HomeSearchForm = () => {
         <input
           value={searchParam}
           onChange={onChange}
-          placeholder="Search for a movie, tv, person..."
+          placeholder="영화, TV, 인물 검색..."
         />
         <button type="submit" className={styles.btnSearch}>
-          Go
+          GO
         </button>
       </form>
     </div>

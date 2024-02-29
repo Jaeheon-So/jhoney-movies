@@ -8,4 +8,4 @@
 - popular, top-rated 간 이동시 장르 초기화 할지 말지 여부
 - 한국어, 영어 선택
 - 화면 최상단 이동 버튼 고민
-- movie. tv 페이지 로딩 꾸미기
+- movie. tv 페이지 card 크기 조정하기

@@ -180,7 +180,7 @@ const TrailerSection = () => {
                 }`}
                 onClick={() => setType("popular")}
               >
-                <h3>Popular</h3>
+                <h3>유명한</h3>
               </div>
               <div
                 className={`${styles.choice} ${
@@ -188,7 +188,7 @@ const TrailerSection = () => {
                 }`}
                 onClick={() => setType("upcoming")}
               >
-                <h3>Up Coming</h3>
+                <h3>다가오는</h3>
               </div>
               <div
                 className={`${styles.choice} ${
@@ -196,7 +196,7 @@ const TrailerSection = () => {
                 }`}
                 onClick={() => setType("now_play")}
               >
-                <h3>Now Playing</h3>
+                <h3>상영중</h3>
               </div>
               <div
                 className={`${styles.choice} ${
@@ -204,7 +204,7 @@ const TrailerSection = () => {
                 }`}
                 onClick={() => setType("ontv")}
               >
-                <h3>On TV</h3>
+                <h3>TV</h3>
               </div>
               <div className={`${styles.move} ${checkClassName(type)}`}></div>
             </div>
