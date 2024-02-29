@@ -7,6 +7,16 @@ type Props = {
 };
 
 const DropDown = ({ type }: Props) => {
+  if (type === "people") {
+    return (
+      <ul className={styles.dropdownul}>
+        <li>
+          <Link href={`/${type}`}>Popular</Link>
+        </li>
+      </ul>
+    );
+  }
+
   return (
     <ul className={styles.dropdownul}>
       <li>

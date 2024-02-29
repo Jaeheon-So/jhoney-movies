@@ -40,17 +40,20 @@ const Header = () => {
               </div>
             </li>
             <li>
-              <Link href="/person">People</Link>
+              <Link href="/people">People</Link>
+              <div className={styles.dropdown}>
+                <DropDown type="people" />
+              </div>
             </li>
           </ul>
         </div>
         <div className={styles.right}>
           <ul className={styles.rightul}>
             <li>
-              <Link href="/signup">회원가입</Link>
+              <Link href="/signup">Signup</Link>
             </li>
             <li>
-              <Link href="/login">로그인</Link>
+              <Link href="/login">Login</Link>
             </li>
             <li onClick={onClickSearch}>
               {showSearchBar ? <IoClose /> : <FaSearch />}
