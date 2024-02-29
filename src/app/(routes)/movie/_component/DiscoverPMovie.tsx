@@ -13,7 +13,7 @@ type Props = {
 
 const DiscoverPMovie = ({ searchParams }: Props) => {
   const { ref, data, isFetching, isLoading } = useInfiniteScroll(
-    ["movies", "popular", "movies", searchParams],
+    ["movies", "popular", "movie", searchParams],
     getDiscoverPMovie
   );
 

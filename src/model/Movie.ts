@@ -86,6 +86,7 @@ export interface TvInfo {
 
 export interface PopularTvInfo extends TvInfo {}
 export interface OnAirTvInfo extends TvInfo {}
+export interface TopRatedTvInfo extends TvInfo {}
 
 export interface PopularTvResponse {
   page: number;
@@ -97,6 +98,13 @@ export interface PopularTvResponse {
 export interface OnAirTvResponse {
   page: number;
   results: OnAirTvInfo[];
+  total_pages: number;
+  total_results: number;
+}
+
+export interface TopRatedTvResponse {
+  page: number;
+  results: TopRatedTvInfo[];
   total_pages: number;
   total_results: number;
 }

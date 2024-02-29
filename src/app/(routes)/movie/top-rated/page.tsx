@@ -14,7 +14,7 @@ type Props = {
 const TopRatedMoviePage = async ({ searchParams }: Props) => {
   const queryClient = new QueryClient();
   await queryClient.prefetchInfiniteQuery({
-    queryKey: ["movies", "top-rated", "movies", searchParams],
+    queryKey: ["movies", "top-rated", "movie", searchParams],
     queryFn: getDiscoverTMovie,
     initialPageParam: 1,
   });
