@@ -15,7 +15,7 @@ const Filters = () => {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const arr = searchParams.get("genre")?.split(".");
+    const arr = searchParams.get("with_genres")?.split(".");
 
     Object.keys(genreOption).forEach((key) => {
       if (arr?.includes(key)) {
@@ -26,7 +26,7 @@ const Filters = () => {
     });
 
     setSortOption(
-      (searchParams.get("sort") as SortOptionType) || "popularity.desc"
+      (searchParams.get("sort_by") as SortOptionType) || "popularity.desc"
     );
   }, [searchParams]);
 

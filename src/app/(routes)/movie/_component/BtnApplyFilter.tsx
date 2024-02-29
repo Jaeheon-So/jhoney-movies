@@ -21,20 +21,20 @@ const BtnApplyFilter = () => {
       }
     });
 
-    newSearchParams.set("sort", sortOption);
-    newSearchParams.set("genre", genreQuery.slice(0, -1));
+    newSearchParams.set("sort_by", sortOption);
+    newSearchParams.set("with_genres", genreQuery.slice(0, -1));
 
     router.push(`${pathname}?${newSearchParams.toString()}`);
   };
 
   const checkDisabled = () => {
-    if (searchParam.get("sort") !== sortOption) return false;
+    if (searchParam.get("sort_by") !== sortOption) return false;
 
     const arr = Object.keys(genreOption).filter(
       (key) => genreOption[Number(key)] === true
     );
 
-    if (!searchParam.get("genre")) {
+    if (!searchParam.get("with_genres")) {
       if (arr.length > 0) {
         return false;
       } else {
@@ -43,7 +43,7 @@ const BtnApplyFilter = () => {
     } else {
       if (
         JSON.stringify(arr.sort()) !==
-        JSON.stringify(searchParam.get("genre")?.split(".").sort())
+        JSON.stringify(searchParam.get("with_genres")?.split(".").sort())
       ) {
         return false;
       } else {

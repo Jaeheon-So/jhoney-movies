@@ -63,14 +63,14 @@ export const initialGenreOption: { [key: number]: boolean } = {
   37: false,
 };
 
-URLSearch.get("genre")
+URLSearch.get("with_genres")
   ?.split(".")
   .forEach((genre) => {
     initialGenreOption[Number(genre)] = true;
   });
 
 const initailSortOption =
-  (URLSearch.get("sort") as SortOptionType) || "popularity.desc";
+  (URLSearch.get("sort_by") as SortOptionType) || "popularity.desc";
 
 export const useMovieFilterStore = create<MovieFilterState>((set, get) => ({
   sortOption: initailSortOption,
