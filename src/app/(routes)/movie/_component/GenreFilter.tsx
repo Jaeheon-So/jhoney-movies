@@ -6,7 +6,7 @@ import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 import { genres, useMovieFilterStore } from "@/app/_store/movieFilter";
 
 const GenreFilter = () => {
-  const [isFilterOpen, setisFilterOpen] = useState(true);
+  const [isFilterOpen, setisFilterOpen] = useState(false);
   const { genreOption, setGenreOption } = useMovieFilterStore();
 
   const onFilterChange = (e: React.MouseEvent<HTMLDivElement>) => {

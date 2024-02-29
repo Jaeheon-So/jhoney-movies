@@ -7,7 +7,7 @@ import { FaCaretDown, FaCaretUp } from "react-icons/fa6";
 import { SortOptionType, useMovieFilterStore } from "@/app/_store/movieFilter";
 
 const SortFilter = () => {
-  const [isFilterOpen, setisFilterOpen] = useState(true);
+  const [isFilterOpen, setisFilterOpen] = useState(false);
   const [isSelectOpen, setisSelectOpen] = useState(false);
   const { sortOption, setSortOption } = useMovieFilterStore();
 

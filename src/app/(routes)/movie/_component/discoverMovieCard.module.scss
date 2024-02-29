@@ -10,6 +10,9 @@
   flex-grow: 1;
   border: 1px solid #e3e3e3;
 
+  // width: calc((100vw - 80px - 260px - (30px * 3)) / 3);
+  // max-width: calc((100vh - 80px - 260px - (30px * 3)) / 3);
+
   &:hover {
     transform: scale(1.05);
   }
