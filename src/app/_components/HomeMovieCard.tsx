@@ -39,7 +39,9 @@ const HomeMovieCard = ({ movie, type }: Props) => {
             alt="poster"
             loading="lazy"
           />
-          <RateCanvas movie={movie} />
+          <div className={styles.canvasWrapper}>
+            <RateCanvas vote_average={movie.vote_average} size={40} />
+          </div>
         </div>
         <div className={styles.content}>
           <div className={styles.title}>{newMovie.title}</div>
@@ -57,7 +59,6 @@ const HomeMovieCard = ({ movie, type }: Props) => {
         className={`${styles.card} ${styles2.card}`}
       >
         <div className={styles.imgWrapper}>
-          {/* <img src={POSTER_BASE_URL + movie.poster_path} /> */}
           <Image
             src={
               movie.poster_path === null
@@ -69,7 +70,9 @@ const HomeMovieCard = ({ movie, type }: Props) => {
             alt="poster"
             loading="lazy"
           />
-          <RateCanvas movie={movie} />
+          <div className={styles.canvasWrapper}>
+            <RateCanvas vote_average={movie.vote_average} size={40} />
+          </div>
         </div>
         <div className={styles.content}>
           <div className={styles.title}>{newMovie.title}</div>
@@ -87,7 +90,6 @@ const HomeMovieCard = ({ movie, type }: Props) => {
         className={`${styles.card} ${styles2.card}`}
       >
         <div className={styles.imgWrapper}>
-          {/* <img src={POSTER_BASE_URL + movie.poster_path} /> */}
           <Image
             src={
               movie.poster_path === null
@@ -99,7 +101,9 @@ const HomeMovieCard = ({ movie, type }: Props) => {
             alt="poster"
             loading="lazy"
           />
-          <RateCanvas movie={movie} />
+          <div className={styles.canvasWrapper}>
+            <RateCanvas vote_average={movie.vote_average} size={40} />
+          </div>
         </div>
         <div className={styles.content}>
           <div className={styles.title}>{newMovie.name}</div>

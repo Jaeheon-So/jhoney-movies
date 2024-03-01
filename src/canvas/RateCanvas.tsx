@@ -1,16 +1,16 @@
 import React from "react";
 import { Stage, Layer, Arc } from "react-konva";
 import styles from "./rateCanvas.module.scss";
-import { IMovieInfo } from "@/model/movie";
 
 type Props = {
-  movie: IMovieInfo;
+  vote_average: number;
+  size: number;
 };
 
-const RateCanvas = ({ movie }: Props) => {
-  const width = 40;
-  const height = 40;
-  const angle = 360 * (Math.round(movie.vote_average * 10) / 100);
+const RateCanvas = ({ vote_average, size }: Props) => {
+  const width = size;
+  const height = size;
+  const angle = 360 * (Math.round(vote_average * 10) / 100);
   const colorObj = {
     "#1cc2b5": "rgb(28, 206, 181, 0.3)",
     "#d2d532": "rgb(210, 213, 50, 0.3)",
@@ -18,22 +18,22 @@ const RateCanvas = ({ movie }: Props) => {
   };
 
   const checkColor = () => {
-    if (movie.vote_average > 7) {
+    if (vote_average > 7) {
       return "#1cc2b5";
-    } else if (movie.vote_average > 3) {
+    } else if (vote_average > 3) {
       return "#d2d532";
     } else {
       return "#e94a4a";
     }
   };
   return (
-    <div className={styles.canvasWrapper}>
+    <div className={styles.canvas}>
       <Stage width={width} height={height}>
         <Layer>
           <Arc
             x={width / 2}
             y={width / 2}
-            innerRadius={width / 2 - 2}
+            innerRadius={width / 2 - 3.5}
             outerRadius={width / 2}
             angle={360}
             fill={colorObj[checkColor()]}
@@ -43,7 +43,7 @@ const RateCanvas = ({ movie }: Props) => {
           <Arc
             x={width / 2}
             y={width / 2}
-            innerRadius={width / 2 - 2}
+            innerRadius={width / 2 - 3.5}
             outerRadius={width / 2}
             angle={angle}
             fill={checkColor()}
@@ -53,7 +53,9 @@ const RateCanvas = ({ movie }: Props) => {
           />
         </Layer>
       </Stage>
-      <div className={styles.rate}>{Math.round(movie.vote_average * 10)}%</div>
+      <div className={`${styles.rate} ${size > 40 && styles.rate2}`}>
+        {Math.round(vote_average * 10)}%
+      </div>
     </div>
   );
 };
