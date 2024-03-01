@@ -13,6 +13,9 @@ import { FormatMDY } from "@/app/_utils/dayFormat";
 import RateCanvas from "@/canvas/RateCanvas";
 import { IoMdHeart } from "react-icons/io";
 import { FaPlay } from "react-icons/fa";
+import { getMovieTrailers } from "@/app/_lib/getMovieTrailers";
+import { MovieTrailerResponse } from "@/model/Movie";
+import Link from "next/link";
 
 type Props = {
   id: string;
@@ -23,6 +26,12 @@ const MovieDetail = ({ id }: Props) => {
     queryKey: ["movies", "detail", "movie", id],
     queryFn: getMovieDetail,
   });
+  const { data: trailerData } = useQuery<MovieTrailerResponse>({
+    queryKey: ["movies", "trailers", "movie", id],
+    queryFn: () => getMovieTrailers(Number(id)),
+  });
+
+  const index = trailerData?.results?.findIndex((t) => t.type === "Trailer");
 
   const changeMToHM = (min: number | undefined) => {
     if (min === undefined) return "";
@@ -78,12 +87,17 @@ const MovieDetail = ({ id }: Props) => {
               <div className={`${styles.svgWrapper} ${styles.active}`}>
                 <IoMdHeart />
               </div>
-              <div className={styles.trailer}>
-                <div className={styles.svgWrapper2}>
-                  <FaPlay />
-                </div>
-                <div>play Trailer</div>
-              </div>
+              {index && index >= 0 ? (
+                <Link
+                  href={`/play?k=${trailerData?.results[index]?.key}`}
+                  className={styles.trailer}
+                >
+                  <div className={styles.svgWrapper2}>
+                    <FaPlay />
+                  </div>
+                  <div>play Trailer</div>
+                </Link>
+              ) : null}
             </div>
             <div className={styles.tagline}>{movieDetail?.tagline}</div>
             <div className={styles.overviewWrapper}>
