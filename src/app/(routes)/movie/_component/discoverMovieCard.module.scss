@@ -2,16 +2,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 150px;
   transition: 0.5s;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
-  flex-grow: 1;
   border: 1px solid #e3e3e3;
+  width: 17.6%;
 
-  // width: calc((100vw - 80px - 260px - (30px * 3)) / 3);
-  // max-width: calc((100vh - 80px - 260px - (30px * 3)) / 3);
+  @media all and (max-width: 1024px) {
+    //브라우저 창 width보다 작아지는 순간부터 적용
+    width: 23.5%;
+  }
+
+  @media all and (max-width: 480px) {
+    //브라우저 창 width보다 작아지는 순간부터 적용
+    width: 32%;
+  }
 
   &:hover {
     transform: scale(1.05);
@@ -19,7 +25,7 @@
 
   .imgWrapper {
     width: 100%;
-    min-height: 250px;
+    aspect-ratio: 2 / 3;
     position: relative;
 
     img {
