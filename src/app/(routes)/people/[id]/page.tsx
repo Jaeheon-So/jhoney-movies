@@ -1,7 +1,11 @@
 import React from "react";
 
-const PeopleDetailPage = () => {
-  return <div>PeopleDetailPage</div>;
+type Props = {
+  params: { id: string };
+};
+
+const PeopleDetailPage = ({ params }: Props) => {
+  return <div>{params.id}</div>;
 };
 
 export default PeopleDetailPage;
