@@ -10,13 +10,17 @@ import {
   POSTER_BASE_URL_w1920_H_427,
 } from "@/app/_constants/constants";
 import { FormatMDY } from "@/app/_utils/dayFormat";
-import RateCanvas from "@/canvas/RateCanvas";
 import { IoMdHeart } from "react-icons/io";
 import { FaPlay } from "react-icons/fa";
 import { getMovieTrailers } from "@/app/_lib/getMovieTrailers";
 import { MovieTrailerResponse } from "@/model/Movie";
 import Link from "next/link";
 import { getMovieCredit } from "@/app/_lib/getMovieCredit";
+import dynamic from "next/dynamic";
+
+const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
+  ssr: false,
+});
 
 type Props = {
   id: string;
@@ -42,6 +46,7 @@ const MovieDetail = ({ id }: Props) => {
     gcTime: 60 * 1000 * 5,
   });
 
+  const director = creditData?.crew.find((c) => c.job === "Director");
   const index = trailerData?.results?.findIndex((t) => t.type === "Trailer");
 
   const changeMToHM = (min: number | undefined) => {
@@ -117,7 +122,14 @@ const MovieDetail = ({ id }: Props) => {
             </div>
             <div className={styles.directorWrapper}>
               <div className={styles.dTitle}>감독</div>
-              <div className={styles.director}>William Eubank</div>
+              <Link
+                href={`/people/${director?.id}-${director?.original_name
+                  .split(" ")
+                  .join("-")}`}
+                className={styles.director}
+              >
+                {director?.name}
+              </Link>
             </div>
           </div>
         </div>

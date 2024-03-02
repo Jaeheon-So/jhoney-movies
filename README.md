@@ -13,3 +13,6 @@
 - loading, error 처리(loading.tsx or error.tsx or QueryErrorResetBoundary)
 - generate meta data
 - 하트 클릭 시 이팩트
+- location 사용 에러 기억하기
+- useSearchParam Suspense 왜 감싸야허지??
+- Rate Canvas dynamic import 왜 했지?

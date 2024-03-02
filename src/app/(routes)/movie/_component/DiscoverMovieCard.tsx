@@ -3,9 +3,13 @@ import { PopularMovieInfo } from "@/model/Movie";
 import Image from "next/image";
 import React from "react";
 import styles from "./discoverMovieCard.module.scss";
-import RateCanvas from "@/canvas/RateCanvas";
 import Link from "next/link";
 import { FormatMDY } from "@/app/_utils/dayFormat";
+import dynamic from "next/dynamic";
+
+const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
+  ssr: false,
+});
 
 type Props = {
   movie: PopularMovieInfo;

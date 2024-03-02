@@ -183,7 +183,12 @@
           }
 
           .director {
-            font-size: 14px;
+            font-size: 16px;
+            transition: 0.5s;
+
+            &:hover {
+              color: #1cceb5;
+            }
           }
         }
       }
