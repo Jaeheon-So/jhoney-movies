@@ -1,11 +1,7 @@
 "use client";
 
-import {
-  QueryFunction,
-  useInfiniteQuery,
-  useSuspenseInfiniteQuery,
-} from "@tanstack/react-query";
-import React, { useEffect } from "react";
+import { QueryFunction, useInfiniteQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 const useInfiniteScroll = (

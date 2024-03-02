@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import styles from "./layout.module.scss";
 import Title from "./_component/Title";
 import Filters from "./_component/Filters";
@@ -12,7 +12,9 @@ const TvLayOut = ({ children }: Props) => {
     <div className={styles.container}>
       <Title />
       <div className={styles.bottom}>
-        <Filters />
+        <Suspense>
+          <Filters />
+        </Suspense>
         <div className={styles.content}>{children}</div>
       </div>
     </div>

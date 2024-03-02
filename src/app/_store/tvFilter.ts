@@ -34,7 +34,7 @@ export const genres: [number, string][] = [
   [37, "서부"],
 ];
 
-const URLSearch = new URLSearchParams(location.search);
+// const URLSearch = new URLSearchParams(location.search || "");
 export const initialGenreOption: { [key: number]: boolean } = {
   10579: false,
   16: false,
@@ -54,17 +54,17 @@ export const initialGenreOption: { [key: number]: boolean } = {
   37: false,
 };
 
-URLSearch.get("with_genres")
-  ?.split(".")
-  .forEach((genre) => {
-    initialGenreOption[Number(genre)] = true;
-  });
+// URLSearch.get("with_genres")
+//   ?.split(".")
+//   .forEach((genre) => {
+//     initialGenreOption[Number(genre)] = true;
+//   });
 
-const initailSortOption =
-  (URLSearch.get("sort_by") as SortOptionType) || "popularity.desc";
+// const initailSortOption =
+//   (URLSearch.get("sort_by") as SortOptionType) || "popularity.desc";
 
 export const useTvFilterStore = create<TvFilterState>((set, get) => ({
-  sortOption: initailSortOption,
+  sortOption: "popularity.desc",
   genreOption: initialGenreOption,
   setSortOption: (option) => {
     set({ sortOption: option });

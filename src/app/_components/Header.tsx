@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import styles from "./header.module.scss";
 import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
@@ -61,7 +61,9 @@ const Header = () => {
           </ul>
         </div>
       </div>
-      {<HeaderSearchForm showSearchBar={showSearchBar} />}
+      <Suspense>
+        <HeaderSearchForm showSearchBar={showSearchBar} />
+      </Suspense>
     </header>
   );
 };

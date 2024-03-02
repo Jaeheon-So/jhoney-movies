@@ -26,22 +26,20 @@ const HeaderSearchForm = ({ showSearchBar }: Props) => {
   };
 
   return (
-    <>
-      <div className={`${styles.container} ${showSearchBar && styles.show}`}>
-        <form onSubmit={onSubmit} className={styles.formEl}>
-          <div className={styles.svgWrapper}>
-            <IoMdSearch />
-          </div>
-          <input
-            value={searchParam}
-            onChange={onChange}
-            className={styles.inputEl}
-            placeholder="영화, TV, 인물 검색..."
-            autoFocus
-          />
-        </form>
-      </div>
-    </>
+    <div className={`${styles.container} ${showSearchBar && styles.show}`}>
+      <form onSubmit={onSubmit} className={styles.formEl}>
+        <div className={styles.svgWrapper}>
+          <IoMdSearch />
+        </div>
+        <input
+          value={searchParam}
+          onChange={onChange}
+          className={styles.inputEl}
+          placeholder="영화, TV, 인물 검색..."
+          autoFocus
+        />
+      </form>
+    </div>
   );
 };
 
