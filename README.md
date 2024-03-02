@@ -12,3 +12,4 @@
 - people detail은 en-US로, Popular people은 ko-KR로
 - loading, error 처리(loading.tsx or error.tsx or QueryErrorResetBoundary)
 - generate meta data
+- 하트 클릭 시 이팩트

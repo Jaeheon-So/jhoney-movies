@@ -16,6 +16,7 @@ import { FaPlay } from "react-icons/fa";
 import { getMovieTrailers } from "@/app/_lib/getMovieTrailers";
 import { MovieTrailerResponse } from "@/model/Movie";
 import Link from "next/link";
+import { getMovieCredit } from "@/app/_lib/getMovieCredit";
 
 type Props = {
   id: string;
@@ -25,10 +26,20 @@ const MovieDetail = ({ id }: Props) => {
   const { data: movieDetail } = useQuery({
     queryKey: ["movies", "detail", "movie", id],
     queryFn: getMovieDetail,
+    staleTime: 60 * 1000 * 5,
+    gcTime: 60 * 1000 * 5,
   });
   const { data: trailerData } = useQuery<MovieTrailerResponse>({
     queryKey: ["movies", "trailers", "movie", id],
     queryFn: () => getMovieTrailers(Number(id)),
+    staleTime: 60 * 1000 * 5,
+    gcTime: 60 * 1000 * 5,
+  });
+  const { data: creditData } = useQuery({
+    queryKey: ["movies", "credits", "movie", id],
+    queryFn: getMovieCredit,
+    staleTime: 60 * 1000 * 5,
+    gcTime: 60 * 1000 * 5,
   });
 
   const index = trailerData?.results?.findIndex((t) => t.type === "Trailer");
