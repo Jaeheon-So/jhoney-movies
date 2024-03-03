@@ -204,3 +204,84 @@ export interface MovieCreditResponse {
   cast: MovieCast[];
   crew: MovieCrew[];
 }
+
+export interface TvSeason {
+  air_date: string;
+  episode_count: number;
+  id: number;
+  name: string;
+  overview: string;
+  poster_path: string;
+  season_number: number;
+  vote_average: number;
+}
+
+export interface TvCreated {
+  id: number;
+  credit_id: string;
+  name: string;
+  gender: number;
+  profile_path: string;
+}
+
+export interface TvDetailResponse {
+  adult: boolean;
+  backdrop_path: string;
+  created_by: TvCreated[];
+  episode_run_time: number[];
+  first_air_date: string;
+  genres: { id: number; name: string }[];
+  homepage: string;
+  id: number;
+  in_production: boolean;
+  last_air_date: string;
+  name: string;
+  number_of_episodes: number;
+  number_of_seasons: number;
+  original_language: string;
+  original_name: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  seasons: TvSeason[];
+  status: string;
+  tagline: string;
+  type: string;
+  vote_average: number;
+  vote_count: number;
+}
+
+export interface TvCast {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order: number;
+}
+
+export interface TvCrew {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  credit_id: string;
+  department: string;
+  job: string;
+}
+
+export interface TvCreditResponse {
+  id: number;
+  cast: TvCast[];
+  crew: TvCrew[];
+}
