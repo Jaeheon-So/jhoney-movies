@@ -21,7 +21,7 @@ const PopularPeopleCard = ({ people }: Props) => {
         <Image
           src={
             people.profile_path === null
-              ? "no-image.svg"
+              ? "/no-image.svg"
               : POSTER_BASE_URL + people.profile_path
           }
           width={150}

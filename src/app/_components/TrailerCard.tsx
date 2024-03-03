@@ -30,7 +30,7 @@ const TrailerCard = ({ movie, trailer, onChangeImage }: Props) => {
           <Image
             src={
               movie.backdrop_path === null
-                ? "no-image.svg"
+                ? "/no-image.svg"
                 : POSTER_BASE_URL_w710_H_400 + movie.backdrop_path
             }
             width={300}

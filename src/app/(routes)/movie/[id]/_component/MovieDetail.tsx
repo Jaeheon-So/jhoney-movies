@@ -72,7 +72,7 @@ const MovieDetail = ({ id }: Props) => {
               <Image
                 src={
                   movieDetail?.poster_path === null
-                    ? "no-image.svg"
+                    ? "/no-image.svg"
                     : POSTER_BASE_URL + movieDetail?.poster_path
                 }
                 width={300}

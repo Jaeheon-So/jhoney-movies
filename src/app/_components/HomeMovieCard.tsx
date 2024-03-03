@@ -31,7 +31,7 @@ const HomeMovieCard = ({ movie, type }: Props) => {
           <Image
             src={
               movie.poster_path === "null"
-                ? "no-image.svg"
+                ? "/no-image.svg"
                 : POSTER_BASE_URL + movie.poster_path
             }
             width={150}
@@ -62,7 +62,7 @@ const HomeMovieCard = ({ movie, type }: Props) => {
           <Image
             src={
               movie.poster_path === null
-                ? "no-image.svg"
+                ? "/no-image.svg"
                 : POSTER_BASE_URL + movie.poster_path
             }
             width={150}
@@ -93,7 +93,7 @@ const HomeMovieCard = ({ movie, type }: Props) => {
           <Image
             src={
               movie.poster_path === null
-                ? "no-image.svg"
+                ? "/no-image.svg"
                 : POSTER_BASE_URL + movie.poster_path
             }
             width={150}
