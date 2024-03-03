@@ -13,10 +13,12 @@ import { FormatMDY } from "@/app/_utils/dayFormat";
 import { IoMdHeart } from "react-icons/io";
 import { FaPlay } from "react-icons/fa";
 import { getMovieTrailers } from "@/app/_lib/getMovieTrailers";
-import { MovieTrailerResponse } from "@/model/Movie";
+import { MovieCast, MovieTrailerResponse } from "@/model/Movie";
 import Link from "next/link";
 import { getMovieCredit } from "@/app/_lib/getMovieCredit";
 import dynamic from "next/dynamic";
+import FadeInOut from "@/app/_components/FadeInOut";
+import CreditCard from "./CreditCard";
 
 const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
   ssr: false,
@@ -39,7 +41,7 @@ const MovieDetail = ({ id }: Props) => {
     staleTime: 60 * 1000 * 5,
     gcTime: 60 * 1000 * 5,
   });
-  const { data: creditData } = useQuery({
+  const { data: creditData, isLoading } = useQuery({
     queryKey: ["movies", "credits", "movie", id],
     queryFn: getMovieCredit,
     staleTime: 60 * 1000 * 5,
@@ -55,86 +57,100 @@ const MovieDetail = ({ id }: Props) => {
   };
 
   return (
-    <div
-      className={styles.container}
-      style={{
-        backgroundImage: `url(${
-          POSTER_BASE_URL_w1920_H_427 + movieDetail?.backdrop_path
-        })`,
-      }}
-    >
-      <div className={styles.infoWrapper}>
-        <div className={styles.info}>
-          <div className={styles.imageWrapper}>
-            <Image
-              src={
-                movieDetail?.poster_path === null
-                  ? "no-image.svg"
-                  : POSTER_BASE_URL + movieDetail?.poster_path
-              }
-              width={300}
-              height={450}
-              loading="lazy"
-              alt="poster"
-            />
-          </div>
-          <div className={styles.left}>
-            <div className={styles.titleWrapper}>
-              <div className={styles.title}>{movieDetail?.title}</div>
-              <div className={styles.rest}>
-                <div className={styles.date}>
-                  {FormatMDY(movieDetail?.release_date || "")}
-                </div>
-                <div className={styles.genre}>
-                  {movieDetail?.genres.map((genre) => genre.name).join(", ")}
-                </div>
-                <div className={styles.time}>
-                  {changeMToHM(movieDetail?.runtime)}
-                </div>
-              </div>
+    <>
+      <div
+        className={styles.container}
+        style={{
+          backgroundImage: `url(${
+            POSTER_BASE_URL_w1920_H_427 + movieDetail?.backdrop_path
+          })`,
+        }}
+      >
+        <div className={styles.infoWrapper}>
+          <div className={styles.info}>
+            <div className={styles.imageWrapper}>
+              <Image
+                src={
+                  movieDetail?.poster_path === null
+                    ? "no-image.svg"
+                    : POSTER_BASE_URL + movieDetail?.poster_path
+                }
+                width={300}
+                height={450}
+                loading="lazy"
+                alt="poster"
+              />
             </div>
-            <div className={styles.actions}>
-              <div>
-                <RateCanvas
-                  vote_average={movieDetail?.vote_average || 0}
-                  size={60}
-                />
-              </div>
-              <div className={`${styles.svgWrapper} ${styles.active}`}>
-                <IoMdHeart />
-              </div>
-              {index && index >= 0 ? (
-                <Link
-                  href={`/play?k=${trailerData?.results[index]?.key}`}
-                  className={styles.trailer}
-                >
-                  <div className={styles.svgWrapper2}>
-                    <FaPlay />
+            <div className={styles.left}>
+              <div className={styles.titleWrapper}>
+                <div className={styles.title}>{movieDetail?.title}</div>
+                <div className={styles.rest}>
+                  <div className={styles.date}>
+                    {FormatMDY(movieDetail?.release_date || "")}
                   </div>
-                  <div>play Trailer</div>
+                  <div className={styles.genre}>
+                    {movieDetail?.genres.map((genre) => genre.name).join(", ")}
+                  </div>
+                  <div className={styles.time}>
+                    {changeMToHM(movieDetail?.runtime)}
+                  </div>
+                </div>
+              </div>
+              <div className={styles.actions}>
+                <div>
+                  <RateCanvas
+                    vote_average={movieDetail?.vote_average || 0}
+                    size={60}
+                  />
+                </div>
+                <div className={`${styles.svgWrapper} ${styles.active}`}>
+                  <IoMdHeart />
+                </div>
+                {index && index >= 0 ? (
+                  <Link
+                    href={`/play?k=${trailerData?.results[index]?.key}`}
+                    className={styles.trailer}
+                  >
+                    <div className={styles.svgWrapper2}>
+                      <FaPlay />
+                    </div>
+                    <div>play Trailer</div>
+                  </Link>
+                ) : null}
+              </div>
+              <div className={styles.tagline}>{movieDetail?.tagline}</div>
+              <div className={styles.overviewWrapper}>
+                <div className={styles.oTitle}>줄거리</div>
+                <div className={styles.overview}>{movieDetail?.overview}</div>
+              </div>
+              <div className={styles.directorWrapper}>
+                <div className={styles.dTitle}>감독</div>
+                <Link
+                  href={`/people/${director?.id}-${director?.original_name
+                    .split(" ")
+                    .join("-")}`}
+                  className={styles.director}
+                >
+                  {director?.name}
                 </Link>
-              ) : null}
-            </div>
-            <div className={styles.tagline}>{movieDetail?.tagline}</div>
-            <div className={styles.overviewWrapper}>
-              <div className={styles.oTitle}>줄거리</div>
-              <div className={styles.overview}>{movieDetail?.overview}</div>
-            </div>
-            <div className={styles.directorWrapper}>
-              <div className={styles.dTitle}>감독</div>
-              <Link
-                href={`/people/${director?.id}-${director?.original_name
-                  .split(" ")
-                  .join("-")}`}
-                className={styles.director}
-              >
-                {director?.name}
-              </Link>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <section className={styles.section}>
+        <div className={styles.title}>
+          <h2>출연진</h2>
+        </div>
+        <FadeInOut isLoading={isLoading}>
+          {creditData?.cast
+            .slice(0, 21)
+            .map((cast: MovieCast, index: number) => (
+              <CreditCard key={index} cast={cast} />
+            ))}
+        </FadeInOut>
+      </section>
+    </>
   );
 };
 
