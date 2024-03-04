@@ -1,0 +1,31 @@
+.container {
+  padding: 15px;
+  border-bottom: 1px solid #dedede;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .card {
+    display: flex;
+    gap: 20px;
+    // align-items: center;
+
+    .infoWrapper {
+      cursor: pointer;
+
+      .title {
+        transition: 0.5s;
+
+        &:hover {
+          color: #1cceb5;
+        }
+      }
+
+      .char {
+        margin-top: 5px;
+        font-size: 14px;
+        color: grey;
+      }
+    }
+  }
+}

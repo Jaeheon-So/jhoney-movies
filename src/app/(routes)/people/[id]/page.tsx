@@ -7,6 +7,8 @@ import {
 import React from "react";
 import PeopleDetail from "./_component/PeopleDetail";
 import { getPeopleSns } from "@/app/_lib/getPeopleSns";
+import { getSearchPeople } from "@/app/_lib/getSearchPeople";
+import { getCombinedCredit } from "@/app/_lib/getCombinedCredit";
 
 type Props = {
   params: { id: string };
@@ -24,6 +26,14 @@ const PeopleDetailPage = async ({ params }: Props) => {
   await queryClient.prefetchQuery({
     queryKey: ["people", "sns", id],
     queryFn: getPeopleSns,
+  });
+  await queryClient.prefetchQuery({
+    queryKey: ["people", "search", name],
+    queryFn: getSearchPeople,
+  });
+  await queryClient.prefetchQuery({
+    queryKey: ["people", "credit", id],
+    queryFn: getCombinedCredit,
   });
   const dehydrateState = dehydrate(queryClient);
 

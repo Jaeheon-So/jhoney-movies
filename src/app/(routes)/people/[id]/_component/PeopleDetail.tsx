@@ -2,20 +2,20 @@
 
 import React from "react";
 import styles from "./peopleDetail.module.scss";
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getPeopleDetail } from "@/app/_lib/getPeopleDetail";
 import Image from "next/image";
 import { POSTER_BASE_URL } from "@/app/_constants/constants";
 import { FormatMDY } from "@/app/_utils/dayFormat";
 import { calculateAge } from "@/app/_utils/age";
-import FadeInOut from "@/app/_components/FadeInOut";
 import { getPeopleSns } from "@/app/_lib/getPeopleSns";
 import { SiInstagram, SiFacebook, SiTwitter } from "react-icons/si";
 import Link from "next/link";
 import { getSearchPeople } from "@/app/_lib/getSearchPeople";
-import { PeopleKnownFor } from "@/model/People";
+import { CreditCast, PeopleKnownFor } from "@/model/People";
 import KnownForCard from "./KnownForCard";
 import { getCombinedCredit } from "@/app/_lib/getCombinedCredit";
+import Career from "./Career";
 
 type Props = {
   id: string;
@@ -35,7 +35,7 @@ const PeopleDetail = ({ id, name }: Props) => {
     staleTime: 60 * 1000 * 5,
     gcTime: 60 * 1000 * 5,
   });
-  const { data: searchData, isLoading } = useQuery({
+  const { data: searchData } = useQuery({
     queryKey: ["people", "search", name],
     queryFn: getSearchPeople,
     staleTime: 60 * 1000 * 5,
@@ -47,6 +47,31 @@ const PeopleDetail = ({ id, name }: Props) => {
     staleTime: 60 * 1000 * 5,
     gcTime: 60 * 1000 * 5,
   });
+
+  let castObj: { [key: string]: CreditCast[] } = {};
+  const newCastData = creditData?.cast
+    .map((c) => {
+      let obj = { ...c };
+      if (c.media_type === "tv") {
+        obj.release_date = c.first_air_date;
+        obj.title = c.name;
+        obj.original_title = c.original_name;
+      }
+      return obj;
+    })
+    .filter((c) => c.release_date)
+    .sort(
+      (a, b) =>
+        new Date(b.release_date || "").getTime() -
+        new Date(a.release_date || "").getTime()
+    );
+  newCastData?.forEach((c) => {
+    const y = c.release_date?.split("-")[0] || "";
+    castObj[y] = castObj[y] ? [...castObj[y], c] : [c];
+  });
+  const newCastObj = Object.entries(castObj).sort(
+    (a, b) => Number(b[0]) - Number(a[0])
+  );
 
   return (
     <>
@@ -111,21 +136,33 @@ const PeopleDetail = ({ id, name }: Props) => {
                     `(${calculateAge(detailData?.birthday || "")}살)`}
                 </div>
               </div>
+              <section className={styles.section}>
+                <div className={styles.title}>
+                  <div>알려진 작품</div>
+                </div>
+                <div className={styles.known}>
+                  {searchData?.results[0].known_for?.map(
+                    (known: PeopleKnownFor, index: number) => (
+                      <KnownForCard key={index} known={known} />
+                    )
+                  )}
+                </div>
+              </section>
             </div>
           </div>
         </div>
       </div>
-      <section className={styles.section}>
-        <div className={styles.title}>
-          <h2>알려진 작품</h2>
+      <section className={styles.careerWrapper}>
+        <div className={styles.career}>
+          <div className={styles.title}>
+            <div>활동</div>
+          </div>
+          <div className={styles.creditWrapper}>
+            {newCastObj?.map((c, index) => (
+              <Career key={index} year={c[0]} info={c[1]} />
+            ))}
+          </div>
         </div>
-        <FadeInOut isLoading={isLoading}>
-          {searchData?.results[0].known_for?.map(
-            (known: PeopleKnownFor, index: number) => (
-              <KnownForCard key={index} known={known} />
-            )
-          )}
-        </FadeInOut>
       </section>
     </>
   );

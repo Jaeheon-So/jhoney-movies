@@ -39,9 +39,9 @@ const KnownForCard = ({ known }: Props) => {
       </div>
       <div className={styles.content}>
         <div className={styles.title}>{known.name || known.title}</div>
-        <div className={styles.date}>
+        {/* <div className={styles.date}>
           {FormatMDY(known.first_air_date || known.release_date || "")}
-        </div>
+        </div> */}
       </div>
     </Link>
   );
