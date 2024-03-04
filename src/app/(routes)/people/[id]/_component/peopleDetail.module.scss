@@ -1,0 +1,117 @@
+.container {
+  width: 100%;
+  .infoWrapper {
+    padding: 20px 30px;
+
+    .info {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+
+      @media all and (max-width: 768px) {
+        //브라우저 창 width가 768px보다 작아지는 순간부터 적용
+        flex-direction: column;
+      }
+
+      .imageWrapper {
+        border-radius: 8px;
+        overflow: hidden;
+        max-width: 300px;
+        max-height: 450px;
+        width: 100%;
+        height: 100%;
+        flex-shrink: 0;
+        aspect-ratio: 2 / 3;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .titleWrapper {
+          margin-bottom: 24px;
+          display: flex;
+          align-items: center;
+          gap: 15px;
+
+          .title {
+            font-size: 33px;
+            font-weight: 700;
+          }
+
+          .sns {
+            display: flex;
+            gap: 8px;
+            .svgWrapper {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+
+              &:hover {
+                svg {
+                  color: #1cceb5;
+                }
+              }
+
+              svg {
+                width: 30px;
+                height: 30px;
+                transition: 0.5s;
+              }
+            }
+          }
+        }
+
+        .bioWrapper {
+          margin-bottom: 20px;
+
+          .bioTitle {
+            margin-bottom: 8px;
+            font-size: 20px;
+            font-weight: 600;
+          }
+
+          .bio {
+            font-weight: 300;
+          }
+        }
+
+        .birthWrapper {
+          margin-bottom: 20px;
+
+          .birthTitle {
+            margin-bottom: 8px;
+            font-size: 20px;
+            font-weight: 600;
+          }
+
+          .birth {
+            font-weight: 300;
+          }
+        }
+      }
+    }
+  }
+}
+
+.section {
+  width: 100%;
+  margin-top: 30px;
+  color: #424242;
+  // padding: 0 20px;
+  min-height: 457.5px;
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 30px;
+  }
+}

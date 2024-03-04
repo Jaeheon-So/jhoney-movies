@@ -46,6 +46,10 @@
   padding: 20px 30px 45px;
   min-height: 330px;
 
+  &.known {
+    padding: 20px 0 0;
+  }
+
   .card {
     display: block;
   }

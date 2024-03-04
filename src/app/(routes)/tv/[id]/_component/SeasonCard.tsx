@@ -37,9 +37,11 @@ const SeasonCard = ({ season }: Props) => {
             <div className={styles.rate}>
               <RateCanvas vote_average={season?.vote_average || 0} size={40} />
             </div>
-            <div className={styles.date}>{`${FormatMDY(season.air_date)} * ${
-              season.episode_count
-            } Episodes`}</div>
+            <div className={styles.date}>
+              {`${
+                season.air_date ? FormatMDY(season.air_date) : "Coming Soon"
+              } * ${season.episode_count} Episodes`}
+            </div>
           </div>
         </div>
         <div className={styles.overview}>{season.overview}</div>

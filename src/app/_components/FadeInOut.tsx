@@ -9,9 +9,10 @@ type Props = {
   children: ReactNode;
   isLoading: boolean;
   isTrailer?: boolean;
+  isKnown?: boolean;
 };
 
-const FadeInOut = ({ children, isLoading, isTrailer }: Props) => {
+const FadeInOut = ({ children, isLoading, isTrailer, isKnown }: Props) => {
   const { ref, inView } = useInView({
     threshold: 0,
     delay: 50,
@@ -40,7 +41,7 @@ const FadeInOut = ({ children, isLoading, isTrailer }: Props) => {
     <div className={styles.section}>
       <div className={styles.inView} ref={ref}></div>
       <div
-        className={`${styles.container} ${
+        className={`${styles.container} ${isKnown && styles.known} ${
           showSK && styles.sk
         } ${checkClassName}`}
       >
