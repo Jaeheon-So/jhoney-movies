@@ -1,5 +1,3 @@
-import { number } from "@/app/(routes)/tv/[id]/_component/seasonCard.module.scss";
-
 export interface MovieInfo {
   adult: boolean;
   backdrop_path: string;
