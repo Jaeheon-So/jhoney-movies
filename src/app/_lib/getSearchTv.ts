@@ -1,20 +1,20 @@
-import { SearchPeopleResponse } from "@/model/People";
+import { SearchTvResponse } from "@/model/Movie";
 import { QueryFunction } from "@tanstack/react-query";
 
-export const getSearchPeople: QueryFunction<
-  SearchPeopleResponse,
-  [_1: string, _2: string, q: string],
+export const getSearchTv: QueryFunction<
+  SearchTvResponse,
+  [_1: string, _2: string, _3: string, q: string],
   number
 > = async ({ queryKey, pageParam = 1 }) => {
-  const [_1, _2, q] = queryKey;
+  const [_1, _2, _3, q] = queryKey;
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/search/person?query=${q}&include_adult=false&language=ko-KR&page=${pageParam}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/search/tv?query=${q}&include_adult=false&language=ko-KR&page=${pageParam}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
       },
       next: {
-        tags: ["people", "search", q],
+        tags: ["movies", "search", "tv", q],
       },
     }
   );

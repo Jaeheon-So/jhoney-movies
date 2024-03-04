@@ -1,4 +1,6 @@
 import { ReactNode } from "react";
+import styles from "./layout.module.scss";
+import Navbar from "./_component/Navbar";
 
 type Props = {
   children: ReactNode;
@@ -6,9 +8,9 @@ type Props = {
 
 const SearchLayOut = ({ children }: Props) => {
   return (
-    <div>
-      SearchLayout
-      {children}
+    <div className={styles.container}>
+      <Navbar />
+      <div className={styles.content}>{children}</div>
     </div>
   );
 };
