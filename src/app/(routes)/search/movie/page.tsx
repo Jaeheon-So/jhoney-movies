@@ -20,16 +20,6 @@ const SearchMoviePage = async ({ searchParams }: Props) => {
     queryFn: getSearchMovie,
     initialPageParam: 1,
   });
-  await queryClient.prefetchInfiniteQuery({
-    queryKey: ["movies", "search", "tv", searchParams.q],
-    queryFn: getSearchTv,
-    initialPageParam: 1,
-  });
-  await queryClient.prefetchInfiniteQuery({
-    queryKey: ["people", "search", searchParams.q],
-    queryFn: getSearchPeople,
-    initialPageParam: 1,
-  });
   const dehydratedState = dehydrate(queryClient);
 
   return (
