@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./headerSearchForm.module.scss";
 import { useRouter, useSearchParams } from "next/navigation";
 import { IoMdSearch } from "react-icons/io";
@@ -24,6 +24,10 @@ const HeaderSearchForm = ({ showSearchBar }: Props) => {
     e.preventDefault();
     router.push(`/search?q=${searchParam}`);
   };
+
+  useEffect(() => {
+    setSearchParam(params.get("q") || "");
+  }, [params]);
 
   return (
     <div className={`${styles.container} ${showSearchBar && styles.show}`}>
