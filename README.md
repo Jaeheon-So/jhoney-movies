@@ -16,3 +16,4 @@
 - location 사용 에러 기억하기
 - useSearchParam Suspense 왜 감싸야허지??
 - Rate Canvas dynamic import 왜 했지?
+- 배열 length 0인 경우 처리

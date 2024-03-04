@@ -30,7 +30,10 @@ const CreditCard = ({ cast }: Props) => {
       </div>
       <div className={styles.content}>
         <div className={styles.title}>{cast.name}</div>
-        <div className={styles.known}>{cast.character}</div>
+        <div className={styles.known}>{cast.roles[0]?.character || ""}</div>
+        <div
+          className={styles.count}
+        >{`${cast.total_episode_count} Episodes`}</div>
       </div>
     </Link>
   );

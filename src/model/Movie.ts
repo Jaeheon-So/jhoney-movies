@@ -260,9 +260,8 @@ export interface TvCast {
   original_name: string;
   popularity: number;
   profile_path: string;
-  cast_id: number;
-  character: string;
-  credit_id: string;
+  roles: { credit_id: string; character: string; episode_count: number }[];
+  total_episode_count: number;
   order: number;
 }
 
@@ -275,9 +274,9 @@ export interface TvCrew {
   original_name: string;
   popularity: number;
   profile_path: string;
-  credit_id: string;
+  jobs: { credit_id: string; job: string; episode_count: number }[];
   department: string;
-  job: string;
+  total_episode_count: number;
 }
 
 export interface TvCreditResponse {

@@ -41,11 +41,16 @@
     }
 
     .known {
-      font-size: 16px;
+      font-size: 14px;
       margin: 0;
       padding: 0;
       word-break: break-all;
       white-space: pre-wrap;
+    }
+
+    .count {
+      font-size: 14px;
+      margin-top: 5px;
     }
   }
 }

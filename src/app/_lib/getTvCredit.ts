@@ -8,7 +8,7 @@ export const getTvCredit: QueryFunction<
   const [_1, _2, _3, id] = queryKey;
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/tv/${id}/credits?language=ko-KR`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/tv/${id}/aggregate_credits?language=ko-KR`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
