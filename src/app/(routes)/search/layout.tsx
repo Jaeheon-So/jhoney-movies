@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import styles from "./layout.module.scss";
 import Navbar from "./_component/Navbar";
 
@@ -9,7 +9,9 @@ type Props = {
 const SearchLayOut = ({ children }: Props) => {
   return (
     <div className={styles.container}>
-      <Navbar />
+      <Suspense>
+        <Navbar />
+      </Suspense>
       <div className={styles.content}>{children}</div>
     </div>
   );

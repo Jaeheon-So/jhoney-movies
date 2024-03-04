@@ -7,6 +7,7 @@ import {
   dehydrate,
 } from "@tanstack/react-query";
 import React from "react";
+import SearchMovie from "./_component/SearchMovie";
 
 type Props = {
   searchParams: { q: string };
@@ -33,7 +34,7 @@ const SearchMoviePage = async ({ searchParams }: Props) => {
 
   return (
     <HydrationBoundary state={dehydratedState}>
-      SearchMoviePage
+      <SearchMovie q={searchParams.q} />
     </HydrationBoundary>
   );
 };
