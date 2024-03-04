@@ -45,7 +45,9 @@ const HomeMovieCard = ({ movie, type }: Props) => {
         </div>
         <div className={styles.content}>
           <div className={styles.title}>{newMovie.title}</div>
-          <div className={styles.date}>{FormatMDY(newMovie.release_date)}</div>
+          <div className={styles.date}>
+            {newMovie.release_date && FormatMDY(newMovie.release_date)}
+          </div>
         </div>
       </Link>
     );
@@ -76,7 +78,9 @@ const HomeMovieCard = ({ movie, type }: Props) => {
         </div>
         <div className={styles.content}>
           <div className={styles.title}>{newMovie.title}</div>
-          <div className={styles.date}>{FormatMDY(newMovie.release_date)}</div>
+          <div className={styles.date}>
+            {newMovie.release_date && FormatMDY(newMovie.release_date)}
+          </div>
         </div>
       </Link>
     );
@@ -108,7 +112,7 @@ const HomeMovieCard = ({ movie, type }: Props) => {
         <div className={styles.content}>
           <div className={styles.title}>{newMovie.name}</div>
           <div className={styles.date}>
-            {FormatMDY(newMovie.first_air_date)}
+            {newMovie.first_air_date && FormatMDY(newMovie.first_air_date)}
           </div>
         </div>
       </Link>

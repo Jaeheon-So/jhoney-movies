@@ -36,7 +36,9 @@ const DiscoverTvCard = ({ movie }: Props) => {
       </div>
       <div className={styles.content}>
         <div className={styles.title}>{movie.name}</div>
-        <div className={styles.date}>{FormatMDY(movie.first_air_date)}</div>
+        <div className={styles.date}>
+          {movie.first_air_date && FormatMDY(movie.first_air_date)}
+        </div>
       </div>
     </Link>
   );

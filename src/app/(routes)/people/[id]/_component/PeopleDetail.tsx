@@ -132,8 +132,9 @@ const PeopleDetail = ({ id, name }: Props) => {
               <div className={styles.birthWrapper}>
                 <div className={styles.birthTitle}>출생년도</div>
                 <div className={styles.birth}>
-                  {FormatMDY(detailData?.birthday || "") +
-                    `(${calculateAge(detailData?.birthday || "")}살)`}
+                  {detailData?.birthday &&
+                    FormatMDY(detailData?.birthday || "") +
+                      `(${calculateAge(detailData?.birthday || "")}살)`}
                 </div>
               </div>
               <section className={styles.section}>

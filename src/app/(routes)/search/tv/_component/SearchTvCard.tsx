@@ -1,10 +1,10 @@
-import { POSTER_BASE_URL } from "@/app/_constants/constants";
-import { PopularMovieInfo } from "@/model/Movie";
-import Image from "next/image";
 import React from "react";
-import styles from "./discoverMovieCard.module.scss";
+import styles from "./searchTvCard.module.scss";
+import { SearchTvInfo } from "@/model/Movie";
 import Link from "next/link";
+import Image from "next/image";
 import { FormatMDY } from "@/app/_utils/dayFormat";
+import { POSTER_BASE_URL } from "@/app/_constants/constants";
 import dynamic from "next/dynamic";
 
 const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
@@ -12,12 +12,12 @@ const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
 });
 
 type Props = {
-  movie: PopularMovieInfo;
+  movie: SearchTvInfo;
 };
 
-const DiscoverMovieCard = ({ movie }: Props) => {
+const SearchTvCard = ({ movie }: Props) => {
   return (
-    <Link href={`/movie/${movie.id}`} className={`${styles.card}`}>
+    <Link href={`/tv/${movie.id}`} className={`${styles.card}`}>
       <div className={styles.imgWrapper}>
         <Image
           src={
@@ -35,13 +35,13 @@ const DiscoverMovieCard = ({ movie }: Props) => {
         </div>
       </div>
       <div className={styles.content}>
-        <div className={styles.title}>{movie.title}</div>
+        <div className={styles.title}>{movie.name}</div>
         <div className={styles.date}>
-          {movie.release_date && FormatMDY(movie.release_date)}
+          {movie.first_air_date && FormatMDY(movie.first_air_date)}
         </div>
       </div>
     </Link>
   );
 };
 
-export default DiscoverMovieCard;
+export default SearchTvCard;

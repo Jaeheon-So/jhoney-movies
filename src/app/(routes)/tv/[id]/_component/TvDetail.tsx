@@ -86,7 +86,8 @@ const TvDetail = ({ id }: Props) => {
                 <div className={styles.title}>{tvDetail?.name}</div>
                 <div className={styles.rest}>
                   <div className={styles.date}>
-                    {FormatMDY(tvDetail?.first_air_date || "")}
+                    {tvDetail?.first_air_date &&
+                      FormatMDY(tvDetail.first_air_date)}
                   </div>
                   <div className={styles.genre}>
                     {tvDetail?.genres.map((genre) => genre.name).join(", ")}

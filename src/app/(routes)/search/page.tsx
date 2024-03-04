@@ -1,6 +1,5 @@
 import { getSearchMovie } from "@/app/_lib/getSearchMovie";
 import { getSearchPeople } from "@/app/_lib/getSearchPeople";
-import { getSearchTv } from "@/app/_lib/getSearchTv";
 import {
   HydrationBoundary,
   QueryClient,
@@ -18,11 +17,6 @@ const SearchMoviePage = async ({ searchParams }: Props) => {
   await queryClient.prefetchInfiniteQuery({
     queryKey: ["movies", "search", "movie", searchParams.q],
     queryFn: getSearchMovie,
-    initialPageParam: 1,
-  });
-  await queryClient.prefetchInfiniteQuery({
-    queryKey: ["movies", "search", "tv", searchParams.q],
-    queryFn: getSearchTv,
     initialPageParam: 1,
   });
   await queryClient.prefetchInfiniteQuery({

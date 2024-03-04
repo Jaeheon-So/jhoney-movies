@@ -86,7 +86,8 @@ const MovieDetail = ({ id }: Props) => {
                 <div className={styles.title}>{movieDetail?.title}</div>
                 <div className={styles.rest}>
                   <div className={styles.date}>
-                    {FormatMDY(movieDetail?.release_date || "")}
+                    {movieDetail?.release_date &&
+                      FormatMDY(movieDetail.release_date)}
                   </div>
                   <div className={styles.genre}>
                     {movieDetail?.genres.map((genre) => genre.name).join(", ")}

@@ -36,7 +36,9 @@ const SearchMovieCard = ({ movie }: Props) => {
       </div>
       <div className={styles.content}>
         <div className={styles.title}>{movie.title}</div>
-        <div className={styles.date}>{FormatMDY(movie.release_date)}</div>
+        <div className={styles.date}>
+          {movie.release_date && FormatMDY(movie.release_date)}
+        </div>
       </div>
     </Link>
   );
