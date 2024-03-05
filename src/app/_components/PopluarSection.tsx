@@ -8,10 +8,16 @@ import HomeMovieCard from "./HomeMovieCard";
 import { getPopularMovies } from "../_lib/getPopularMovies";
 import { getPopularTv } from "../_lib/getPopularTv";
 import { PopularMovieInfo, PopularTvInfo } from "@/model/Movie";
+import HomeError from "./HomeError";
 
 const PopluarSection = () => {
   const [mediaType, setMediaType] = useState<"movie" | "tv">("movie");
-  const { data: movieData, isLoading: isLoadingMovie } = useQuery({
+  const {
+    data: movieData,
+    isLoading: isLoadingMovie,
+    isError: isErrorMovie,
+    refetch: refetchMovie,
+  } = useQuery({
     queryKey: ["movies", "popular", "movie"],
     queryFn: getPopularMovies,
     staleTime: 60 * 1000 * 5,
@@ -19,7 +25,12 @@ const PopluarSection = () => {
     enabled: mediaType === "movie",
   });
 
-  const { data: tvData, isLoading: isLoadingTv } = useQuery({
+  const {
+    data: tvData,
+    isLoading: isLoadingTv,
+    isError: isErrorTv,
+    refetch: refetchTv,
+  } = useQuery({
     queryKey: ["movies", "popular", "tv"],
     queryFn: getPopularTv,
     staleTime: 60 * 1000 * 5,
@@ -59,15 +70,23 @@ const PopluarSection = () => {
       </div>
       {mediaType === "movie" ? (
         <FadeInOut isLoading={isLoadingMovie}>
-          {movieData?.results.map((movie: PopularMovieInfo, index: number) => (
-            <HomeMovieCard key={index} movie={movie} type={"popularM"} />
-          ))}
+          {isErrorMovie ? (
+            <HomeError message="영화 불러오기 실패" refetch={refetchMovie} />
+          ) : (
+            movieData?.results.map((movie: PopularMovieInfo, index: number) => (
+              <HomeMovieCard key={index} movie={movie} type={"popularM"} />
+            ))
+          )}
         </FadeInOut>
       ) : (
         <FadeInOut isLoading={isLoadingTv}>
-          {tvData?.results.map((movie: PopularTvInfo, index: number) => (
-            <HomeMovieCard key={index} movie={movie} type={"popularT"} />
-          ))}
+          {isErrorTv ? (
+            <HomeError message="TV 불러오기 실패" refetch={refetchTv} />
+          ) : (
+            tvData?.results.map((movie: PopularTvInfo, index: number) => (
+              <HomeMovieCard key={index} movie={movie} type={"popularT"} />
+            ))
+          )}
         </FadeInOut>
       )}
     </section>
