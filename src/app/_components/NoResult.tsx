@@ -8,7 +8,9 @@ type Props = {
 const NoResult = ({ q }: Props) => {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.message}>"{q}"에 관련된 검색 결과가 없습니다.</div>
+      <div className={styles.message}>
+        {`"${q}"`}에 관련된 검색 결과가 없습니다.
+      </div>
     </div>
   );
 };

@@ -108,6 +108,10 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media all and (max-width: 585px) {
+    margin-top: 110px;
+  }
 }
 
 .wrapper {
