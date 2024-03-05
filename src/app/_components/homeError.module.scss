@@ -1,0 +1,27 @@
+.errorWrapper {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+
+  .message {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .retry {
+    padding: 10px 15px;
+    background-color: #e9edf0;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+
+    &:hover {
+      color: #fff;
+      background-color: #1cceb5;
+    }
+  }
+}

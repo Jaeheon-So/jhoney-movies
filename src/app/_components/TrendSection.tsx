@@ -7,10 +7,11 @@ import { useQuery } from "@tanstack/react-query";
 import { getTrendMovies } from "../_lib/getTrendMovies";
 import HomeMovieCard from "./HomeMovieCard";
 import { TrendMovieInfo } from "@/model/Movie";
+import HomeError from "./HomeError";
 
 const TrendSection = () => {
   const [dateType, setDateType] = useState<"day" | "week">("day");
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["movies", "trend", dateType],
     queryFn: getTrendMovies,
     staleTime: 60 * 1000 * 5,
@@ -48,9 +49,13 @@ const TrendSection = () => {
         </div>
       </div>
       <FadeInOut isLoading={isLoading}>
-        {data?.results.map((movie: TrendMovieInfo, index: number) => (
-          <HomeMovieCard key={index} movie={movie} type={"trend"} />
-        ))}
+        {isError ? (
+          <HomeError message="트렌드 불러오기 실패" refetch={refetch} />
+        ) : (
+          data?.results.map((movie: TrendMovieInfo, index: number) => (
+            <HomeMovieCard key={index} movie={movie} type={"trend"} />
+          ))
+        )}
       </FadeInOut>
     </section>
   );
