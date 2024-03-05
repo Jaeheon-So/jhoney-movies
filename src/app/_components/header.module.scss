@@ -20,7 +20,11 @@
   }
 
   &.up {
-    top: -110px;
+    @media all and (max-width: 585px) {
+      //브라우저 창 width보다 작아지는 순간부터 적용
+      top: -110px;
+    }
+    top: -64px;
   }
 
   a {
