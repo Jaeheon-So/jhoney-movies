@@ -8,6 +8,7 @@ import { getSearchPeople } from "@/app/_lib/getSearchPeople";
 import SearchPeopleCard from "./SearchPeopleCard";
 import { SearchPeopleInfo } from "@/model/People";
 import HomeError from "@/app/_components/HomeError";
+import NoResult from "@/app/_components/NoResult";
 
 type Props = {
   q: string;
@@ -22,6 +23,8 @@ const SearchPeople = ({ q }: Props) => {
       <div className={styles.container}>
         {isError ? (
           <HomeError message="검색 오류" refetch={refetch} />
+        ) : data?.pages[0].results.length === 0 ? (
+          <NoResult q={q} />
         ) : (
           data?.pages.map((page, index) => (
             <Fragment key={index}>

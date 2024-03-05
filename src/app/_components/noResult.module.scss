@@ -1,0 +1,16 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .message {
+    margin-top: 100px;
+    font-size: 18px;
+
+    @media all and (max-width: 480px) {
+      //브라우저 창 width보다 작아지는 순간부터 적용
+      font-size: 16px;
+    }
+  }
+}

@@ -8,6 +8,7 @@ import LoadingCircle from "@/app/_components/LoadingCircle";
 import SearchMovieCard from "./SearchMovieCard";
 import { SearchMovieInfo } from "@/model/Movie";
 import HomeError from "@/app/_components/HomeError";
+import NoResult from "@/app/_components/NoResult";
 
 type Props = {
   q: string;
@@ -22,6 +23,8 @@ const SearchMovie = ({ q }: Props) => {
       <div className={styles.container}>
         {isError ? (
           <HomeError message="검색 오류" refetch={refetch} />
+        ) : data?.pages[0].results.length === 0 ? (
+          <NoResult q={q} />
         ) : (
           data?.pages.map((page, index) => (
             <Fragment key={index}>
