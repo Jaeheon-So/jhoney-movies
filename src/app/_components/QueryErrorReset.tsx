@@ -11,28 +11,29 @@ type Props = {
 
 const QueryErrorReset = ({ children, message }: Props) => {
   return (
-    // <QueryErrorResetBoundary>
-    // {({ reset }) => (
-    <ErrorBoundary
-      fallbackRender={({ resetErrorBoundary }) => (
-        <div>
-          <h2>{message}</h2>
-          <button
-            onClick={
-              // Attempt to recover by trying to re-render the segment
-              () => resetErrorBoundary()
-            }
-          >
-            다시 시도
-          </button>
-        </div>
+    <QueryErrorResetBoundary>
+      {({ reset }) => (
+        <ErrorBoundary
+          fallbackRender={({ resetErrorBoundary }) => (
+            <div>
+              <h2>{message}</h2>
+              <button
+                onClick={
+                  // Attempt to recover by trying to re-render the segment
+                  () => resetErrorBoundary()
+                }
+              >
+                다시 시도
+              </button>
+            </div>
+          )}
+          onReset={reset}
+          onError={() => {}}
+        >
+          {children}
+        </ErrorBoundary>
       )}
-      // onReset={reset}
-      onError={() => {}}
-    >
-      {children}
-    </ErrorBoundary>
-    // )}
+    </QueryErrorResetBoundary>
   );
 };
 

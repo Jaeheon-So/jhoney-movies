@@ -22,7 +22,7 @@ const PopularMoviePage = async ({ searchParams }: Props) => {
 
   return (
     <HydrationBoundary state={dehydratedState}>
-      <DiscoverPMovie searchParams={searchParams} />;
+      <DiscoverPMovie searchParams={searchParams} />
     </HydrationBoundary>
   );
 };
