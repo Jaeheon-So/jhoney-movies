@@ -90,7 +90,7 @@ const TvDetail = ({ id, session }: Props) => {
           queryKey: ["auth", "favor", session?.user?.id || ""],
           data: [...value],
         };
-        const shallow = [...value, { ...tvDetail, media_type: "movie" }];
+        const shallow = [...value, { ...tvDetail, media_type: "tv" }];
         queryClient.setQueryData(
           ["auth", "favor", session?.user?.id || ""],
           shallow
