@@ -2,7 +2,12 @@
 
 import React from "react";
 import styles from "./movieDetail.module.scss";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  QueryKey,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 import { getMovieDetail } from "@/app/_lib/getMovieDetail";
 import Image from "next/image";
 import {
@@ -24,6 +29,7 @@ import { getAllFavorList } from "@/app/_lib/getAllFavorList";
 import { addFavorList } from "@/app/_lib/addFavorList";
 import { DetailMovieResult, DetailTvResult } from "@/model/List";
 import { removeFavorList } from "@/app/_lib/removeFavorList";
+import { useRouter } from "next/navigation";
 
 const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
   ssr: false,
@@ -35,6 +41,7 @@ type Props = {
 };
 
 const MovieDetail = ({ id, session }: Props) => {
+  const router = useRouter();
   const queryClient = useQueryClient();
   const { data: movieDetail } = useQuery({
     queryKey: ["movies", "detail", "movie", id],
@@ -73,30 +80,86 @@ const MovieDetail = ({ id, session }: Props) => {
 
   const addFavor = useMutation({
     mutationFn: addFavorList,
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: ["auth"],
-      });
+    onMutate: () => {
+      const value: (DetailMovieResult | DetailTvResult)[] | undefined =
+        queryClient.getQueryData(["auth", "favor", session?.user?.id || ""]);
+
+      let previousData = {} as { queryKey: QueryKey; data: any };
+
+      if (value !== undefined) {
+        previousData = {
+          queryKey: ["auth", "favor", session?.user?.id || ""],
+          data: [...value],
+        };
+        const shallow = [...value, { ...movieDetail, media_type: "movie" }];
+        queryClient.setQueryData(
+          ["auth", "favor", session?.user?.id || ""],
+          shallow
+        );
+      }
+      alert("관심목록에 추가했습니다.");
+      return { previousData };
     },
-    onError: (error) => {
+    onError: (error, _, context) => {
       console.error(error);
       alert("관심목록 추가 중 에러가 발생했습니다.");
+
+      queryClient.setQueryData(
+        context?.previousData.queryKey!,
+        context?.previousData.data
+      );
+    },
+    onSettled: async () => {
+      // await queryClient.invalidateQueries({
+      //     queryKey: ["auth"],
+      // });
     },
   });
+
   const removeFavor = useMutation({
     mutationFn: removeFavorList,
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: ["auth"],
-      });
+    onMutate: () => {
+      const value: (DetailMovieResult | DetailTvResult)[] | undefined =
+        queryClient.getQueryData(["auth", "favor", session?.user?.id || ""]);
+
+      let previousData = {} as { queryKey: QueryKey; data: any };
+
+      if (value !== undefined) {
+        previousData = {
+          queryKey: ["auth", "favor", session?.user?.id || ""],
+          data: [...value],
+        };
+        const shallow = value.filter((v) => v.id !== movieDetail?.id);
+        queryClient.setQueryData(
+          ["auth", "favor", session?.user?.id || ""],
+          shallow
+        );
+      }
+      alert("관심목록에서 삭제했습니다.");
+      return { previousData };
     },
-    onError: (error) => {
+    onError: (error, _, context) => {
       console.error(error);
       alert("관심목록 삭제 중 에러가 발생했습니다.");
+
+      queryClient.setQueryData(
+        context?.previousData.queryKey!,
+        context?.previousData.data
+      );
+    },
+    onSettled: async () => {
+      // await queryClient.invalidateQueries({
+      //   queryKey: ["auth"],
+      // });
     },
   });
 
   const toggleFavor = () => {
+    if (!session?.user) {
+      if (confirm("로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?"))
+        return router.push(`/login?callbackUrl=/movie/${movieDetail?.id}`);
+      else return;
+    }
     const arg = {
       list_id: session?.user?.id || "",
       detail_type: "movie",
