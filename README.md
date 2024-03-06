@@ -19,3 +19,4 @@
 - 배열 length 0인 경우 처리!!
 - search page 의 RedirectSearch의 useEffect 고민
 - search page의 layout count 고민(에러)
+- login 후 callbackurl 고민

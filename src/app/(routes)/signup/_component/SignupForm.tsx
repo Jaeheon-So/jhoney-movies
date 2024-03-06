@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./signupForm.module.scss";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
@@ -8,6 +8,8 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
 import { onSubmit } from "@/app/_lib/signup";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 type Props = {};
 
@@ -17,6 +19,7 @@ const SignupForm = ({}: Props) => {
   const [state, formAction] = useFormState(onSubmit, {
     message: "",
   });
+  const router = useRouter();
   const { pending } = useFormStatus();
   const formData = new FormData();
 
@@ -64,6 +67,26 @@ const SignupForm = ({}: Props) => {
       } else return "";
     } else return "";
   };
+
+  const checkAutoLogin = async () => {
+    if (confirm("회원가입 완료.\n바로 로그인 하시겠습니까?")) {
+      const res = await signIn("credentials", {
+        username: formData.get("id"),
+        password: formData.get("password"),
+        callbackUrl: "/mypage",
+      });
+      if (!res?.error) alert("로그인 성공");
+    } else {
+      router.replace("/");
+    }
+  };
+
+  useEffect(() => {
+    if (state?.message === "success") {
+      console.log("ji");
+      checkAutoLogin();
+    }
+  }, [state?.message]);
 
   return (
     <form className={styles.container} action={formAction}>

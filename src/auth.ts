@@ -12,10 +12,6 @@ export const {
     newUser: "/signup",
   },
   callbacks: {
-    async signIn({ user, account }) {
-      console.log("callback signIn:", user);
-      return true;
-    },
     async session({ session, token }) {
       if (session.user.image) {
         const res = await fetch(
