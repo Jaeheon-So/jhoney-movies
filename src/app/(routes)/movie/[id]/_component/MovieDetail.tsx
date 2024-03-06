@@ -2,7 +2,7 @@
 
 import React from "react";
 import styles from "./movieDetail.module.scss";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getMovieDetail } from "@/app/_lib/getMovieDetail";
 import Image from "next/image";
 import {
@@ -21,6 +21,9 @@ import FadeInOut from "@/app/_components/FadeInOut";
 import CreditCard from "./CreditCard";
 import { Session } from "next-auth";
 import { getAllFavorList } from "@/app/_lib/getAllFavorList";
+import { addFavorList } from "@/app/_lib/addFavorList";
+import { DetailMovieResult, DetailTvResult } from "@/model/List";
+import { removeFavorList } from "@/app/_lib/removeFavorList";
 
 const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
   ssr: false,
@@ -32,6 +35,7 @@ type Props = {
 };
 
 const MovieDetail = ({ id, session }: Props) => {
+  const queryClient = useQueryClient();
   const { data: movieDetail } = useQuery({
     queryKey: ["movies", "detail", "movie", id],
     queryFn: getMovieDetail,
@@ -67,12 +71,39 @@ const MovieDetail = ({ id, session }: Props) => {
     return `${Math.floor(min / 60)}h ${min % 60}m`;
   };
 
-  const addFavor = useMutation({});
-  const removeFavor = useMutation({});
+  const addFavor = useMutation({
+    mutationFn: addFavorList,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: ["auth"],
+      });
+    },
+    onError: (error) => {
+      console.error(error);
+      alert("관심목록 추가 중 에러가 발생했습니다.");
+    },
+  });
+  const removeFavor = useMutation({
+    mutationFn: removeFavorList,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: ["auth"],
+      });
+    },
+    onError: (error) => {
+      console.error(error);
+      alert("관심목록 삭제 중 에러가 발생했습니다.");
+    },
+  });
 
   const toggleFavor = () => {
-    if (isFavor) addFavor.mutate;
-    else removeFavor.mutate();
+    const arg = {
+      list_id: session?.user?.id || "",
+      detail_type: "movie",
+      detail_id: movieDetail?.id || 0,
+    };
+    if (!isFavor) addFavor.mutate(arg);
+    else removeFavor.mutate(arg);
   };
 
   return (

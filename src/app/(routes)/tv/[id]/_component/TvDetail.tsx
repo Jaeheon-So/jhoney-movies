@@ -5,7 +5,7 @@ import { getTvCredit } from "@/app/_lib/getTvCredit";
 import { getTvDetail } from "@/app/_lib/getTvDetail";
 import { getTvTrailers } from "@/app/_lib/getTvTrailers";
 import { TvCast, TvTrailerResponse } from "@/model/Movie";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,6 +20,10 @@ import { IoMdHeart } from "react-icons/io";
 import { FaPlay } from "react-icons/fa";
 import CreditCard from "./CreditCard";
 import SeasonCard from "./SeasonCard";
+import { Session } from "next-auth";
+import { getAllFavorList } from "@/app/_lib/getAllFavorList";
+import { addFavorList } from "@/app/_lib/addFavorList";
+import { removeFavorList } from "@/app/_lib/removeFavorList";
 
 const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
   ssr: false,
@@ -27,9 +31,11 @@ const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
 
 type Props = {
   id: string;
+  session: Session | null;
 };
 
-const TvDetail = ({ id }: Props) => {
+const TvDetail = ({ id, session }: Props) => {
+  const queryClient = useQueryClient();
   const { data: tvDetail } = useQuery({
     queryKey: ["movies", "detail", "tv", id],
     queryFn: getTvDetail,
@@ -48,12 +54,54 @@ const TvDetail = ({ id }: Props) => {
     staleTime: 60 * 1000 * 5,
     gcTime: 60 * 1000 * 5,
   });
-
+  const { data: favorData } = useQuery({
+    queryKey: ["auth", "favor", session?.user?.id || ""],
+    queryFn: getAllFavorList,
+    staleTime: 60 * 1000 * 5,
+    gcTime: 60 * 1000 * 5,
+    enabled: !!session?.user,
+  });
   const index = trailerData?.results?.findIndex((t) => t.type === "Trailer");
+  const isFavor = favorData?.find((f) => f.id === Number(id));
 
   const changeMToHM = (min: number | undefined) => {
     if (min === undefined) return "";
     return `${Math.floor(min / 60)}h ${min % 60}m`;
+  };
+
+  const addFavor = useMutation({
+    mutationFn: addFavorList,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: ["auth"],
+      });
+    },
+    onError: (error) => {
+      console.error(error);
+      alert("관심목록 추가 중 에러가 발생했습니다.");
+    },
+  });
+  const removeFavor = useMutation({
+    mutationFn: removeFavorList,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: ["auth"],
+      });
+    },
+    onError: (error) => {
+      console.error(error);
+      alert("관심목록 삭제 중 에러가 발생했습니다.");
+    },
+  });
+
+  const toggleFavor = () => {
+    const arg = {
+      list_id: session?.user?.id || "",
+      detail_type: "tv",
+      detail_id: tvDetail?.id || 0,
+    };
+    if (!isFavor) addFavor.mutate(arg);
+    else removeFavor.mutate(arg);
   };
 
   return (
@@ -107,7 +155,10 @@ const TvDetail = ({ id }: Props) => {
                     size={60}
                   />
                 </div>
-                <div className={`${styles.svgWrapper} ${styles.active}`}>
+                <div
+                  className={`${styles.svgWrapper} ${isFavor && styles.active}`}
+                  onClick={toggleFavor}
+                >
                   <IoMdHeart />
                 </div>
                 {index && index >= 0 ? (
