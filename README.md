@@ -23,3 +23,5 @@
 - header mypage avatar 이미지 고민
 - mutation optimistic update 고민
 - alert, confirm 대신 모달 혹은 toast 띄우기
+- 소셜 로그인 적용
+- mypage 완성

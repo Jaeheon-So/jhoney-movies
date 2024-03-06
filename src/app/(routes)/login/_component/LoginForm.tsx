@@ -1,14 +1,15 @@
 "use client";
 
-import React, { FormEvent, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styles from "./loginForm.module.scss";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { onSubmit } from "@/app/_lib/login";
+import { signIn } from "next-auth/react";
 
 type Props = {};
 
@@ -21,7 +22,6 @@ const LoginForm = ({}: Props) => {
     message: "",
     callbackUrl: callbackUrl,
   });
-  const router = useRouter();
   const { pending } = useFormStatus();
 
   const showMessage = (messasge: string) => {
@@ -73,6 +73,12 @@ const LoginForm = ({}: Props) => {
     } else return "";
   };
 
+  const onClick = (provider: "google" | "github" | "kakao") => {
+    signIn(provider, {
+      callbackUrl: callbackUrl || "/mypage",
+    });
+  };
+
   return (
     <form className={styles.container} action={formAction}>
       <div className={styles.logo}>로그인</div>
@@ -106,13 +112,19 @@ const LoginForm = ({}: Props) => {
       </Link>
       <div className={styles.tagline}>소셜 계정으로 간편 로그인</div>
       <div className={styles.socialWrapper}>
-        <div className={`${styles.svgWrapper} ${styles.google}`}>
+        <div
+          className={`${styles.svgWrapper} ${styles.google}`}
+          onClick={() => onClick("google")}
+        >
           <FcGoogle />
         </div>
-        <div className={`${styles.svgWrapper} ${styles.kakao}`}>
+        <div
+          className={`${styles.svgWrapper} ${styles.kakao}`}
+          onClick={() => onClick("kakao")}
+        >
           <RiKakaoTalkFill />
         </div>
-        <div className={styles.svgWrapper}>
+        <div className={styles.svgWrapper} onClick={() => onClick("github")}>
           <FaGithub />
         </div>
       </div>

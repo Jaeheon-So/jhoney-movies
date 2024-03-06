@@ -6,6 +6,7 @@ import KakaoProvider from "next-auth/providers/kakao";
 import { ListResponse } from "./model/List";
 
 export default {
+  trustHost: true,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID as string,

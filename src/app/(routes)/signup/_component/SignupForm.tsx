@@ -81,9 +81,14 @@ const SignupForm = ({}: Props) => {
     }
   };
 
+  const onClick = (provider: "google" | "github" | "kakao") => {
+    signIn(provider, {
+      callbackUrl: "/mypage",
+    });
+  };
+
   useEffect(() => {
     if (state?.message === "success") {
-      console.log("ji");
       checkAutoLogin();
     }
   }, [state?.message]);
@@ -121,13 +126,19 @@ const SignupForm = ({}: Props) => {
       </Link>
       <div className={styles.tagline}>소셜 계정으로 간편 가입</div>
       <div className={styles.socialWrapper}>
-        <div className={`${styles.svgWrapper} ${styles.google}`}>
+        <div
+          className={`${styles.svgWrapper} ${styles.google}`}
+          onClick={() => onClick("google")}
+        >
           <FcGoogle />
         </div>
-        <div className={`${styles.svgWrapper} ${styles.kakao}`}>
+        <div
+          className={`${styles.svgWrapper} ${styles.kakao}`}
+          onClick={() => onClick("kakao")}
+        >
           <RiKakaoTalkFill />
         </div>
-        <div className={styles.svgWrapper}>
+        <div className={styles.svgWrapper} onClick={() => onClick("github")}>
           <FaGithub />
         </div>
       </div>
