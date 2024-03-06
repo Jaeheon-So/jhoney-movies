@@ -2,7 +2,7 @@
 
 import React from "react";
 import styles from "./movieDetail.module.scss";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { getMovieDetail } from "@/app/_lib/getMovieDetail";
 import Image from "next/image";
 import {
@@ -19,6 +19,8 @@ import { getMovieCredit } from "@/app/_lib/getMovieCredit";
 import dynamic from "next/dynamic";
 import FadeInOut from "@/app/_components/FadeInOut";
 import CreditCard from "./CreditCard";
+import { Session } from "next-auth";
+import { getAllFavorList } from "@/app/_lib/getAllFavorList";
 
 const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
   ssr: false,
@@ -26,9 +28,10 @@ const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
 
 type Props = {
   id: string;
+  session: Session | null;
 };
 
-const MovieDetail = ({ id }: Props) => {
+const MovieDetail = ({ id, session }: Props) => {
   const { data: movieDetail } = useQuery({
     queryKey: ["movies", "detail", "movie", id],
     queryFn: getMovieDetail,
@@ -47,13 +50,29 @@ const MovieDetail = ({ id }: Props) => {
     staleTime: 60 * 1000 * 5,
     gcTime: 60 * 1000 * 5,
   });
+  const { data: favorData } = useQuery({
+    queryKey: ["auth", "favor", session?.user?.id || ""],
+    queryFn: getAllFavorList,
+    staleTime: 60 * 1000 * 5,
+    gcTime: 60 * 1000 * 5,
+    enabled: !!session?.user,
+  });
 
   const director = creditData?.crew.find((c) => c.job === "Director");
   const index = trailerData?.results?.findIndex((t) => t.type === "Trailer");
+  const isFavor = favorData?.find((f) => f.id === Number(id));
 
   const changeMToHM = (min: number | undefined) => {
     if (min === undefined) return "";
     return `${Math.floor(min / 60)}h ${min % 60}m`;
+  };
+
+  const addFavor = useMutation({});
+  const removeFavor = useMutation({});
+
+  const toggleFavor = () => {
+    if (isFavor) addFavor.mutate;
+    else removeFavor.mutate();
   };
 
   return (
@@ -104,7 +123,10 @@ const MovieDetail = ({ id }: Props) => {
                     size={60}
                   />
                 </div>
-                <div className={`${styles.svgWrapper} ${styles.active}`}>
+                <div
+                  className={`${styles.svgWrapper} ${isFavor && styles.active}`}
+                  onClick={toggleFavor}
+                >
                   <IoMdHeart />
                 </div>
                 {index && index >= 0 ? (
