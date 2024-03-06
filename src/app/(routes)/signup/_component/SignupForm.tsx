@@ -1,22 +1,97 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import styles from "./signupForm.module.scss";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import Link from "next/link";
+import { useFormState, useFormStatus } from "react-dom";
+import { onSubmit } from "@/app/_lib/signup";
 
 type Props = {};
 
 const SignupForm = ({}: Props) => {
+  const idRef = useRef<HTMLInputElement>(null);
+  const pwRef = useRef<HTMLInputElement>(null);
+  const [state, formAction] = useFormState(onSubmit, {
+    message: "",
+  });
+  const { pending } = useFormStatus();
+  const formData = new FormData();
+
+  const showMessage = (messasge: string) => {
+    if (messasge === "no_id") {
+      idRef.current?.focus();
+      return "아이디를 입력하세요.";
+    }
+    if (messasge === "id_pattern") {
+      idRef.current?.focus();
+      return "6자 이상 입력하세요";
+    }
+    if (messasge === "no_password") {
+      pwRef.current?.focus();
+      return "비밀번호를 입력하세요.";
+    }
+    if (messasge === "pw_pattern") {
+      pwRef.current?.focus();
+      return "6자 이상 입력하세요";
+    }
+    if (messasge === "user_exist") {
+      idRef.current?.focus();
+      return "이미 사용 중인 아이디입니다.";
+    }
+    if (messasge === "success") {
+      formData.append("id", state?.id as string);
+      formData.append("password", state?.password as string);
+      return null;
+    }
+    return messasge;
+  };
+
+  const setClassName = (label: string, message: string) => {
+    if (label === "id") {
+      if (
+        message === "no_id" ||
+        message === "user_exist" ||
+        message === "id_pattern"
+      ) {
+        return `${styles.errorLabel}`;
+      } else return "";
+    } else if (label === "pw") {
+      if (message === "no_password" || message === "pw_pattern") {
+        return `${styles.errorLabel}`;
+      } else return "";
+    } else return "";
+  };
+
   return (
-    <form className={styles.container}>
+    <form className={styles.container} action={formAction}>
       <div className={styles.logo}>회원가입</div>
       <div className={styles.inputWrapper}>
-        <input placeholder="아이디" />
-        <input placeholder="비밀번호" />
+        <input
+          id="id"
+          name="id"
+          className={setClassName("id", state?.message!)}
+          placeholder="아이디(6자 이상)"
+          ref={idRef}
+          required
+        />
+        <input
+          id="password"
+          name="password"
+          type="password"
+          className={setClassName("pw", state?.message!)}
+          placeholder="비밀번호(6자 이상)"
+          ref={pwRef}
+          required
+        />
       </div>
+      <div className={styles.error}>{showMessage(state?.message || "")}</div>
       <div className={styles.btnLogin}>
-        <button type="submit">회원가입</button>
+        <button type="submit" disabled={pending}>
+          회원가입
+        </button>
       </div>
       <Link href={"/login"} className={styles.signup}>
         이미 가입한 계정이 있나요?
