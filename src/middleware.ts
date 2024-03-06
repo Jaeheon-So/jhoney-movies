@@ -15,6 +15,7 @@ export default auth((req) => {
   }
 
   if (!isLogin && pathname === "/mypage") {
+    console.log("qwe: ", isLogin);
     return Response.redirect(
       new URL(`/login?callbackUrl=${encodedCallbackUrl}`, req.nextUrl)
     );

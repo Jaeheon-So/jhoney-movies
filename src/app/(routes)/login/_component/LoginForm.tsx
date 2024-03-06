@@ -1,22 +1,25 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { FormEvent, useEffect, useRef } from "react";
 import styles from "./loginForm.module.scss";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { onSubmit } from "@/app/_lib/login";
 
 type Props = {};
 
 const LoginForm = ({}: Props) => {
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl");
   const idRef = useRef<HTMLInputElement>(null);
   const pwRef = useRef<HTMLInputElement>(null);
   const [state, formAction] = useFormState(onSubmit, {
     message: "",
+    callbackUrl: callbackUrl,
   });
   const router = useRouter();
   const { pending } = useFormStatus();
@@ -45,9 +48,6 @@ const LoginForm = ({}: Props) => {
     if (messasge === "pw_incorrect") {
       pwRef.current?.focus();
       return "비밀번호가 일치하지 않습니다.";
-    }
-    if (messasge === "success") {
-      router.replace("/mypage");
     }
     return null;
   };

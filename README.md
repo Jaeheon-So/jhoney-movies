@@ -20,3 +20,4 @@
 - search page 의 RedirectSearch의 useEffect 고민
 - search page의 layout count 고민(에러)
 - login 후 callbackurl 고민
+- header mypage avatar 이미지 고민
