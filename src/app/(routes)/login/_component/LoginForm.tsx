@@ -20,7 +20,7 @@ const LoginForm = ({}: Props) => {
   const pwRef = useRef<HTMLInputElement>(null);
   const [state, formAction] = useFormState(onSubmit, {
     message: "",
-    callbackUrl: callbackUrl,
+    callbackUrl: callbackUrl || "/mypage",
   });
   const { pending } = useFormStatus();
 

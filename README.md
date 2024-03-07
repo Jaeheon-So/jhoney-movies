@@ -25,3 +25,4 @@
 - alert, confirm 대신 모달 혹은 toast 띄우기
 - 소셜 로그인 적용
 - mypage 완성
+- 회원탈퇴 기능

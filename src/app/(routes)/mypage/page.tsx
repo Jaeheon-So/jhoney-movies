@@ -4,7 +4,7 @@ import React from "react";
 const MyMoviePage = async () => {
   const session = await auth();
 
-  return <div>{JSON.stringify(session)}</div>;
+  return <div>MyMoviePage</div>;
 };
 
 export default MyMoviePage;
