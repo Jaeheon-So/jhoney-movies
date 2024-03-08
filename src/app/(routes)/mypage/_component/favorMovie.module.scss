@@ -2,4 +2,31 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  .noFavor {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    align-items: center;
+    margin-top: 70px;
+    font-size: 18px;
+
+    @media all and (max-width: 480px) {
+      //브라우저 창 width가 768px보다 작아지는 순간부터 적용
+      margin-top: 40px;
+    }
+
+    .go {
+      cursor: pointer;
+      transition: 0.5s;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #e3e3e3;
+
+      &:hover {
+        color: #1cceb5;
+      }
+    }
+  }
 }

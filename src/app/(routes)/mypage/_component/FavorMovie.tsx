@@ -8,6 +8,7 @@ import { Session } from "next-auth";
 import FavorMovieCard from "./FavorMovieCard";
 import { DetailMovieResult } from "@/model/List";
 import { useFavorFilterStore } from "@/app/_store/favorFilter";
+import Link from "next/link";
 
 type Props = {
   session: Session | null;
@@ -46,6 +47,19 @@ const FavorMovie = ({ session }: Props) => {
         return filteredFavor.sort((a, b) => a.vote_average - b.vote_average);
     }
   };
+
+  if (sortFavor().length === 0) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.noFavor}>
+          <div>관심 영화 목록이 없습니다.</div>
+          <Link href={"/movie?sort_by=popularity.desc"} className={styles.go}>
+            추가하러 가기
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>

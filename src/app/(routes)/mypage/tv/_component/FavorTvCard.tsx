@@ -64,7 +64,7 @@ const FavorTvCard = ({ tv, session }: Props) => {
     e.preventDefault();
     const arg = {
       list_id: session?.user?.id || "",
-      detail_type: "movie",
+      detail_type: "tv",
       detail_id: tv?.id || 0,
     };
 
