@@ -1,13 +1,12 @@
 .container {
   width: 100%;
-  border: 1px solid red;
   display: flex;
   justify-content: center;
   gap: 30px;
   padding: 20px;
   min-height: 546px;
 
-  @media all and (max-width: 585px) {
+  @media all and (max-width: 768px) {
     flex-direction: column;
   }
 
@@ -19,7 +18,7 @@
     width: 22%;
     min-width: 240px;
 
-    @media all and (max-width: 585px) {
+    @media all and (max-width: 768px) {
       width: 100%;
       min-width: none;
     }
@@ -29,7 +28,7 @@
       flex-direction: column;
       gap: 20px;
 
-      @media all and (max-width: 585px) {
+      @media all and (max-width: 768px) {
         flex-direction: row;
         align-items: center;
       }
@@ -44,7 +43,7 @@
         align-items: center;
         max-width: 300px;
 
-        @media all and (max-width: 585px) {
+        @media all and (max-width: 768px) {
           max-width: 80px;
         }
 
@@ -53,7 +52,7 @@
           //   height: 100%;
           max-width: 300px;
 
-          @media all and (max-width: 585px) {
+          @media all and (max-width: 768px) {
             max-width: 80px;
           }
         }
@@ -100,33 +99,131 @@
   .right {
     flex-grow: 1;
 
-    .nav {
+    .navWrapper {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      border-radius: 8px;
-      border: 1px solid #e3e3e3;
-      overflow: hidden;
 
-      .li {
-        cursor: pointer;
+      .nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        border: 1px solid #e3e3e3;
+        overflow: hidden;
         width: 50%;
-        text-align: center;
-        padding: 10px;
-        transition: 0.5s;
-        color: #424242;
-        font-weight: 600;
-        font-size: 16px;
 
-        &.active {
-          color: #fff;
-          background-color: #1cceb5;
+        @media all and (max-width: 480px) {
+          //브라우저 창 width가 768px보다 작아지는 순간부터 적용
+          width: 60%;
+        }
+
+        .li {
+          cursor: pointer;
+          width: 50%;
+          text-align: center;
+          padding: 10px;
+          transition: 0.5s;
+          color: #424242;
+          font-weight: 600;
+          font-size: 16px;
+
+          @media all and (max-width: 480px) {
+            //브라우저 창 width가 768px보다 작아지는 순간부터 적용
+            font-size: 14px;
+          }
+
+          &.active {
+            color: #fff;
+            background-color: #1cceb5;
+          }
+        }
+      }
+
+      .sortContainer {
+        border-radius: 8px;
+        // overflow: hidden;
+        border: 1px solid #e3e3e3;
+        position: relative;
+        background-color: #fff;
+        cursor: pointer;
+        min-width: 125px;
+
+        @media all and (max-width: 480px) {
+          //브라우저 창 width가 768px보다 작아지는 순간부터 적용
+          min-width: 103px;
+        }
+
+        .sortWrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 5px;
+          padding: 10px;
+
+          @media all and (max-width: 480px) {
+            //브라우저 창 width가 768px보다 작아지는 순간부터 적용
+            padding: 10px 5px;
+          }
+
+          .sort {
+            color: #424242;
+            white-space: nowrap;
+
+            @media all and (max-width: 480px) {
+              //브라우저 창 width가 768px보다 작아지는 순간부터 적용
+              font-size: 14px;
+            }
+          }
+
+          .svgWrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            svg {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+
+        .dropdownWrapper {
+          border-radius: 8px;
+          overflow: hidden;
+          border: 1px solid #e3e3e3;
+          position: absolute;
+          top: 50px;
+          left: 0;
+          width: 100%;
+          background-color: #fff;
+          display: none;
+
+          &.open {
+            display: block;
+          }
+
+          .options {
+            padding: 10px;
+            transition: 0.5s;
+            white-space: nowrap;
+            text-align: center;
+
+            @media all and (max-width: 480px) {
+              //브라우저 창 width가 768px보다 작아지는 순간부터 적용
+              font-size: 14px;
+              padding: 10px 5px;
+            }
+
+            &:hover {
+              background-color: #eeebeb;
+            }
+          }
         }
       }
     }
 
     .content {
-      border: 1px solid blue;
       margin-top: 20px;
     }
   }

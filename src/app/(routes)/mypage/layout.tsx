@@ -11,6 +11,7 @@ import { getAllFavorList } from "@/app/_lib/getAllFavorList";
 import FavorCount from "./_component/FavorCount";
 import WithdrawBtn from "./_component/WithdrawBtn";
 import NavBar from "./_component/NavBar";
+import SortOption from "./_component/SortOption";
 
 type Props = {
   children: ReactNode;
@@ -54,7 +55,10 @@ const MypageLayout = async ({ children }: Props) => {
           </div>
         </div>
         <div className={styles.right}>
-          <NavBar session={session} />
+          <div className={styles.navWrapper}>
+            <NavBar session={session} />
+            <SortOption />
+          </div>
           <div className={styles.content}>{children}</div>
         </div>
       </div>
