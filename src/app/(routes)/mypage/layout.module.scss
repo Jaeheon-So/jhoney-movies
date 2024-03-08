@@ -99,6 +99,35 @@
 
   .right {
     flex-grow: 1;
-    border: 1px solid blue;
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      border: 1px solid #e3e3e3;
+      overflow: hidden;
+
+      .li {
+        cursor: pointer;
+        width: 50%;
+        text-align: center;
+        padding: 10px;
+        transition: 0.5s;
+        color: #424242;
+        font-weight: 600;
+        font-size: 16px;
+
+        &.active {
+          color: #fff;
+          background-color: #1cceb5;
+        }
+      }
+    }
+
+    .content {
+      border: 1px solid blue;
+      margin-top: 20px;
+    }
   }
 }

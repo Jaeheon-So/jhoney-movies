@@ -10,6 +10,7 @@ import {
 import { getAllFavorList } from "@/app/_lib/getAllFavorList";
 import FavorCount from "./_component/FavorCount";
 import WithdrawBtn from "./_component/WithdrawBtn";
+import NavBar from "./_component/NavBar";
 
 type Props = {
   children: ReactNode;
@@ -25,36 +26,39 @@ const MypageLayout = async ({ children }: Props) => {
   const dehydratedState = dehydrate(queryClient);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.left}>
-        <div className={styles.wrapper}>
-          <div className={styles.imgWrapper}>
-            <img
-              src={
-                session?.user?.image
-                  ? session?.user?.image
-                  : "/default_profile.png"
-              }
-            />
-          </div>
-          <div className={styles.infoWrapper}>
-            <div className={styles.name}>
-              {session?.user?.image
-                ? session?.user?.name
-                : session?.user?.email}
+    <HydrationBoundary state={dehydratedState}>
+      <div className={styles.container}>
+        <div className={styles.left}>
+          <div className={styles.wrapper}>
+            <div className={styles.imgWrapper}>
+              <img
+                src={
+                  session?.user?.image
+                    ? session?.user?.image
+                    : "/default_profile.png"
+                }
+              />
             </div>
-            <HydrationBoundary state={dehydratedState}>
+            <div className={styles.infoWrapper}>
+              <div className={styles.name}>
+                {session?.user?.image
+                  ? session?.user?.name
+                  : session?.user?.email}
+              </div>
               <FavorCount session={session} />
-            </HydrationBoundary>
+            </div>
+          </div>
+          <div className={styles.btns}>
+            <LogoutBtn />
+            <WithdrawBtn session={session} />
           </div>
         </div>
-        <div className={styles.btns}>
-          <LogoutBtn />
-          <WithdrawBtn session={session} />
+        <div className={styles.right}>
+          <NavBar session={session} />
+          <div className={styles.content}>{children}</div>
         </div>
       </div>
-      <div className={styles.right}>{children}</div>
-    </div>
+    </HydrationBoundary>
   );
 };
 
