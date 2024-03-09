@@ -38,6 +38,7 @@ const MypageLayout = async ({ children }: Props) => {
                     ? session?.user?.image
                     : "/default_profile.png"
                 }
+                alt="profile_img"
               />
             </div>
             <div className={styles.infoWrapper}>
