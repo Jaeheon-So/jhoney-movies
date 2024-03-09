@@ -1,4 +1,4 @@
-import { getSearchTv } from "@/app/_lib/getSearchTv";
+import { getSearchTv } from "@/lib/getSearchTv";
 import {
   HydrationBoundary,
   QueryClient,

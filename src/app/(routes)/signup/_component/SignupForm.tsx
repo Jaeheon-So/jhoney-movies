@@ -7,10 +7,10 @@ import { FaGithub } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
-import { onSubmit } from "@/app/_lib/signup";
+import { onSubmit } from "@/lib/signup";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-import { useModalStore } from "@/app/_store/confirmModal";
+import { useModalStore } from "@/store/confirmModal";
 
 type Props = {};
 

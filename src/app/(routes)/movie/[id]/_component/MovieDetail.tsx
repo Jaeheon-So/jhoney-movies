@@ -8,30 +8,30 @@ import {
   useQuery,
   useQueryClient,
 } from "@tanstack/react-query";
-import { getMovieDetail } from "@/app/_lib/getMovieDetail";
+import { getMovieDetail } from "@/lib/getMovieDetail";
 import Image from "next/image";
 import {
   POSTER_BASE_URL,
   POSTER_BASE_URL_w1920_H_427,
-} from "@/app/_constants/constants";
-import { FormatMDY } from "@/app/_utils/dayFormat";
+} from "@/constants/constants";
+import { FormatMDY } from "@/utils/dayFormat";
 import { IoMdHeart } from "react-icons/io";
 import { FaPlay } from "react-icons/fa";
-import { getMovieTrailers } from "@/app/_lib/getMovieTrailers";
+import { getMovieTrailers } from "@/lib/getMovieTrailers";
 import { MovieCast, MovieTrailerResponse } from "@/model/Movie";
 import Link from "next/link";
-import { getMovieCredit } from "@/app/_lib/getMovieCredit";
+import { getMovieCredit } from "@/lib/getMovieCredit";
 import dynamic from "next/dynamic";
 import FadeInOut from "@/app/_components/FadeInOut";
 import CreditCard from "./CreditCard";
 import { Session } from "next-auth";
-import { getAllFavorList } from "@/app/_lib/getAllFavorList";
-import { addFavorList } from "@/app/_lib/addFavorList";
+import { getAllFavorList } from "@/lib/getAllFavorList";
+import { addFavorList } from "@/lib/addFavorList";
 import { DetailMovieResult, DetailTvResult } from "@/model/List";
-import { removeFavorList } from "@/app/_lib/removeFavorList";
+import { removeFavorList } from "@/lib/removeFavorList";
 import { useRouter } from "next/navigation";
 import { notify } from "@/app/_components/Toast";
-import { useModalStore } from "@/app/_store/confirmModal";
+import { useModalStore } from "@/store/confirmModal";
 
 const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
   ssr: false,

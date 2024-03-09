@@ -7,7 +7,7 @@ import { FaSearch } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import DropDown from "./DropDown";
 import HeaderSearchForm from "./HeaderSearchForm";
-import useScrollDirection from "../_hooks/useScrollDircetion";
+import useScrollDirection from "../../hooks/useScrollDircetion";
 import { Session } from "next-auth";
 import LogoutButton from "./LogoutButton";
 

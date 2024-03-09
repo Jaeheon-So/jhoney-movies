@@ -8,8 +8,8 @@ import PopluarSection from "../_components/PopluarSection";
 import TrailerSection from "../_components/TrailerSection";
 import TrendSection from "../_components/TrendSection";
 import styles from "./page.module.scss";
-import { getTrendMovies } from "../_lib/getTrendMovies";
-import { getPopularMovies } from "../_lib/getPopularMovies";
+import { getTrendMovies } from "../../lib/getTrendMovies";
+import { getPopularMovies } from "../../lib/getPopularMovies";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

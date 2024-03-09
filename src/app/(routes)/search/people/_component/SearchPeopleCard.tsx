@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./searchPeopleCard.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import { POSTER_BASE_URL } from "@/app/_constants/constants";
+import { POSTER_BASE_URL } from "@/constants/constants";
 import { SearchPeopleInfo } from "@/model/People";
 
 type Props = {

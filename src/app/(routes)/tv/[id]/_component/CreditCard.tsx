@@ -3,7 +3,7 @@ import styles from "./creditCard.module.scss";
 import { TvCast } from "@/model/Movie";
 import Image from "next/image";
 import Link from "next/link";
-import { POSTER_BASE_URL } from "@/app/_constants/constants";
+import { POSTER_BASE_URL } from "@/constants/constants";
 
 type Props = {
   cast: TvCast;

@@ -3,10 +3,10 @@
 import { Session } from "next-auth";
 import React from "react";
 import styles from "../layout.module.scss";
-import { withdraw } from "@/app/_lib/withdraw";
-import { logout } from "@/app/_lib/logout";
+import { withdraw } from "@/lib/withdraw";
+import { logout } from "@/lib/logout";
 import { notify } from "@/app/_components/Toast";
-import { useModalStore } from "@/app/_store/confirmModal";
+import { useModalStore } from "@/store/confirmModal";
 
 type Props = {
   session: Session | null;

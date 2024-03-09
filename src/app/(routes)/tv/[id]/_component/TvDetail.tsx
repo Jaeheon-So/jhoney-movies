@@ -1,9 +1,9 @@
 "use client";
 
 import FadeInOut from "@/app/_components/FadeInOut";
-import { getTvCredit } from "@/app/_lib/getTvCredit";
-import { getTvDetail } from "@/app/_lib/getTvDetail";
-import { getTvTrailers } from "@/app/_lib/getTvTrailers";
+import { getTvCredit } from "@/lib/getTvCredit";
+import { getTvDetail } from "@/lib/getTvDetail";
+import { getTvTrailers } from "@/lib/getTvTrailers";
 import { TvCast, TvTrailerResponse } from "@/model/Movie";
 import {
   QueryKey,
@@ -19,20 +19,20 @@ import styles from "./tvDetail.module.scss";
 import {
   POSTER_BASE_URL,
   POSTER_BASE_URL_w1920_H_427,
-} from "@/app/_constants/constants";
-import { FormatMDY } from "@/app/_utils/dayFormat";
+} from "@/constants/constants";
+import { FormatMDY } from "@/utils/dayFormat";
 import { IoMdHeart } from "react-icons/io";
 import { FaPlay } from "react-icons/fa";
 import CreditCard from "./CreditCard";
 import SeasonCard from "./SeasonCard";
 import { Session } from "next-auth";
-import { getAllFavorList } from "@/app/_lib/getAllFavorList";
-import { addFavorList } from "@/app/_lib/addFavorList";
-import { removeFavorList } from "@/app/_lib/removeFavorList";
+import { getAllFavorList } from "@/lib/getAllFavorList";
+import { addFavorList } from "@/lib/addFavorList";
+import { removeFavorList } from "@/lib/removeFavorList";
 import { DetailMovieResult, DetailTvResult } from "@/model/List";
 import { useRouter } from "next/navigation";
 import { notify } from "@/app/_components/Toast";
-import { useModalStore } from "@/app/_store/confirmModal";
+import { useModalStore } from "@/store/confirmModal";
 
 const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
   ssr: false,

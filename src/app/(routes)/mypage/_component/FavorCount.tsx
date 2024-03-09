@@ -3,7 +3,7 @@
 import React from "react";
 import styles from "../layout.module.scss";
 import { useQuery } from "@tanstack/react-query";
-import { getAllFavorList } from "@/app/_lib/getAllFavorList";
+import { getAllFavorList } from "@/lib/getAllFavorList";
 import { Session } from "next-auth";
 
 type Props = {

@@ -1,7 +1,7 @@
 "use client";
 
-import useInfiniteScroll from "@/app/_hooks/useInfiniteScroll";
-import { getDiscoverPTv } from "@/app/_lib/getDiscoverPTv";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import { getDiscoverPTv } from "@/lib/getDiscoverPTv";
 import { PopularTvInfo } from "@/model/Movie";
 import React, { Fragment } from "react";
 import styles from "./discoverPTv.module.scss";

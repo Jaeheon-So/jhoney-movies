@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./seasonCard.module.scss";
 import { TvSeason } from "@/model/Movie";
 import Image from "next/image";
-import { POSTER_BASE_URL } from "@/app/_constants/constants";
-import { FormatMDY } from "@/app/_utils/dayFormat";
+import { POSTER_BASE_URL } from "@/constants/constants";
+import { FormatMDY } from "@/utils/dayFormat";
 import dynamic from "next/dynamic";
 
 const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {

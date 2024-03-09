@@ -1,6 +1,6 @@
 "use client";
 
-import { logout } from "../_lib/logout";
+import { logout } from "../../lib/logout";
 import styles from "./logoutButton.module.scss";
 
 const LogoutButton = () => {

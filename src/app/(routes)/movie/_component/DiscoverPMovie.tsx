@@ -1,7 +1,7 @@
 "use client";
 
-import useInfiniteScroll from "@/app/_hooks/useInfiniteScroll";
-import { getDiscoverPMovie } from "@/app/_lib/getDiscoverPMovie";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import { getDiscoverPMovie } from "@/lib/getDiscoverPMovie";
 import React, { Fragment } from "react";
 import DiscoverMovieCard from "./DiscoverMovieCard";
 import { PopularMovieInfo } from "@/model/Movie";

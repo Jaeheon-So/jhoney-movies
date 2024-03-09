@@ -3,11 +3,11 @@
 import React from "react";
 import styles from "./favorMovie.module.scss";
 import { useQuery } from "@tanstack/react-query";
-import { getAllFavorList } from "@/app/_lib/getAllFavorList";
+import { getAllFavorList } from "@/lib/getAllFavorList";
 import { Session } from "next-auth";
 import FavorMovieCard from "./FavorMovieCard";
 import { DetailMovieResult } from "@/model/List";
-import { useFavorFilterStore } from "@/app/_store/favorFilter";
+import { useFavorFilterStore } from "@/store/favorFilter";
 import Link from "next/link";
 
 type Props = {

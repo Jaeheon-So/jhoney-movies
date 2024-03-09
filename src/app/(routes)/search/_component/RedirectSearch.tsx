@@ -1,8 +1,8 @@
 "use client";
 
-import { getSearchMovie } from "@/app/_lib/getSearchMovie";
-import { getSearchPeople } from "@/app/_lib/getSearchPeople";
-import { getSearchTv } from "@/app/_lib/getSearchTv";
+import { getSearchMovie } from "@/lib/getSearchMovie";
+import { getSearchPeople } from "@/lib/getSearchPeople";
+import { getSearchTv } from "@/lib/getSearchTv";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";

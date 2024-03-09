@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import styles from "./trendSection.module.scss";
 import FadeInOut from "./FadeInOut";
 import { useQuery } from "@tanstack/react-query";
-import { getTrendMovies } from "../_lib/getTrendMovies";
+import { getTrendMovies } from "../../lib/getTrendMovies";
 import HomeMovieCard from "./HomeMovieCard";
 import { TrendMovieInfo } from "@/model/Movie";
 import HomeError from "./HomeError";

@@ -1,5 +1,5 @@
-import { getTvCredit } from "@/app/_lib/getTvCredit";
-import { getTvDetail } from "@/app/_lib/getTvDetail";
+import { getTvCredit } from "@/lib/getTvCredit";
+import { getTvDetail } from "@/lib/getTvDetail";
 import {
   HydrationBoundary,
   QueryClient,
@@ -8,9 +8,9 @@ import {
 import React from "react";
 import TvDetail from "./_component/TvDetail";
 import { auth } from "@/auth";
-import { getAllFavorList } from "@/app/_lib/getAllFavorList";
+import { getAllFavorList } from "@/lib/getAllFavorList";
 import { TvDetailResponse } from "@/model/Movie";
-import { getTvDetailServer } from "@/app/_lib/getTvDetailServer";
+import { getTvDetailServer } from "@/lib/getTvDetailServer";
 
 export async function generateMetadata({ params }: Props) {
   const detail: TvDetailResponse = await getTvDetailServer({

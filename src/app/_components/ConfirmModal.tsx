@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import { useModalStore } from "../_store/confirmModal";
+
 import styles from "./confirmModal.module.scss";
+import { useModalStore } from "@/store/confirmModal";
 
 type Props = {};
 

@@ -5,7 +5,7 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import { getDiscoverPMovie } from "@/app/_lib/getDiscoverPMovie";
+import { getDiscoverPMovie } from "@/lib/getDiscoverPMovie";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

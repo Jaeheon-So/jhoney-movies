@@ -3,7 +3,7 @@
 import React from "react";
 import styles from "./btnApply.module.scss";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useTvFilterStore } from "@/app/_store/tvFilter";
+import { useTvFilterStore } from "@/store/tvFilter";
 
 const BtnApplyFilter = () => {
   const router = useRouter();

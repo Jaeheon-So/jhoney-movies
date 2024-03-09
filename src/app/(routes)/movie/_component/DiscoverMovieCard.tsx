@@ -1,10 +1,10 @@
-import { POSTER_BASE_URL } from "@/app/_constants/constants";
+import { POSTER_BASE_URL } from "@/constants/constants";
 import { PopularMovieInfo } from "@/model/Movie";
 import Image from "next/image";
 import React from "react";
 import styles from "./discoverMovieCard.module.scss";
 import Link from "next/link";
-import { FormatMDY } from "@/app/_utils/dayFormat";
+import { FormatMDY } from "@/utils/dayFormat";
 import dynamic from "next/dynamic";
 
 const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {

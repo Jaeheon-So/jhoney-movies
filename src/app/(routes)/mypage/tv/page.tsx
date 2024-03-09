@@ -1,4 +1,4 @@
-import { getAllFavorList } from "@/app/_lib/getAllFavorList";
+import { getAllFavorList } from "@/lib/getAllFavorList";
 import { auth } from "@/auth";
 import {
   HydrationBoundary,

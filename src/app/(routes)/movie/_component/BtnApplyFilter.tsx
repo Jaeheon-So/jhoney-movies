@@ -3,7 +3,7 @@
 import React from "react";
 import styles from "./btnApply.module.scss";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useMovieFilterStore } from "@/app/_store/movieFilter";
+import { useMovieFilterStore } from "@/store/movieFilter";
 
 const BtnApplyFilter = () => {
   const router = useRouter();

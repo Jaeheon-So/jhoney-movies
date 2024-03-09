@@ -2,13 +2,13 @@ import React from "react";
 import styles from "./favorMovieCard.module.scss";
 import { DetailMovieResult, DetailTvResult } from "@/model/List";
 import Image from "next/image";
-import { POSTER_BASE_URL } from "@/app/_constants/constants";
-import { FormatMDY } from "@/app/_utils/dayFormat";
+import { POSTER_BASE_URL } from "@/constants/constants";
+import { FormatMDY } from "@/utils/dayFormat";
 import { IoMdHeart } from "react-icons/io";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { QueryKey, useMutation, useQueryClient } from "@tanstack/react-query";
-import { removeFavorList } from "@/app/_lib/removeFavorList";
+import { removeFavorList } from "@/lib/removeFavorList";
 import { Session } from "next-auth";
 import { notify } from "@/app/_components/Toast";
 

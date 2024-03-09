@@ -1,10 +1,10 @@
 "use client";
 
-import useInfiniteScroll from "@/app/_hooks/useInfiniteScroll";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import React, { Fragment } from "react";
 import styles from "./searchPeople.module.scss";
 import LoadingCircle from "@/app/_components/LoadingCircle";
-import { getSearchPeople } from "@/app/_lib/getSearchPeople";
+import { getSearchPeople } from "@/lib/getSearchPeople";
 import SearchPeopleCard from "./SearchPeopleCard";
 import { SearchPeopleInfo } from "@/model/People";
 import HomeError from "@/app/_components/HomeError";

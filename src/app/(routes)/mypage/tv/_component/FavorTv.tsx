@@ -3,9 +3,9 @@
 import React from "react";
 import styles from "./favorTv.module.scss";
 import { useQuery } from "@tanstack/react-query";
-import { getAllFavorList } from "@/app/_lib/getAllFavorList";
+import { getAllFavorList } from "@/lib/getAllFavorList";
 import { Session } from "next-auth";
-import { useFavorFilterStore } from "@/app/_store/favorFilter";
+import { useFavorFilterStore } from "@/store/favorFilter";
 import { DetailTvResult } from "@/model/List";
 import FavorTvCard from "./FavorTvCard";
 import Link from "next/link";

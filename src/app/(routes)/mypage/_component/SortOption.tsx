@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../layout.module.scss";
-import { SortOptionType, useFavorFilterStore } from "@/app/_store/favorFilter";
+import { SortOptionType, useFavorFilterStore } from "@/store/favorFilter";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa6";
 
 type Props = {};

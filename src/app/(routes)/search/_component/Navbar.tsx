@@ -8,10 +8,10 @@ import {
   useSearchParams,
   useSelectedLayoutSegment,
 } from "next/navigation";
-import { getSearchMovie } from "@/app/_lib/getSearchMovie";
+import { getSearchMovie } from "@/lib/getSearchMovie";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { getSearchTv } from "@/app/_lib/getSearchTv";
-import { getSearchPeople } from "@/app/_lib/getSearchPeople";
+import { getSearchTv } from "@/lib/getSearchTv";
+import { getSearchPeople } from "@/lib/getSearchPeople";
 
 const Navbar = () => {
   const searchParam = useSearchParams();

@@ -5,8 +5,8 @@ import styles from "./popularSection.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import FadeInOut from "./FadeInOut";
 import HomeMovieCard from "./HomeMovieCard";
-import { getPopularMovies } from "../_lib/getPopularMovies";
-import { getPopularTv } from "../_lib/getPopularTv";
+import { getPopularMovies } from "../../lib/getPopularMovies";
+import { getPopularTv } from "../../lib/getPopularTv";
 import { PopularMovieInfo, PopularTvInfo } from "@/model/Movie";
 import HomeError from "./HomeError";
 

@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import { POSTER_BASE_URL } from "../_constants/constants";
+import { POSTER_BASE_URL } from "../../constants/constants";
 import styles from "./homeMovieCard.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import styles2 from "./fadeInOut.module.scss";
-import { FormatMDY } from "../_utils/dayFormat";
+import { FormatMDY } from "../../utils/dayFormat";
 import dynamic from "next/dynamic";
 import { PopularMovieInfo, PopularTvInfo, TrendMovieInfo } from "@/model/Movie";
 // import defaultProfile from "/no_image.svg";

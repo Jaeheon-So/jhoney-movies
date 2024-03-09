@@ -1,11 +1,11 @@
 "use client";
 
-import useInfiniteScroll from "@/app/_hooks/useInfiniteScroll";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import React, { Fragment } from "react";
 import styles from "./searchTv.module.scss";
 import LoadingCircle from "@/app/_components/LoadingCircle";
 import { SearchTvInfo } from "@/model/Movie";
-import { getSearchTv } from "@/app/_lib/getSearchTv";
+import { getSearchTv } from "@/lib/getSearchTv";
 import SearchTvCard from "./SearchTvCard";
 import HomeError from "@/app/_components/HomeError";
 import NoResult from "@/app/_components/NoResult";

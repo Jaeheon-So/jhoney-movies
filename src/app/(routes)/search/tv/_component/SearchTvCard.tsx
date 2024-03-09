@@ -3,8 +3,8 @@ import styles from "./searchTvCard.module.scss";
 import { SearchTvInfo } from "@/model/Movie";
 import Link from "next/link";
 import Image from "next/image";
-import { FormatMDY } from "@/app/_utils/dayFormat";
-import { POSTER_BASE_URL } from "@/app/_constants/constants";
+import { FormatMDY } from "@/utils/dayFormat";
+import { POSTER_BASE_URL } from "@/constants/constants";
 import dynamic from "next/dynamic";
 
 const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {

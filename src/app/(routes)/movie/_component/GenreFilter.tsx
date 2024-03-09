@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import styles from "./genreFliter.module.scss";
 import { FaChevronDown, FaChevronRight } from "react-icons/fa";
-import { genres, useMovieFilterStore } from "@/app/_store/movieFilter";
+import { genres, useMovieFilterStore } from "@/store/movieFilter";
 
 const GenreFilter = () => {
   const [isFilterOpen, setisFilterOpen] = useState(false);

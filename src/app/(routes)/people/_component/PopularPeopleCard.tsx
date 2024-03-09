@@ -5,7 +5,7 @@ import React from "react";
 import styles from "./popularPeopleCard.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import { POSTER_BASE_URL } from "@/app/_constants/constants";
+import { POSTER_BASE_URL } from "@/constants/constants";
 
 type Props = {
   people: PopularPeopleInfo;

@@ -6,7 +6,7 @@ import SortFilter from "./SortFilter";
 import GenreFilter from "./GenreFilter";
 import BtnApplyFilter from "./BtnApplyFilter";
 import { useSearchParams, useSelectedLayoutSegments } from "next/navigation";
-import { SortOptionType, useTvFilterStore } from "@/app/_store/tvFilter";
+import { SortOptionType, useTvFilterStore } from "@/store/tvFilter";
 
 const Filters = () => {
   const pathArray = useSelectedLayoutSegments();

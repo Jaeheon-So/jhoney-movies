@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { FaChevronRight, FaChevronDown } from "react-icons/fa";
 import styles from "./sortFilter.module.scss";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa6";
-import { SortOptionType, useMovieFilterStore } from "@/app/_store/movieFilter";
+import { SortOptionType, useMovieFilterStore } from "@/store/movieFilter";
 
 const SortFilter = () => {
   const [isFilterOpen, setisFilterOpen] = useState(true);

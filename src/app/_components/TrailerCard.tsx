@@ -3,7 +3,7 @@ import styles from "./trailerCard.module.scss";
 import { MovieInfo, MovieTrailerResponse, TvInfo } from "@/model/Movie";
 import Link from "next/link";
 import Image from "next/image";
-import { POSTER_BASE_URL_w710_H_400 } from "../_constants/constants";
+import { POSTER_BASE_URL_w710_H_400 } from "../../constants/constants";
 import { FaPlay } from "react-icons/fa";
 
 type Props = {

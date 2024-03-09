@@ -2,8 +2,8 @@
 
 import React, { Fragment } from "react";
 import styles from "./popularPeopleList.module.scss";
-import useInfiniteScroll from "@/app/_hooks/useInfiniteScroll";
-import { getPopularPeople } from "@/app/_lib/getPopularPeople";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import { getPopularPeople } from "@/lib/getPopularPeople";
 import LoadingCircle from "@/app/_components/LoadingCircle";
 import { PopularPeopleInfo } from "@/model/People";
 import PopularPeopleCard from "./PopularPeopleCard";

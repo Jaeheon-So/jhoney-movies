@@ -1,4 +1,4 @@
-import { getSearchPeople } from "@/app/_lib/getSearchPeople";
+import { getSearchPeople } from "@/lib/getSearchPeople";
 import {
   HydrationBoundary,
   QueryClient,

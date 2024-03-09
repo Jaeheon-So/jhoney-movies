@@ -1,12 +1,12 @@
-import { getSearchMovie } from "@/app/_lib/getSearchMovie";
-import { getSearchPeople } from "@/app/_lib/getSearchPeople";
+import { getSearchMovie } from "@/lib/getSearchMovie";
+import { getSearchPeople } from "@/lib/getSearchPeople";
 import {
   HydrationBoundary,
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
 import React from "react";
-import { getSearchTv } from "@/app/_lib/getSearchTv";
+import { getSearchTv } from "@/lib/getSearchTv";
 import RedirectSearch from "./_component/RedirectSearch";
 
 type Props = {
