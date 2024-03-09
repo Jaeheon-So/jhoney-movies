@@ -8,6 +8,17 @@ import {
 import React from "react";
 import FavorMovie from "./_component/FavorMovie";
 
+export async function generateMetadata() {
+  const session = await auth();
+
+  return {
+    title: `${
+      session?.user?.image ? session?.user?.name : session?.user?.email
+    } - 영화 관심 목록 | JHONEYDB `,
+    description: `영화 관심 목록`,
+  };
+}
+
 const MyMoviePage = async () => {
   const session = await auth();
   const queryClient = new QueryClient();

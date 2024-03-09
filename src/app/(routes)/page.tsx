@@ -10,6 +10,12 @@ import TrendSection from "../_components/TrendSection";
 import styles from "./page.module.scss";
 import { getTrendMovies } from "../_lib/getTrendMovies";
 import { getPopularMovies } from "../_lib/getPopularMovies";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "홈 | JHONEYDB",
+  description: "영화, TV 프로그램, 인물을 탐색해보세요",
+};
 
 export default async function Home() {
   const queryClient = new QueryClient();

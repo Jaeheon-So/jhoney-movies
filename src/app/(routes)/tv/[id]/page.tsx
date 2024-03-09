@@ -9,6 +9,19 @@ import React from "react";
 import TvDetail from "./_component/TvDetail";
 import { auth } from "@/auth";
 import { getAllFavorList } from "@/app/_lib/getAllFavorList";
+import { TvDetailResponse } from "@/model/Movie";
+import { getTvDetailServer } from "@/app/_lib/getTvDetailServer";
+
+export async function generateMetadata({ params }: Props) {
+  const detail: TvDetailResponse = await getTvDetailServer({
+    queryKey: ["movies", "detail", "tv", params.id],
+  });
+
+  return {
+    title: `${detail.name} | JHONEYDB `,
+    description: `${detail.name} 상세 정보`,
+  };
+}
 
 type Props = {
   params: { id: string };

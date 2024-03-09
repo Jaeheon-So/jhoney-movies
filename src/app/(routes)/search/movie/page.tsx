@@ -1,5 +1,4 @@
 import { getSearchMovie } from "@/app/_lib/getSearchMovie";
-import { getSearchPeople } from "@/app/_lib/getSearchPeople";
 import {
   HydrationBoundary,
   QueryClient,
@@ -7,7 +6,13 @@ import {
 } from "@tanstack/react-query";
 import React from "react";
 import SearchMovie from "./_component/SearchMovie";
-import { getSearchTv } from "@/app/_lib/getSearchTv";
+
+export async function generateMetadata({ searchParams }: Props) {
+  return {
+    title: `${searchParams.q} - 영화 검색 | JHONEYDB `,
+    description: `${searchParams.q} 영화 검색 결과`,
+  };
+}
 
 type Props = {
   searchParams: { q: string };

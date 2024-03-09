@@ -6,6 +6,12 @@ import {
 } from "@tanstack/react-query";
 import DiscoverTMovie from "./_components/DiscoverTMovie";
 import { getDiscoverTMovie } from "@/app/_lib/getDiscoverTMovie";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Top Rated Movie | JHONEYDB",
+  description: "평점 높은 영화를 탐색해보세요",
+};
 
 type Props = {
   searchParams: { sort_by?: string; with_genres?: string };

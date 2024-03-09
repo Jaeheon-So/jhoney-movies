@@ -9,6 +9,19 @@ import MovieDetail from "./_component/MovieDetail";
 import { getMovieCredit } from "@/app/_lib/getMovieCredit";
 import { auth } from "@/auth";
 import { getAllFavorList } from "@/app/_lib/getAllFavorList";
+import { getMovieDetailServer } from "@/app/_lib/getMovieDetailServer";
+import { MovieDetailResponse } from "@/model/Movie";
+
+export async function generateMetadata({ params }: Props) {
+  const detail: MovieDetailResponse = await getMovieDetailServer({
+    queryKey: ["movies", "detail", "movie", params.id],
+  });
+
+  return {
+    title: `${detail.title} | JHONEYDB `,
+    description: `${detail.title} 상세 정보`,
+  };
+}
 
 type Props = {
   params: { id: string };

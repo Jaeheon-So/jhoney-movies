@@ -7,6 +7,12 @@ import {
   dehydrate,
 } from "@tanstack/react-query";
 import { getPopularPeople } from "@/app/_lib/getPopularPeople";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Popular People | JHONEYDB",
+  description: "유명한 인물을 탐색해보세요",
+};
 
 const PopularPeoplePage = async () => {
   const queryClient = new QueryClient();

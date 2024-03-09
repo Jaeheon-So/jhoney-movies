@@ -6,6 +6,12 @@ import {
 import React from "react";
 import DiscoverTTv from "./_component/DiscoverTTv";
 import { getDiscoverTTv } from "@/app/_lib/getDiscoverTTv";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Top Rated TV | JHONEYDB",
+  description: "평점 높은 TV 프로그램을 탐색해보세요",
+};
 
 type Props = {
   searchParams: { sort_by?: string; with_genres?: string };

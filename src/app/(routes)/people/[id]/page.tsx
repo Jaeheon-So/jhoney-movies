@@ -10,6 +10,15 @@ import { getPeopleSns } from "@/app/_lib/getPeopleSns";
 import { getSearchPeople } from "@/app/_lib/getSearchPeople";
 import { getCombinedCredit } from "@/app/_lib/getCombinedCredit";
 
+export async function generateMetadata({ params }: Props) {
+  const name = params.id.split("-").slice(1).join("-");
+
+  return {
+    title: `${name} | JHONEYDB `,
+    description: `${name} 프로필`,
+  };
+}
+
 type Props = {
   params: { id: string };
 };

@@ -8,6 +8,17 @@ import {
 import React from "react";
 import FavorTv from "./_component/FavorTv";
 
+export async function generateMetadata() {
+  const session = await auth();
+
+  return {
+    title: `${
+      session?.user?.image ? session?.user?.name : session?.user?.email
+    } - TV 관심 목록 | JHONEYDB `,
+    description: `TV 관심 목록`,
+  };
+}
+
 const MyTvPage = async () => {
   const session = await auth();
   const queryClient = new QueryClient();

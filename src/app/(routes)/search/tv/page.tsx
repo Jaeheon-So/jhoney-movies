@@ -7,6 +7,13 @@ import {
 import React from "react";
 import SearchTv from "./_component/SearchTv";
 
+export async function generateMetadata({ searchParams }: Props) {
+  return {
+    title: `${searchParams.q} - TV 검색 | JHONEYDB `,
+    description: `${searchParams.q} TV 검색 결과`,
+  };
+}
+
 type Props = {
   searchParams: { q: string };
 };

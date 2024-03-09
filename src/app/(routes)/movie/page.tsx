@@ -6,6 +6,12 @@ import {
   dehydrate,
 } from "@tanstack/react-query";
 import { getDiscoverPMovie } from "@/app/_lib/getDiscoverPMovie";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Popular Movie | JHONEYDB",
+  description: "유명한 영화를 탐색해보세요",
+};
 
 type Props = {
   searchParams: { sort_by?: string; with_genres?: string };

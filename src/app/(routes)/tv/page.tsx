@@ -6,6 +6,12 @@ import {
 } from "@tanstack/react-query";
 import React from "react";
 import DiscoverPTv from "./_component/DiscoverPTv";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Popular TV | JHONEYDB",
+  description: "유명한 TV 프로그램을 탐색해보세요",
+};
 
 type Props = {
   searchParams: { sort_by?: string; with_genres?: string };
