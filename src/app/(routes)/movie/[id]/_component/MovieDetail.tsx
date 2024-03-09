@@ -31,6 +31,7 @@ import { DetailMovieResult, DetailTvResult } from "@/model/List";
 import { removeFavorList } from "@/app/_lib/removeFavorList";
 import { useRouter } from "next/navigation";
 import { notify } from "@/app/_components/Toast";
+import { useModalStore } from "@/app/_store/confirmModal";
 
 const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
   ssr: false,
@@ -69,6 +70,7 @@ const MovieDetail = ({ id, session }: Props) => {
     gcTime: 60 * 1000 * 5,
     enabled: !!session?.user,
   });
+  const { openModal, closeModal } = useModalStore();
 
   const director = creditData?.crew.find((c) => c.job === "Director");
   const index = trailerData?.results?.findIndex((t) => t.type === "Trailer");
@@ -163,9 +165,20 @@ const MovieDetail = ({ id, session }: Props) => {
 
   const toggleFavor = () => {
     if (!session?.user) {
-      if (confirm("로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?"))
-        return router.push(`/login?callbackUrl=/movie/${movieDetail?.id}`);
-      else return;
+      return openModal({
+        title: "관심목록 등록",
+        content: (
+          <div>
+            로그인이 필요한 서비스입니다.
+            <br />
+            로그인 하시겠습니까?
+          </div>
+        ),
+        confirmCallback: () => {
+          closeModal();
+          router.push(`/login?callbackUrl=/movie/${movieDetail?.id}`);
+        },
+      });
     }
     const arg = {
       list_id: session?.user?.id || "",

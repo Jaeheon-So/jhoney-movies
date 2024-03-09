@@ -10,6 +10,7 @@ import { useFormState, useFormStatus } from "react-dom";
 import { onSubmit } from "@/app/_lib/signup";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { useModalStore } from "@/app/_store/confirmModal";
 
 type Props = {};
 
@@ -21,6 +22,8 @@ const SignupForm = ({}: Props) => {
   });
   const router = useRouter();
   const { pending } = useFormStatus();
+  const { openModal, closeModal } = useModalStore();
+
   const formData = new FormData();
 
   const showMessage = (messasge: string) => {
@@ -69,17 +72,30 @@ const SignupForm = ({}: Props) => {
   };
 
   const checkAutoLogin = async () => {
-    if (confirm("회원가입 완료.\n바로 로그인 하시겠습니까?")) {
-      const res = await signIn("credentials", {
-        username: formData.get("id"),
-        password: formData.get("password"),
-        callbackUrl: "/mypage",
-      });
+    openModal({
+      title: "로그인",
+      content: (
+        <div>
+          회원가입 완료.
+          <br />
+          바로 로그인 하시겠습니까?
+        </div>
+      ),
+      confirmCallback: async () => {
+        closeModal();
+        const res = await signIn("credentials", {
+          username: formData.get("id"),
+          password: formData.get("password"),
+          callbackUrl: "/mypage",
+        });
 
-      if (!res?.error) return;
-    } else {
-      router.replace("/");
-    }
+        if (!res?.error) return;
+      },
+      cancelCallback: () => {
+        closeModal();
+        router.replace("/");
+      },
+    });
   };
 
   const onClick = (provider: "google" | "github" | "kakao") => {
