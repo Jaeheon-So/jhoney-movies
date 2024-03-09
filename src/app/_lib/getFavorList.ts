@@ -5,6 +5,9 @@ export const getFavorList = async (id: string, page: number) => {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN_V4}`,
       },
+      next: {
+        tags: ["auth", "favor", id.toString()],
+      },
     }
   );
 

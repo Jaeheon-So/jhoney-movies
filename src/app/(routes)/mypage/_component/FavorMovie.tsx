@@ -20,7 +20,6 @@ const FavorMovie = ({ session }: Props) => {
     queryFn: getAllFavorList,
     staleTime: 60 * 1000 * 5,
     gcTime: 60 * 1000 * 5,
-    enabled: !!session?.user,
   });
   const { sortOption } = useFavorFilterStore();
 
