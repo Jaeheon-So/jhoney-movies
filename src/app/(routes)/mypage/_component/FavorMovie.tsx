@@ -30,25 +30,25 @@ const FavorMovie = ({ session }: Props) => {
     ) as DetailMovieResult[];
     switch (sortOption) {
       case "date_rec":
-        return filteredFavor.sort(
+        return filteredFavor?.sort(
           (a, b) =>
             new Date(b.release_date || "").getTime() -
             new Date(a.release_date || "").getTime()
         );
       case "date_old":
-        return filteredFavor.sort(
+        return filteredFavor?.sort(
           (a, b) =>
             new Date(a.release_date || "").getTime() -
             new Date(b.release_date || "").getTime()
         );
       case "vote_high":
-        return filteredFavor.sort((a, b) => b.vote_average - a.vote_average);
+        return filteredFavor?.sort((a, b) => b.vote_average - a.vote_average);
       case "vote_low":
-        return filteredFavor.sort((a, b) => a.vote_average - b.vote_average);
+        return filteredFavor?.sort((a, b) => a.vote_average - b.vote_average);
     }
   };
 
-  if (sortFavor().length === 0) {
+  if (!sortFavor() || sortFavor().length === 0) {
     return (
       <div className={styles.container}>
         <div className={styles.noFavor}>

@@ -10,6 +10,7 @@ import Link from "next/link";
 import { QueryKey, useMutation, useQueryClient } from "@tanstack/react-query";
 import { removeFavorList } from "@/app/_lib/removeFavorList";
 import { Session } from "next-auth";
+import { notify } from "@/app/_components/Toast";
 
 const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
   ssr: false,
@@ -41,12 +42,15 @@ const FavorMovieCard = ({ movie, session }: Props) => {
           shallow
         );
       }
-      alert("관심목록에서 삭제했습니다.");
+      notify({ type: "success", content: "관심목록에서 삭제했습니다." });
       return { previousData };
     },
     onError: (error, _, context) => {
       console.error(error);
-      alert("관심목록 삭제 중 에러가 발생했습니다.");
+      notify({
+        type: "error",
+        content: "관심목록 삭제 중 오류가 발생했습니다.",
+      });
 
       queryClient.setQueryData(
         context?.previousData.queryKey!,

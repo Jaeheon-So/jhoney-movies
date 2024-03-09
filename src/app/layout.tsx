@@ -5,6 +5,7 @@ import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 import AuthProvider from "./_components/AuthProvider";
 import { auth } from "@/auth";
+import Toast from "./_components/Toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default async function RootLayout({
             <AuthProvider>
               <Header session={session} />
               <main>{children}</main>
+              <Toast />
             </AuthProvider>
           </RQProvider>
         </div>

@@ -5,6 +5,7 @@ import React from "react";
 import styles from "../layout.module.scss";
 import { withdraw } from "@/app/_lib/withdraw";
 import { logout } from "@/app/_lib/logout";
+import { notify } from "@/app/_components/Toast";
 
 type Props = {
   session: Session | null;
@@ -15,10 +16,9 @@ const WithdrawBtn = ({ session }: Props) => {
     if (confirm("정말로 탈퇴하시겠습니까?")) {
       try {
         await withdraw(session?.user?.id || "");
-        alert("회원 탈퇴 성공");
         await logout();
       } catch (error) {
-        alert("회원 탈퇴 실패");
+        notify({ type: "error", content: "회원 탈퇴 중 오류가 발생했습니다." });
       }
     }
   };

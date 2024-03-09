@@ -31,6 +31,7 @@ import { addFavorList } from "@/app/_lib/addFavorList";
 import { removeFavorList } from "@/app/_lib/removeFavorList";
 import { DetailMovieResult, DetailTvResult } from "@/model/List";
 import { useRouter } from "next/navigation";
+import { notify } from "@/app/_components/Toast";
 
 const RateCanvas = dynamic(() => import("@/canvas/RateCanvas"), {
   ssr: false,
@@ -96,12 +97,16 @@ const TvDetail = ({ id, session }: Props) => {
           shallow
         );
       }
-      alert("관심목록에 추가했습니다.");
+
+      notify({ type: "success", content: "관심목록에 추가했습니다." });
       return { previousData };
     },
     onError: (error, _, context) => {
       console.error(error);
-      alert("관심목록 추가 중 에러가 발생했습니다.");
+      notify({
+        type: "error",
+        content: "관심목록 추가 중 오류가 발생했습니다.",
+      });
 
       queryClient.setQueryData(
         context?.previousData.queryKey!,
@@ -134,12 +139,16 @@ const TvDetail = ({ id, session }: Props) => {
           shallow
         );
       }
-      alert("관심목록에서 삭제했습니다.");
+
+      notify({ type: "success", content: "관심목록에서 삭제했습니다." });
       return { previousData };
     },
     onError: (error, _, context) => {
       console.error(error);
-      alert("관심목록 삭제 중 에러가 발생했습니다.");
+      notify({
+        type: "error",
+        content: "관심목록 삭제 중 오류가 발생했습니다.",
+      });
 
       queryClient.setQueryData(
         context?.previousData.queryKey!,

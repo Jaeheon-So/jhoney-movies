@@ -40,5 +40,7 @@ export const onSubmit = async (prevState: any, formData: FormData) => {
     }
   }
 
-  if (shouldRedirect) redirect(prevState.callbackUrl || "/");
+  if (shouldRedirect) {
+    redirect(prevState.callbackUrl || "/");
+  }
 };

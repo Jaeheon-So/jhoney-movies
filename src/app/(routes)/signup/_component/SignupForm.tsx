@@ -75,7 +75,8 @@ const SignupForm = ({}: Props) => {
         password: formData.get("password"),
         callbackUrl: "/mypage",
       });
-      if (!res?.error) alert("로그인 성공");
+
+      if (!res?.error) return;
     } else {
       router.replace("/");
     }
