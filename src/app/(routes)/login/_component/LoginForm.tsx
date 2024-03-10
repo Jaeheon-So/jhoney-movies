@@ -8,7 +8,7 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
 import { useSearchParams } from "next/navigation";
-import { onSubmit } from "@/lib/login";
+import { onSubmit } from "@/lib/auth/login";
 import { signIn } from "next-auth/react";
 
 type Props = {};

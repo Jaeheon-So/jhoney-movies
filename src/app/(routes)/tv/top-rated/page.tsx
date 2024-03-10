@@ -5,7 +5,7 @@ import {
 } from "@tanstack/react-query";
 import React from "react";
 import DiscoverTTv from "./_component/DiscoverTTv";
-import { getDiscoverTTv } from "@/lib/getDiscoverTTv";
+import { getDiscoverTTv } from "@/lib/tv/getDiscoverTTv";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

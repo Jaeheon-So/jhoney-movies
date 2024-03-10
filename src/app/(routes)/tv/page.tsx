@@ -1,4 +1,4 @@
-import { getDiscoverPTv } from "@/lib/getDiscoverPTv";
+import { getDiscoverPTv } from "@/lib/tv/getDiscoverPTv";
 import {
   HydrationBoundary,
   QueryClient,

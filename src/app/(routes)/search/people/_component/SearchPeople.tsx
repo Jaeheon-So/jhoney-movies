@@ -4,7 +4,7 @@ import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import React, { Fragment } from "react";
 import styles from "./searchPeople.module.scss";
 import LoadingCircle from "@/app/_components/LoadingCircle";
-import { getSearchPeople } from "@/lib/getSearchPeople";
+import { getSearchPeople } from "@/lib/people/getSearchPeople";
 import SearchPeopleCard from "./SearchPeopleCard";
 import { SearchPeopleInfo } from "@/model/People";
 import HomeError from "@/app/_components/HomeError";

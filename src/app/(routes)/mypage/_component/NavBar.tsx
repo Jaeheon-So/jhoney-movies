@@ -5,7 +5,7 @@ import styles from "../layout.module.scss";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { getAllFavorList } from "@/lib/getAllFavorList";
+import { getAllFavorList } from "@/lib/favor/getAllFavorList";
 import { Session } from "next-auth";
 
 type Props = {

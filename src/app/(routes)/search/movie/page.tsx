@@ -1,4 +1,4 @@
-import { getSearchMovie } from "@/lib/getSearchMovie";
+import { getSearchMovie } from "@/lib/movie/getSearchMovie";
 import {
   HydrationBoundary,
   QueryClient,

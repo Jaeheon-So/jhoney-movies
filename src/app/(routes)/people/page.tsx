@@ -6,7 +6,7 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import { getPopularPeople } from "@/lib/getPopularPeople";
+import { getPopularPeople } from "@/lib/people/getPopularPeople";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

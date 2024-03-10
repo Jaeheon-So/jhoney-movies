@@ -8,7 +8,7 @@ import {
   useQuery,
   useQueryClient,
 } from "@tanstack/react-query";
-import { getMovieDetail } from "@/lib/getMovieDetail";
+import { getMovieDetail } from "@/lib/movie/getMovieDetail";
 import Image from "next/image";
 import {
   POSTER_BASE_URL,
@@ -17,18 +17,18 @@ import {
 import { FormatMDY } from "@/utils/dayFormat";
 import { IoMdHeart } from "react-icons/io";
 import { FaPlay } from "react-icons/fa";
-import { getMovieTrailers } from "@/lib/getMovieTrailers";
+import { getMovieTrailers } from "@/lib/movie/getMovieTrailers";
 import { MovieCast, MovieTrailerResponse } from "@/model/Movie";
 import Link from "next/link";
-import { getMovieCredit } from "@/lib/getMovieCredit";
+import { getMovieCredit } from "@/lib/movie/getMovieCredit";
 import dynamic from "next/dynamic";
 import FadeInOut from "@/app/_components/FadeInOut";
 import CreditCard from "./CreditCard";
 import { Session } from "next-auth";
-import { getAllFavorList } from "@/lib/getAllFavorList";
-import { addFavorList } from "@/lib/addFavorList";
+import { getAllFavorList } from "@/lib/favor/getAllFavorList";
+import { addFavorList } from "@/lib/favor/addFavorList";
 import { DetailMovieResult, DetailTvResult } from "@/model/List";
-import { removeFavorList } from "@/lib/removeFavorList";
+import { removeFavorList } from "@/lib/favor/removeFavorList";
 import { useRouter } from "next/navigation";
 import { notify } from "@/app/_components/Toast";
 import { useModalStore } from "@/store/confirmModal";

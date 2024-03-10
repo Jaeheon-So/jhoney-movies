@@ -5,7 +5,7 @@ import {
   dehydrate,
 } from "@tanstack/react-query";
 import DiscoverTMovie from "./_components/DiscoverTMovie";
-import { getDiscoverTMovie } from "@/lib/getDiscoverTMovie";
+import { getDiscoverTMovie } from "@/lib/movie/getDiscoverTMovie";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

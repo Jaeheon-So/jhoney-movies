@@ -3,7 +3,7 @@
 import React, { useCallback, useMemo } from "react";
 import styles from "./favorTv.module.scss";
 import { useQuery } from "@tanstack/react-query";
-import { getAllFavorList } from "@/lib/getAllFavorList";
+import { getAllFavorList } from "@/lib/favor/getAllFavorList";
 import { Session } from "next-auth";
 import { useFavorFilterStore } from "@/store/favorFilter";
 import { DetailTvResult } from "@/model/List";

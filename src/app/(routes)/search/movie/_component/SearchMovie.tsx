@@ -1,7 +1,7 @@
 "use client";
 
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import { getSearchMovie } from "@/lib/getSearchMovie";
+import { getSearchMovie } from "@/lib/movie/getSearchMovie";
 import React, { Fragment } from "react";
 import styles from "./searchMovie.module.scss";
 import LoadingCircle from "@/app/_components/LoadingCircle";

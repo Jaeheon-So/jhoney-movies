@@ -1,4 +1,4 @@
-import { getMovieDetail } from "@/lib/getMovieDetail";
+import { getMovieDetail } from "@/lib/movie/getMovieDetail";
 import {
   HydrationBoundary,
   QueryClient,
@@ -6,10 +6,10 @@ import {
 } from "@tanstack/react-query";
 import React from "react";
 import MovieDetail from "./_component/MovieDetail";
-import { getMovieCredit } from "@/lib/getMovieCredit";
+import { getMovieCredit } from "@/lib/movie/getMovieCredit";
 import { auth } from "@/auth";
-import { getAllFavorList } from "@/lib/getAllFavorList";
-import { getMovieDetailServer } from "@/lib/getMovieDetailServer";
+import { getAllFavorList } from "@/lib/favor/getAllFavorList";
+import { getMovieDetailServer } from "@/lib/movie/getMovieDetailServer";
 import { MovieDetailResponse } from "@/model/Movie";
 
 export async function generateMetadata({ params }: Props) {

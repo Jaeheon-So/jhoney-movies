@@ -1,4 +1,4 @@
-import { getPeopleDetail } from "@/lib/getPeopleDetail";
+import { getPeopleDetail } from "@/lib/people/getPeopleDetail";
 import {
   HydrationBoundary,
   QueryClient,
@@ -6,9 +6,9 @@ import {
 } from "@tanstack/react-query";
 import React from "react";
 import PeopleDetail from "./_component/PeopleDetail";
-import { getPeopleSns } from "@/lib/getPeopleSns";
-import { getSearchPeople } from "@/lib/getSearchPeople";
-import { getCombinedCredit } from "@/lib/getCombinedCredit";
+import { getPeopleSns } from "@/lib/people/getPeopleSns";
+import { getSearchPeople } from "@/lib/people/getSearchPeople";
+import { getCombinedCredit } from "@/lib/people/getCombinedCredit";
 
 export async function generateMetadata({ params }: Props) {
   const name = params.id.split("-").slice(1).join("-");

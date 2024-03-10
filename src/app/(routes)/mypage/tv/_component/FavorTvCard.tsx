@@ -8,7 +8,7 @@ import { IoMdHeart } from "react-icons/io";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { QueryKey, useMutation, useQueryClient } from "@tanstack/react-query";
-import { removeFavorList } from "@/lib/removeFavorList";
+import { removeFavorList } from "@/lib/favor/removeFavorList";
 import { Session } from "next-auth";
 import { notify } from "@/app/_components/Toast";
 

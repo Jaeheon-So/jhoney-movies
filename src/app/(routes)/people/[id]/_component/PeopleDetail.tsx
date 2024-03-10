@@ -3,18 +3,18 @@
 import React from "react";
 import styles from "./peopleDetail.module.scss";
 import { useQuery } from "@tanstack/react-query";
-import { getPeopleDetail } from "@/lib/getPeopleDetail";
+import { getPeopleDetail } from "@/lib/people/getPeopleDetail";
 import Image from "next/image";
 import { POSTER_BASE_URL } from "@/constants/constants";
 import { FormatMDY } from "@/utils/dayFormat";
 import { calculateAge } from "@/utils/age";
-import { getPeopleSns } from "@/lib/getPeopleSns";
+import { getPeopleSns } from "@/lib/people/getPeopleSns";
 import { SiInstagram, SiFacebook, SiTwitter } from "react-icons/si";
 import Link from "next/link";
-import { getSearchPeople } from "@/lib/getSearchPeople";
+import { getSearchPeople } from "@/lib/people/getSearchPeople";
 import { CreditCast, PeopleKnownFor } from "@/model/People";
 import KnownForCard from "./KnownForCard";
-import { getCombinedCredit } from "@/lib/getCombinedCredit";
+import { getCombinedCredit } from "@/lib/people/getCombinedCredit";
 import Career from "./Career";
 
 type Props = {

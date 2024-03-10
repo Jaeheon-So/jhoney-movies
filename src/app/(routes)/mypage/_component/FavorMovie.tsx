@@ -3,7 +3,7 @@
 import React, { useMemo } from "react";
 import styles from "./favorMovie.module.scss";
 import { useQuery } from "@tanstack/react-query";
-import { getAllFavorList } from "@/lib/getAllFavorList";
+import { getAllFavorList } from "@/lib/favor/getAllFavorList";
 import { Session } from "next-auth";
 import FavorMovieCard from "./FavorMovieCard";
 import { DetailMovieResult } from "@/model/List";

@@ -3,8 +3,8 @@
 import { Session } from "next-auth";
 import React from "react";
 import styles from "../layout.module.scss";
-import { withdraw } from "@/lib/withdraw";
-import { logout } from "@/lib/logout";
+import { withdraw } from "@/lib/auth/withdraw";
+import { logout } from "@/lib/auth/logout";
 import { notify } from "@/app/_components/Toast";
 import { useModalStore } from "@/store/confirmModal";
 

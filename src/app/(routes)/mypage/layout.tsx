@@ -7,7 +7,7 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import { getAllFavorList } from "@/lib/getAllFavorList";
+import { getAllFavorList } from "@/lib/favor/getAllFavorList";
 import FavorCount from "./_component/FavorCount";
 import WithdrawBtn from "./_component/WithdrawBtn";
 import NavBar from "./_component/NavBar";

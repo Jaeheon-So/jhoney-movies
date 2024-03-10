@@ -5,7 +5,7 @@ import React, { Fragment } from "react";
 import { PopularMovieInfo } from "@/model/Movie";
 import styles from "./discoverTMovie.module.scss";
 import DiscoverMovieCard from "../../_component/DiscoverMovieCard";
-import { getDiscoverTMovie } from "@/lib/getDiscoverTMovie";
+import { getDiscoverTMovie } from "@/lib/movie/getDiscoverTMovie";
 import LoadingCircle from "@/app/_components/LoadingCircle";
 import HomeError from "@/app/_components/HomeError";
 

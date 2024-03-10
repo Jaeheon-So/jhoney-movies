@@ -1,9 +1,9 @@
 "use client";
 
 import FadeInOut from "@/app/_components/FadeInOut";
-import { getTvCredit } from "@/lib/getTvCredit";
-import { getTvDetail } from "@/lib/getTvDetail";
-import { getTvTrailers } from "@/lib/getTvTrailers";
+import { getTvCredit } from "@/lib/tv/getTvCredit";
+import { getTvDetail } from "@/lib/tv/getTvDetail";
+import { getTvTrailers } from "@/lib/tv/getTvTrailers";
 import { TvCast, TvTrailerResponse } from "@/model/Movie";
 import {
   QueryKey,
@@ -26,9 +26,9 @@ import { FaPlay } from "react-icons/fa";
 import CreditCard from "./CreditCard";
 import SeasonCard from "./SeasonCard";
 import { Session } from "next-auth";
-import { getAllFavorList } from "@/lib/getAllFavorList";
-import { addFavorList } from "@/lib/addFavorList";
-import { removeFavorList } from "@/lib/removeFavorList";
+import { getAllFavorList } from "@/lib/favor/getAllFavorList";
+import { addFavorList } from "@/lib/favor/addFavorList";
+import { removeFavorList } from "@/lib/favor/removeFavorList";
 import { DetailMovieResult, DetailTvResult } from "@/model/List";
 import { useRouter } from "next/navigation";
 import { notify } from "@/app/_components/Toast";

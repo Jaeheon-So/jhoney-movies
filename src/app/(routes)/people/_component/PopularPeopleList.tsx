@@ -3,7 +3,7 @@
 import React, { Fragment } from "react";
 import styles from "./popularPeopleList.module.scss";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import { getPopularPeople } from "@/lib/getPopularPeople";
+import { getPopularPeople } from "@/lib/people/getPopularPeople";
 import LoadingCircle from "@/app/_components/LoadingCircle";
 import { PopularPeopleInfo } from "@/model/People";
 import PopularPeopleCard from "./PopularPeopleCard";

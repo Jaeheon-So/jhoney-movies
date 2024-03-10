@@ -7,7 +7,7 @@ import { FaGithub } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
-import { onSubmit } from "@/lib/signup";
+import { onSubmit } from "@/lib/auth/signup";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useModalStore } from "@/store/confirmModal";

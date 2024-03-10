@@ -10,13 +10,13 @@ import {
   TvInfo,
   TvTrailerResponse,
 } from "@/model/Movie";
-import { getPopularMovies } from "../../lib/getPopularMovies";
-import { getMovieTrailers } from "../../lib/getMovieTrailers";
+import { getPopularMovies } from "../../lib/movie/getPopularMovies";
+import { getMovieTrailers } from "../../lib/movie/getMovieTrailers";
 import TrailerCard from "./TrailerCard";
-import { getUpComingMovie } from "../../lib/getUpcomingMovie";
-import { getNowPlayingMovie } from "../../lib/getNowPlayingMovie";
-import { getOnAirTv } from "../../lib/getOnAirTv";
-import { getTvTrailers } from "../../lib/getTvTrailers";
+import { getUpComingMovie } from "../../lib/movie/getUpcomingMovie";
+import { getNowPlayingMovie } from "../../lib/movie/getNowPlayingMovie";
+import { getOnAirTv } from "../../lib/tv/getOnAirTv";
+import { getTvTrailers } from "../../lib/tv/getTvTrailers";
 import { POSTER_BASE_URL_w1920_H_427 } from "../../constants/constants";
 
 const TrailerSection = () => {
