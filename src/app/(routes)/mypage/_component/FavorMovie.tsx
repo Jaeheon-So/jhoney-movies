@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import styles from "./favorMovie.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { getAllFavorList } from "@/lib/getAllFavorList";
@@ -22,11 +22,11 @@ const FavorMovie = ({ session }: Props) => {
     gcTime: 60 * 1000 * 5,
   });
   const { sortOption } = useFavorFilterStore();
+  const filteredFavor = favorData?.filter(
+    (v) => v.media_type === "movie"
+  ) as DetailMovieResult[];
 
   const sortFavor = () => {
-    const filteredFavor = favorData?.filter(
-      (v) => v.media_type === "movie"
-    ) as DetailMovieResult[];
     switch (sortOption) {
       case "date_rec":
         return filteredFavor?.sort(
@@ -46,8 +46,9 @@ const FavorMovie = ({ session }: Props) => {
         return filteredFavor?.sort((a, b) => a.vote_average - b.vote_average);
     }
   };
+  const sortedFavor = useMemo(sortFavor, [sortOption, favorData]);
 
-  if (!sortFavor() || sortFavor().length === 0) {
+  if (!filteredFavor || filteredFavor.length === 0) {
     return (
       <div className={styles.container}>
         <div className={styles.noFavor}>
@@ -62,7 +63,7 @@ const FavorMovie = ({ session }: Props) => {
 
   return (
     <div className={styles.container}>
-      {sortFavor().map((movie, index) => (
+      {sortedFavor.map((movie, index) => (
         <FavorMovieCard
           key={index}
           movie={movie as DetailMovieResult}

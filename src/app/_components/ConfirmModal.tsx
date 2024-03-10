@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 
 import styles from "./confirmModal.module.scss";
 import { useModalStore } from "@/store/confirmModal";
@@ -17,9 +17,21 @@ const ConfirmModal = ({}: Props) => {
     closeModal,
   } = useModalStore();
 
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const modalOutSideClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (modalRef.current === e.target) {
+      closeModal();
+    }
+  };
+
   if (isModalOpen)
     return (
-      <div className={styles.overlay}>
+      <div
+        className={styles.overlay}
+        ref={modalRef}
+        onClick={modalOutSideClick}
+      >
         <div className={styles.container}>
           <div className={styles.title}>{title}</div>
           <div className={styles.content}>{content}</div>

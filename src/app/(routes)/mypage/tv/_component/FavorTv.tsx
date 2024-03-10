@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import styles from "./favorTv.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { getAllFavorList } from "@/lib/getAllFavorList";
@@ -23,11 +23,11 @@ const FavorTv = ({ session }: Props) => {
     enabled: !!session?.user,
   });
   const { sortOption } = useFavorFilterStore();
+  const filteredFavor = favorData?.filter(
+    (v) => v.media_type === "tv"
+  ) as DetailTvResult[];
 
   const sortFavor = () => {
-    const filteredFavor = favorData?.filter(
-      (v) => v.media_type === "tv"
-    ) as DetailTvResult[];
     switch (sortOption) {
       case "date_rec":
         return filteredFavor.sort(
@@ -47,8 +47,9 @@ const FavorTv = ({ session }: Props) => {
         return filteredFavor.sort((a, b) => a.vote_average - b.vote_average);
     }
   };
+  const sortedFavor = useMemo(sortFavor, [sortOption, favorData]);
 
-  if (sortFavor().length === 0) {
+  if (!filteredFavor || filteredFavor.length === 0) {
     return (
       <div className={styles.container}>
         <div className={styles.noFavor}>
@@ -63,7 +64,7 @@ const FavorTv = ({ session }: Props) => {
 
   return (
     <div className={styles.container}>
-      {sortFavor().map((tv, index) => (
+      {sortedFavor.map((tv, index) => (
         <FavorTvCard key={index} tv={tv as DetailTvResult} session={session} />
       ))}
     </div>
