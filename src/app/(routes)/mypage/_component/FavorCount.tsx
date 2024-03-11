@@ -20,7 +20,9 @@ const FavorCount = ({ session }: Props) => {
   });
 
   return (
-    <div className={styles.count}>관심목록 개수: {favorData?.length}개</div>
+    <div className={styles.count}>
+      관심목록 개수: {favorData?.length || 0}개
+    </div>
   );
 };
 

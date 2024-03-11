@@ -49,7 +49,7 @@ const FavorTv = ({ session }: Props) => {
   };
   const sortedFavor = useMemo(sortFavor, [sortOption, favorData]);
 
-  if (!filteredFavor || filteredFavor.length === 0) {
+  if (filteredFavor.length === 0) {
     return (
       <div className={styles.container}>
         <div className={styles.noFavor}>

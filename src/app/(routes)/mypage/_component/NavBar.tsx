@@ -28,13 +28,14 @@ const NavBar = ({ session }: Props) => {
         href={"/mypage"}
         className={`${styles.li} ${segment === null && styles.active}`}
       >
-        Movie{`(${favorData?.filter((v) => v.media_type === "movie").length})`}
+        Movie
+        {`(${favorData?.filter((v) => v.media_type === "movie").length || 0})`}
       </Link>
       <Link
         href={"/mypage/tv"}
         className={`${styles.li} ${segment === "tv" && styles.active}`}
       >
-        TV{`(${favorData?.filter((v) => v.media_type === "tv").length})`}
+        TV{`(${favorData?.filter((v) => v.media_type === "tv").length || 0})`}
       </Link>
     </div>
   );
