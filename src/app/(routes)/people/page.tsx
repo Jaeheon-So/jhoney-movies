@@ -10,7 +10,7 @@ import { getPopularPeople } from "@/lib/people/getPopularPeople";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Popular People | JHONEYDB",
+  title: "Popular People | HONEY-BOX",
   description: "유명한 인물을 탐색해보세요",
 };
 

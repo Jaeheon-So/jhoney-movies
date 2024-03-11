@@ -9,7 +9,7 @@ import { getDiscoverTMovie } from "@/lib/movie/getDiscoverTMovie";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Top Rated Movie | JHONEYDB",
+  title: "Top Rated Movie | HONEY-BOX",
   description: "평점 높은 영화를 탐색해보세요",
 };
 

@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props) {
   const name = params.id.split("-").slice(1).join("-");
 
   return {
-    title: `${name} | JHONEYDB `,
+    title: `${name} | HONEY-BOX`,
     description: `${name} 프로필`,
   };
 }

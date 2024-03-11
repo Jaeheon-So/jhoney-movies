@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props) {
   });
 
   return {
-    title: `${detail.name} | JHONEYDB `,
+    title: `${detail.name} | HONEY-BOX`,
     description: `${detail.name} 상세 정보`,
   };
 }

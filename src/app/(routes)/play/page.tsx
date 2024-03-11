@@ -3,7 +3,7 @@ import VideoModal from "./_component/VideoModal";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "예고편 | JHONEYDB",
+  title: "예고편 | HONEY-BOX",
   description: "예고편을 감삼해보세요",
 };
 

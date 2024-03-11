@@ -29,7 +29,7 @@ const Header = ({ session }: Props) => {
         <div className={styles.left}>
           <div className={styles.logo}>
             <Link href="/">
-              <span>JHONEYDB</span>
+              <span>HONEY-BOX</span>
             </Link>
           </div>
           <ul className={styles.leftul}>

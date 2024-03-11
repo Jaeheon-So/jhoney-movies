@@ -9,7 +9,7 @@ import SearchMovie from "./_component/SearchMovie";
 
 export async function generateMetadata({ searchParams }: Props) {
   return {
-    title: `${searchParams.q} - 영화 검색 | JHONEYDB `,
+    title: `${searchParams.q} - 영화 검색 | HONEY-BOX`,
     description: `${searchParams.q} 영화 검색 결과`,
   };
 }

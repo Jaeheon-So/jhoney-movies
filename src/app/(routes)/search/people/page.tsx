@@ -9,7 +9,7 @@ import SearchPeople from "./_component/SearchPeople";
 
 export async function generateMetadata({ searchParams }: Props) {
   return {
-    title: `${searchParams.q} - 인물 검색 | JHONEYDB `,
+    title: `${searchParams.q} - 인물 검색 | HONEY-BOX`,
     description: `${searchParams.q} 인물 검색 결과`,
   };
 }

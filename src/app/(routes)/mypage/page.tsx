@@ -14,7 +14,7 @@ export async function generateMetadata() {
   return {
     title: `${
       session?.user?.image ? session?.user?.name : session?.user?.email
-    } - 영화 관심 목록 | JHONEYDB `,
+    } - 영화 관심 목록 | HONEY-BOX`,
     description: `영화 관심 목록`,
   };
 }

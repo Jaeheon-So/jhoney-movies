@@ -9,7 +9,7 @@ import DiscoverPTv from "./_component/DiscoverPTv";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Popular TV | JHONEYDB",
+  title: "Popular TV | HONEY-BOX",
   description: "유명한 TV 프로그램을 탐색해보세요",
 };
 

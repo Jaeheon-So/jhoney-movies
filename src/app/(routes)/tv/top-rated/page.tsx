@@ -9,7 +9,7 @@ import { getDiscoverTTv } from "@/lib/tv/getDiscoverTTv";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Top Rated TV | JHONEYDB",
+  title: "Top Rated TV | HONEY-BOX",
   description: "평점 높은 TV 프로그램을 탐색해보세요",
 };
 

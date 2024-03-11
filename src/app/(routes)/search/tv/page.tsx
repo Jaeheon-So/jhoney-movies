@@ -9,7 +9,7 @@ import SearchTv from "./_component/SearchTv";
 
 export async function generateMetadata({ searchParams }: Props) {
   return {
-    title: `${searchParams.q} - TV 검색 | JHONEYDB `,
+    title: `${searchParams.q} - TV 검색 | HONEY-BOX`,
     description: `${searchParams.q} TV 검색 결과`,
   };
 }

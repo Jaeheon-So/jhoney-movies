@@ -13,7 +13,7 @@ import { getPopularMovies } from "../../lib/movie/getPopularMovies";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "홈 | JHONEYDB",
+  title: "홈 | HONEY-BOX",
   description: "영화, TV 프로그램, 인물을 탐색해보세요",
 };
 
@@ -34,7 +34,7 @@ export default async function Home() {
       <section className={styles.section1}>
         <div className={styles.titleWrapper}>
           <div className={styles.title}>
-            <div className={styles.t1}>JHONEYDB에 오신 걸 환영합니다.</div>
+            <div className={styles.t1}>HONEY-BOX에 오신 걸 환영합니다.</div>
             <div className={styles.t2}>
               수백만 개의 영화, TV 프로그램, 인물들을 지금 만나보세요.
             </div>
