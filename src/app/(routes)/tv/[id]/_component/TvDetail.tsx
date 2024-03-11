@@ -49,26 +49,19 @@ const TvDetail = ({ id, session }: Props) => {
   const { data: tvDetail } = useQuery({
     queryKey: ["movies", "detail", "tv", id],
     queryFn: getTvDetail,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
   });
   const { data: trailerData } = useQuery<TvTrailerResponse>({
     queryKey: ["movies", "trailers", "tv", id],
     queryFn: () => getTvTrailers(Number(id)),
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
   });
   const { data: creditData, isLoading } = useQuery({
     queryKey: ["movies", "credits", "tv", id],
     queryFn: getTvCredit,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
   });
   const { data: favorData } = useQuery({
     queryKey: ["auth", "favor", session?.user?.id || ""],
     queryFn: getAllFavorList,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
+
     enabled: !!session?.user,
   });
   const { openModal, closeModal } = useModalStore();

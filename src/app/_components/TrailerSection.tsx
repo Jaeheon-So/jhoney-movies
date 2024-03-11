@@ -26,29 +26,23 @@ const TrailerSection = () => {
   const { data: popularData, isLoading: isPopularLoading } = useQuery({
     queryKey: ["movies", "popular", "movie"],
     queryFn: getPopularMovies,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
     enabled: type === "popular",
   });
   const { data: upComingData, isLoading: isUpComingLoading } = useQuery({
     queryKey: ["movies", "upcoming", "movie"],
     queryFn: getUpComingMovie,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
     enabled: type === "upcoming",
   });
   const { data: nowPlayData, isLoading: isNowPlayLoading } = useQuery({
     queryKey: ["movies", "nowplay", "movie"],
     queryFn: getNowPlayingMovie,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
+
     enabled: type === "now_play",
   });
   const { data: onTvData, isLoading: isOnTvLoading } = useQuery({
     queryKey: ["movies", "onAir", "tv"],
     queryFn: getOnAirTv,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
+
     enabled: type === "ontv",
   });
 
@@ -59,8 +53,6 @@ const TrailerSection = () => {
           ? popularData.results.map((movie) => ({
               queryKey: ["movies", "trailers", "movie", movie.id],
               queryFn: () => getMovieTrailers(movie.id),
-              staleTime: 60 * 1000 * 5,
-              gcTime: 60 * 1000 * 5,
             }))
           : [];
       case "upcoming":
@@ -68,8 +60,6 @@ const TrailerSection = () => {
           ? upComingData.results.map((movie) => ({
               queryKey: ["movies", "trailers", "movie", movie.id],
               queryFn: () => getMovieTrailers(movie.id),
-              staleTime: 60 * 1000 * 5,
-              gcTime: 60 * 1000 * 5,
             }))
           : [];
       case "now_play":
@@ -77,8 +67,6 @@ const TrailerSection = () => {
           ? nowPlayData.results.map((movie) => ({
               queryKey: ["movies", "trailers", "movie", movie.id],
               queryFn: () => getMovieTrailers(movie.id),
-              staleTime: 60 * 1000 * 5,
-              gcTime: 60 * 1000 * 5,
             }))
           : [];
       case "ontv":
@@ -86,8 +74,6 @@ const TrailerSection = () => {
           ? onTvData.results.map((movie) => ({
               queryKey: ["movies", "trailers", "tv", movie.id],
               queryFn: () => getTvTrailers(movie.id),
-              staleTime: 60 * 1000 * 5,
-              gcTime: 60 * 1000 * 5,
             }))
           : [];
     }

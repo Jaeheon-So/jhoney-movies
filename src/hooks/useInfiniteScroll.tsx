@@ -21,8 +21,6 @@ const useInfiniteScroll = (
     queryFn: queryFn,
     initialPageParam: 1,
     getNextPageParam: (_, pages) => pages.length + 1,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
   });
 
   const { ref, inView } = useInView({

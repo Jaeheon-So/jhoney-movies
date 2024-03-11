@@ -18,8 +18,6 @@ const FavorMovie = ({ session }: Props) => {
   const { data: favorData } = useQuery({
     queryKey: ["auth", "favor", session?.user?.id || ""],
     queryFn: getAllFavorList,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
   });
   const { sortOption } = useFavorFilterStore();
   const filteredFavor = favorData?.filter(

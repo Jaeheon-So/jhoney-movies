@@ -18,24 +18,18 @@ const RedirectSearch = ({ q }: Props) => {
     queryFn: getSearchMovie,
     initialPageParam: 1,
     getNextPageParam: (_, pages) => pages.length + 1,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
   });
   const { data: tvSearch } = useInfiniteQuery({
     queryKey: ["movies", "search", "tv", q],
     queryFn: getSearchTv,
     initialPageParam: 1,
     getNextPageParam: (_, pages) => pages.length + 1,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
   });
   const { data: peopleSearch } = useInfiniteQuery({
     queryKey: ["people", "search", q],
     queryFn: getSearchPeople,
     initialPageParam: 1,
     getNextPageParam: (_, pages) => pages.length + 1,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
   });
 
   useEffect(() => {

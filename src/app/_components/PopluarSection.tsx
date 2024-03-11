@@ -20,8 +20,6 @@ const PopluarSection = () => {
   } = useQuery({
     queryKey: ["movies", "popular", "movie"],
     queryFn: getPopularMovies,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
     enabled: mediaType === "movie",
   });
 
@@ -33,8 +31,6 @@ const PopluarSection = () => {
   } = useQuery({
     queryKey: ["movies", "popular", "tv"],
     queryFn: getPopularTv,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
     enabled: mediaType === "tv",
   });
 

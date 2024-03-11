@@ -14,8 +14,6 @@ const TrendSection = () => {
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["movies", "trend", dateType],
     queryFn: getTrendMovies,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
   });
 
   return (

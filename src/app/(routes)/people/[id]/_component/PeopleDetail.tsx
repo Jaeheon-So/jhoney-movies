@@ -26,26 +26,18 @@ const PeopleDetail = ({ id, name }: Props) => {
   const { data: detailData } = useQuery({
     queryKey: ["people", "detail", id],
     queryFn: getPeopleDetail,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
   });
   const { data: snsData } = useQuery({
     queryKey: ["people", "sns", id],
     queryFn: getPeopleSns,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
   });
   const { data: searchData } = useQuery({
     queryKey: ["people", "search", name],
     queryFn: getSearchPeople,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
   });
   const { data: creditData } = useQuery({
     queryKey: ["people", "credit", id],
     queryFn: getCombinedCredit,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
   });
 
   let castObj: { [key: string]: CreditCast[] } = {};

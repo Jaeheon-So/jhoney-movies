@@ -14,8 +14,6 @@ const FavorCount = ({ session }: Props) => {
   const { data: favorData } = useQuery({
     queryKey: ["auth", "favor", session?.user?.id || ""],
     queryFn: getAllFavorList,
-    staleTime: 60 * 1000 * 5,
-    gcTime: 60 * 1000 * 5,
     enabled: !!session?.user,
   });
 
