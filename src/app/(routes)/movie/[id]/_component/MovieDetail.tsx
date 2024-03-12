@@ -108,9 +108,9 @@ const MovieDetail = ({ id, session }: Props) => {
       );
     },
     onSettled: async () => {
-      // await queryClient.invalidateQueries({
-      //     queryKey: ["auth"],
-      // });
+      await queryClient.invalidateQueries({
+        queryKey: ["auth"],
+      });
     },
   });
 
@@ -149,9 +149,9 @@ const MovieDetail = ({ id, session }: Props) => {
       );
     },
     onSettled: async () => {
-      // await queryClient.invalidateQueries({
-      //   queryKey: ["auth"],
-      // });
+      await queryClient.invalidateQueries({
+        queryKey: ["auth"],
+      });
     },
   });
 

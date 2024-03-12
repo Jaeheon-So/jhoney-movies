@@ -58,9 +58,9 @@ const FavorMovieCard = ({ movie, session }: Props) => {
       );
     },
     onSettled: async () => {
-      // await queryClient.invalidateQueries({
-      //   queryKey: ["auth"],
-      // });
+      await queryClient.invalidateQueries({
+        queryKey: ["auth"],
+      });
     },
   });
 

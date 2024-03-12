@@ -28,7 +28,7 @@ const Toast = () => {
       draggable
       pauseOnHover
       autoClose={1500}
-      limit={1}
+      limit={5}
     />
   );
 };

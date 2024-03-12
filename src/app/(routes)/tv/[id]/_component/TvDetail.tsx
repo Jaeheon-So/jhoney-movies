@@ -110,9 +110,9 @@ const TvDetail = ({ id, session }: Props) => {
       );
     },
     onSettled: async () => {
-      // await queryClient.invalidateQueries({
-      //     queryKey: ["auth"],
-      // });
+      await queryClient.invalidateQueries({
+        queryKey: ["auth"],
+      });
     },
   });
 
@@ -152,9 +152,9 @@ const TvDetail = ({ id, session }: Props) => {
       );
     },
     onSettled: async () => {
-      // await queryClient.invalidateQueries({
-      //   queryKey: ["auth"],
-      // });
+      await queryClient.invalidateQueries({
+        queryKey: ["auth"],
+      });
     },
   });
 
