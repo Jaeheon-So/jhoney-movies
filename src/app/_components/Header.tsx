@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useState } from "react";
 import styles from "./header.module.scss";
 import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
@@ -10,6 +10,7 @@ import HeaderSearchForm from "./HeaderSearchForm";
 import useScrollDirection from "../../hooks/useScrollDircetion";
 import { Session } from "next-auth";
 import LogoutButton from "./LogoutButton";
+import { usePathname } from "next/navigation";
 
 type Props = {
   session: Session | null;
@@ -18,6 +19,7 @@ type Props = {
 const Header = ({ session }: Props) => {
   const [showSearchBar, setShowSearchBar] = useState(false);
   const { isUp } = useScrollDirection();
+  const pathname = usePathname();
 
   const onClickSearch = () => {
     setShowSearchBar(!showSearchBar);
@@ -70,7 +72,11 @@ const Header = ({ session }: Props) => {
               </li>
             ) : (
               <li>
-                <Link href="/login">Login</Link>
+                {pathname === "/login" ? (
+                  <a style={{ cursor: "pointer" }}>Login</a>
+                ) : (
+                  <Link href="/login">Login</Link>
+                )}
               </li>
             )}
             <li onClick={onClickSearch}>

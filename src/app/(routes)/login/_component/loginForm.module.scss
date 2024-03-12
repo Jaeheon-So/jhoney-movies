@@ -8,6 +8,11 @@
   padding: 40px 40px;
   border-radius: 8px;
   margin-top: 45px;
+  background-color: #fff;
+
+  &.modal {
+    margin-top: 0;
+  }
 
   @media all and (max-width: 585px) {
     margin-top: 35px;

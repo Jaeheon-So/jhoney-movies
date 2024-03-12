@@ -11,9 +11,11 @@ import { useSearchParams } from "next/navigation";
 import { onSubmit } from "@/lib/auth/login";
 import { signIn } from "next-auth/react";
 
-type Props = {};
+type Props = {
+  isModal?: boolean;
+};
 
-const LoginForm = ({}: Props) => {
+const LoginForm = ({ isModal }: Props) => {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl");
   const idRef = useRef<HTMLInputElement>(null);
@@ -80,7 +82,10 @@ const LoginForm = ({}: Props) => {
   };
 
   return (
-    <form className={styles.container} action={formAction}>
+    <form
+      className={`${styles.container} ${isModal && styles.modal}`}
+      action={formAction}
+    >
       <div className={styles.logo}>로그인</div>
       <div className={styles.inputWrapper}>
         <input
