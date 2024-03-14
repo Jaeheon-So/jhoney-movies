@@ -75,7 +75,7 @@ const Header = ({ session }: Props) => {
                 {pathname === "/login" ? (
                   <a style={{ cursor: "pointer" }}>Login</a>
                 ) : (
-                  <Link href="/login">Login</Link>
+                  <Link href={`/login?callbackUrl=${pathname}`}>Login</Link>
                 )}
               </li>
             )}
