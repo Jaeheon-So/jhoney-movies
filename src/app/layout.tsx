@@ -7,6 +7,7 @@ import AuthProvider from "./_components/AuthProvider";
 import { auth } from "@/auth";
 import Toast from "./_components/Toast";
 import ConfirmModal from "./_components/ConfirmModal";
+import Progressbar from "./_components/Progresbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default async function RootLayout({
         <div className="wrapper">
           <RQProvider>
             <AuthProvider>
+              <Progressbar />
               <Header session={session} />
               <main>{children}</main>
               <Toast />
