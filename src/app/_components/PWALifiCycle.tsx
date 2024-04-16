@@ -60,90 +60,45 @@ export function PWALifeCycle() {
         });
       });
 
-      // wb.addEventListener("waiting", () => {
-      //   // `event.wasWaitingBeforeRegister` will be false if this is the first time the updated service worker is waiting.
-      //   // When `event.wasWaitingBeforeRegister` is true, a previously updated service worker is still waiting.
-      //   // You may want to customize the UI prompt accordingly.
-      //   // https://developer.chrome.com/docs/workbox/handling-service-worker-updates/#the-code-to-put-in-your-page
-      //   if (
-      //     confirm(
-      //       "A newer version of this web app is available, reload to update?"
-      //     )
-      //   ) {
-      //     // Send a message to the waiting service worker, instructing it to activate.
-      //     wb.messageSkipWaiting();
-      //     wb.addEventListener("controlling", () => {
-      //       window.location.reload();
-      //     });
-      //   } else {
-      //     alert(
-      //       "User rejected to update SW, keeping the old version. New version will be automatically loaded when the app is opened next time."
-      //     );
-      //     console.log(
-      //       "User rejected to update SW, keeping the old version. New version will be automatically loaded when the app is opened next time."
-      //     );
-      //   }
-      // });
-
-      // // wb.addEventListener("waiting", () => checkUpdate(wb));
-
-      // wb.addEventListener("controlling", (event: any) => {
-      //   console.log(`Event ${event.type} is triggered.`);
-      //   console.log(event);
-      // });
-
-      wb.addEventListener("activated", (event: any) => {
-        console.log(`Event ${event.type} is triggered.`);
-        console.log(event);
-        wb.clientsClaim();
-      });
-
-      // // Don't forget to call register as automatic registration is disabled.
-      // wb.register();
-
-      const showSkipWaitingPrompt = async (event: any) => {
-        // Assuming the user accepted the update, set up a listener
-        // that will reload the page as soon as the previously waiting
-        // service worker has taken control.
-        wb.addEventListener("controlling", () => {
-          // At this point, reloading will ensure that the current
-          // tab is loaded under the control of the new service worker.
-          // Depending on your web app, you may want to auto-save or
-          // persist transient state before triggering the reload.
-          console.log("controll");
-          window.location.reload();
-        });
-
-        // When `event.wasWaitingBeforeRegister` is true, a previously
-        // updated service worker is still waiting.
+      wb.addEventListener("waiting", () => {
+        // `event.wasWaitingBeforeRegister` will be false if this is the first time the updated service worker is waiting.
+        // When `event.wasWaitingBeforeRegister` is true, a previously updated service worker is still waiting.
         // You may want to customize the UI prompt accordingly.
-
-        // This code assumes your app has a promptForUpdate() method,
-        // which returns true if the user wants to update.
-        // Implementing this is app-specific; some examples are:
-        // https://open-ui.org/components/alert.research or
-        // https://open-ui.org/components/toast.research
-        // const updateAccepted = confirm(
-        //   "A newer version of this web app is available, reload to update?"
-        // );
-
+        // https://developer.chrome.com/docs/workbox/handling-service-worker-updates/#the-code-to-put-in-your-page
         if (
           confirm(
             "A newer version of this web app is available, reload to update?"
           )
         ) {
-          console.log("accepted");
+          // Send a message to the waiting service worker, instructing it to activate.
           wb.messageSkipWaiting();
+          wb.addEventListener("controlling", () => {
+            window.location.reload();
+          });
+        } else {
+          alert(
+            "User rejected to update SW, keeping the old version. New version will be automatically loaded when the app is opened next time."
+          );
+          console.log(
+            "User rejected to update SW, keeping the old version. New version will be automatically loaded when the app is opened next time."
+          );
         }
-      };
-
-      // Add an event listener to detect when the registered
-      // service worker has installed but is waiting to activate.
-      wb.addEventListener("waiting", (event: any) => {
-        console.log("waiting");
-        showSkipWaitingPrompt(event);
       });
 
+      // // wb.addEventListener("waiting", () => checkUpdate(wb));
+
+      wb.addEventListener("controlling", (event: any) => {
+        console.log(`Event ${event.type} is triggered.`);
+        console.log(event);
+      });
+
+      wb.addEventListener("activated", (event: any) => {
+        console.log(`Event ${event.type} is triggered.`);
+        console.log(event);
+        // event.waitUntil(wb.clientsClaim());
+      });
+
+      // // Don't forget to call register as automatic registration is disabled.
       wb.register();
     }
   }, []);
