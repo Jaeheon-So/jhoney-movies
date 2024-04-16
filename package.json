@@ -25,6 +25,7 @@
     "react-konva": "^18.2.10",
     "react-toastify": "^10.0.4",
     "sharp": "^0.33.2",
+    "workbox-window": "^7.0.0",
     "zustand": "^4.5.1"
   },
   "devDependencies": {

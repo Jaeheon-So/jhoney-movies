@@ -1,10 +1,5 @@
 "use client";
-
-declare global {
-  interface Window {
-    workbox: any;
-  }
-}
+import { Workbox } from "workbox-window";
 
 import { useModalStore } from "@/store/confirmModal";
 import { useEffect } from "react";
@@ -14,6 +9,7 @@ export function PWALifeCycle() {
   // This hook only run once in browser after the component is rendered for the first time.
   // It has same effect as the old componentDidMount lifecycle callback.
   const { openModal, closeModal } = useModalStore();
+  const wb = new Workbox("/sw.js");
 
   const checkUpdate = (wb: any) => {
     openModal({
@@ -47,24 +43,13 @@ export function PWALifeCycle() {
     if (
       typeof window !== "undefined" &&
       "serviceWorker" in navigator &&
-      window.workbox !== undefined
+      wb !== undefined
     ) {
-      const wb = window.workbox;
       // // add event listeners to handle PWA lifecycle events
       wb.addEventListener("installed", (event: any) => {
         console.log(`Event ${event.type} is triggered.`);
         console.log(event);
-        notify({
-          type: "success",
-          content: "Honey Box가 새로운 버전으로 업데이트 되었습니다.",
-        });
-      });
 
-      wb.addEventListener("waiting", () => {
-        // `event.wasWaitingBeforeRegister` will be false if this is the first time the updated service worker is waiting.
-        // When `event.wasWaitingBeforeRegister` is true, a previously updated service worker is still waiting.
-        // You may want to customize the UI prompt accordingly.
-        // https://developer.chrome.com/docs/workbox/handling-service-worker-updates/#the-code-to-put-in-your-page
         if (
           confirm(
             "A newer version of this web app is available, reload to update?"
@@ -85,6 +70,28 @@ export function PWALifeCycle() {
         }
       });
 
+      // wb.addEventListener("waiting", (event: any) => {
+      //   console.log(`Event ${event.type} is triggered.`);
+      //   console.log(event);
+      //   if (
+      //     confirm(
+      //       "A newer version of this web app is available, reload to update?"
+      //     )
+      //   ) {
+      //     wb.messageSkipWaiting();
+      //     wb.addEventListener("controlling", () => {
+      //       window.location.reload();
+      //     });
+      //   } else {
+      //     alert(
+      //       "User rejected to update SW, keeping the old version. New version will be automatically loaded when the app is opened next time."
+      //     );
+      //     console.log(
+      //       "User rejected to update SW, keeping the old version. New version will be automatically loaded when the app is opened next time."
+      //     );
+      //   }
+      // });
+
       // // wb.addEventListener("waiting", () => checkUpdate(wb));
 
       wb.addEventListener("controlling", (event: any) => {
@@ -95,6 +102,10 @@ export function PWALifeCycle() {
       wb.addEventListener("activated", (event: any) => {
         console.log(`Event ${event.type} is triggered.`);
         console.log(event);
+        notify({
+          type: "success",
+          content: "Honey Box가 새로운 버전으로 업데이트 되었습니다.",
+        });
         // event.waitUntil(wb.clientsClaim());
       });
 
