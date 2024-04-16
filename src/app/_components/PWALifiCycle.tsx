@@ -54,6 +54,10 @@ export function PWALifeCycle() {
       wb.addEventListener("installed", (event: any) => {
         console.log(`Event ${event.type} is triggered.`);
         console.log(event);
+        notify({
+          type: "success",
+          content: "Honey Box가 새로운 버전으로 업데이트 되었습니다.",
+        });
       });
 
       // wb.addEventListener("waiting", () => {
@@ -91,6 +95,7 @@ export function PWALifeCycle() {
       wb.addEventListener("activated", (event: any) => {
         console.log(`Event ${event.type} is triggered.`);
         console.log(event);
+        event.waitUntil(wb.clients.claim());
       });
 
       // // Don't forget to call register as automatic registration is disabled.
