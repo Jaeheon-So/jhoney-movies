@@ -49,7 +49,15 @@ export function PWALifeCycle() {
       wb.addEventListener("installed", (event: any) => {
         console.log(`Event ${event.type} is triggered.`);
         console.log(event);
+      });
 
+      wb.addEventListener("waiting", (event: any) => {
+        // `event.wasWaitingBeforeRegister` will be false if this is the first time the updated service worker is waiting.
+        // When `event.wasWaitingBeforeRegister` is true, a previously updated service worker is still waiting.
+        // You may want to customize the UI prompt accordingly.
+        // https://developer.chrome.com/docs/workbox/handling-service-worker-updates/#the-code-to-put-in-your-page
+        console.log(`Event ${event.type} is triggered.`);
+        console.log(event);
         if (
           confirm(
             "A newer version of this web app is available, reload to update?"
@@ -69,28 +77,6 @@ export function PWALifeCycle() {
           );
         }
       });
-
-      // wb.addEventListener("waiting", (event: any) => {
-      //   console.log(`Event ${event.type} is triggered.`);
-      //   console.log(event);
-      //   if (
-      //     confirm(
-      //       "A newer version of this web app is available, reload to update?"
-      //     )
-      //   ) {
-      //     wb.messageSkipWaiting();
-      //     wb.addEventListener("controlling", () => {
-      //       window.location.reload();
-      //     });
-      //   } else {
-      //     alert(
-      //       "User rejected to update SW, keeping the old version. New version will be automatically loaded when the app is opened next time."
-      //     );
-      //     console.log(
-      //       "User rejected to update SW, keeping the old version. New version will be automatically loaded when the app is opened next time."
-      //     );
-      //   }
-      // });
 
       // // wb.addEventListener("waiting", () => checkUpdate(wb));
 
