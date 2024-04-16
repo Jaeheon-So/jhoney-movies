@@ -95,7 +95,7 @@ export function PWALifeCycle() {
       wb.addEventListener("activated", (event: any) => {
         console.log(`Event ${event.type} is triggered.`);
         console.log(event);
-        event.waitUntil(wb.clientsClaim());
+        wb.clientsClaim();
       });
 
       // // Don't forget to call register as automatic registration is disabled.

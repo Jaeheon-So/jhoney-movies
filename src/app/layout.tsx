@@ -76,12 +76,12 @@ export default async function RootLayout({
               <Header session={session} />
               <main>{children}</main>
               <Toast />
+              <PWALifeCycle />
               <ConfirmModal />
             </AuthProvider>
           </RQProvider>
         </div>
         <Footer />
-        <PWALifeCycle />
       </body>
     </html>
   );
