@@ -137,7 +137,7 @@ export function PWALifeCycle() {
         isUpdated = true;
         wb.messageSkipWaiting();
         wb.addEventListener("controlling", () => {
-          console.log("controlled2, ", isUpdated);
+          console.log("controlled22, ", isUpdated);
           if (isUpdated) {
             window.location.reload();
           }
