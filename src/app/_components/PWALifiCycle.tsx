@@ -136,6 +136,12 @@ export function PWALifeCycle() {
         closeModal();
         isUpdated = true;
         wb.messageSkipWaiting();
+        wb.addEventListener("controlling", () => {
+          console.log("controlled2, ", isUpdated);
+          if (isUpdated) {
+            window.location.reload();
+          }
+        });
       },
       cancelCallback: () => {
         closeModal();
