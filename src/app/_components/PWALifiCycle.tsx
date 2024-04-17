@@ -119,9 +119,10 @@ export function PWALifeCycle() {
   // It has same effect as the old componentDidMount lifecycle callback.
 
   const { openModal, closeModal } = useModalStore();
+  let isUpdated = false;
 
   const checkUpdate = (wb: any) => {
-    console.log("waitung");
+    console.log("waiting");
     openModal({
       title: "업데이트",
       content: (
@@ -133,6 +134,7 @@ export function PWALifeCycle() {
       ),
       confirmCallback: async () => {
         closeModal();
+        isUpdated = true;
         wb.messageSkipWaiting();
       },
       cancelCallback: () => {
@@ -154,13 +156,9 @@ export function PWALifeCycle() {
     ) {
       console.log("ji");
       const wb = window.workbox;
-      let isUpdated = false;
 
       wb.addEventListener("installed", (event: any) => {
-        console.log("installed, ", event.isUpdated);
-        if (event.isUpdate) {
-          isUpdated = true;
-        }
+        console.log("installed");
       });
 
       wb.addEventListener("waiting", () => checkUpdate(wb));
@@ -173,6 +171,7 @@ export function PWALifeCycle() {
       });
 
       wb.addEventListener("activated", (event: any) => {
+        console.log("activated");
         notify({
           type: "success",
           content: "Honey Box가 새로운 버전으로 업데이트 되었습니다.",
