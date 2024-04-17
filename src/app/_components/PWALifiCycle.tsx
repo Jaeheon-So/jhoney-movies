@@ -154,7 +154,7 @@ export function PWALifeCycle() {
       "serviceWorker" in navigator &&
       window.workbox !== undefined
     ) {
-      console.log("ji");
+      console.log("hi");
       const wb = window.workbox;
 
       wb.addEventListener("installed", (event: any) => {
