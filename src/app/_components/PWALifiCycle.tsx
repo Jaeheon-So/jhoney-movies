@@ -123,35 +123,53 @@ export function PWALifeCycle() {
 
   const checkUpdate = (wb: any) => {
     console.log("waiting");
-    openModal({
-      title: "업데이트",
-      content: (
-        <div>
-          Honey Box의 최신 버전을 사용할 수 있습니다.
-          <br />
-          업데이트를 진행하시겠습니까?
-        </div>
-      ),
-      confirmCallback: async () => {
-        closeModal();
-        isUpdated = true;
-        wb.messageSkipWaiting();
-        wb.addEventListener("controlling", () => {
-          console.log("controlled22, ", isUpdated);
-          if (isUpdated) {
-            window.location.reload();
-          }
-        });
-      },
-      cancelCallback: () => {
-        closeModal();
-        notify({
-          type: "success",
-          content:
-            "이전 버전을 유지합니다. 다음에 앱을 열면 새 버전이 자동으로 로드됩니다.",
-        });
-      },
-    });
+
+    if (
+      confirm(
+        "Honey Box의 최신 버전을 사용할 수 있습니다.\n업데이트를 진행하시겠습니까?"
+      )
+    ) {
+      wb.messageSkipWaiting();
+      wb.addEventListener("controlling", () => {
+        console.log("controlled22");
+        window.location.reload();
+      });
+    } else {
+      alert(
+        "이전 버전을 유지합니다. 다음에 앱을 열면 새 버전이 자동으로 로드됩니다."
+      );
+      console.log(
+        "이전 버전을 유지합니다. 다음에 앱을 열면 새 버전이 자동으로 로드됩니다."
+      );
+    }
+
+    // openModal({
+    //   title: "업데이트",
+    //   content: (
+    //     <div>
+    //       Honey Box의 최신 버전을 사용할 수 있습니다.
+    //       <br />
+    //       업데이트를 진행하시겠습니까?
+    //     </div>
+    //   ),
+    //   confirmCallback: async () => {
+    //     closeModal();
+    //     // isUpdated = true;
+    //     wb.messageSkipWaiting();
+    //     wb.addEventListener("controlling", () => {
+    //       console.log("controlled22");
+    //       window.location.reload();
+    //     });
+    //   },
+    //   cancelCallback: () => {
+    //     closeModal();
+    //     notify({
+    //       type: "success",
+    //       content:
+    //         "이전 버전을 유지합니다. 다음에 앱을 열면 새 버전이 자동으로 로드됩니다.",
+    //     });
+    //   },
+    // });
   };
 
   useEffect(() => {
@@ -167,14 +185,14 @@ export function PWALifeCycle() {
         console.log("installed");
       });
 
-      wb.addEventListener("waiting", () => checkUpdate(wb));
+      wb.addEventListener("waiting", (event: any) => checkUpdate(wb));
 
-      wb.addEventListener("controlling", () => {
-        console.log("controlled, ", isUpdated);
-        if (isUpdated) {
-          window.location.reload();
-        }
-      });
+      // wb.addEventListener("controlling", () => {
+      //   console.log("controlled, ", isUpdated);
+      //   if (isUpdated) {
+      //     window.location.reload();
+      //   }
+      // });
 
       wb.addEventListener("activated", (event: any) => {
         console.log("activated");
